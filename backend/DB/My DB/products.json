@@ -1,0 +1,176 @@
+[{
+  "_id": {
+    "$oid": "672dd5ba06f191edd952fead"
+  },
+  "restro_id": {
+    "$oid": "672dd3bb06f191edd952fe9e"
+  },
+  "name": "Butter Garlic Prawns",
+  "description": "Extra butter extra garlic just the way grandma likes it, you also like it \n",
+  "inStock": true,
+  "isVeg": true,
+  "price": 550,
+  "rating": 4.3,
+  "image": "https://www.thespruceeats.com/thmb/ZSpfxgvzlUPuoyY7lZDiOkejQsc=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/SES-butter-prawns-recipe-695128-239096b6cbed45bbb99582ce980addfc.jpg",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "672dd5ba06f191edd952feae"
+  },
+  "restro_id": {
+    "$oid": "672dd3bb06f191edd952fe9e"
+  },
+  "name": "Asian Style Pepper Chicken",
+  "description": "Crispy chicken bits served with home made volcano sauce\n",
+  "inStock": true,
+  "isVeg": false,
+  "price": 380,
+  "rating": 5,
+  "image": "https://omnivorescookbook.com/wp-content/uploads/2022/06/220530_Black-Pepper-Chicken_3.jpg",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "672dd5ba06f191edd952feaf"
+  },
+  "restro_id": {
+    "$oid": "672dd3bb06f191edd952fe9e"
+  },
+  "name": "Panko Fried Fish Fingers",
+  "description": "Crispy fish fingers served with tatar sauce you love to eat\n",
+  "inStock": true,
+  "isVeg": false,
+  "price": 460,
+  "rating": 3.8,
+  "image": "https://www.budgetbytes.com/wp-content/uploads/2023/08/Fish-Sticks-dip.jpg",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "672dd5ba06f191edd952feb0"
+  },
+  "restro_id": {
+    "$oid": "672dd3bb06f191edd952fea0"
+  },
+  "name": "Original Hot Buffalo Chicken Wings",
+  "description": "Flaky & crispy wings tossed in grandmamas proprietary sauces\n",
+  "inStock": true,
+  "isVeg": true,
+  "price": 360,
+  "rating": 4.7,
+  "image": "https://mccormick.widen.net/content/ktngbujjcz/jpeg/Franks_RedHot_Buffalo_Chicken_Wings_desktop.jpg?crop=true&anchor=0,0&q=80&color=ffffffff&u=qtpeo3&w=1920&h=1080",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "672dd5ba06f191edd952feb1"
+  },
+  "restro_id": {
+    "$oid": "672dd3bb06f191edd952fea0"
+  },
+  "name": "Chicken Shawarma",
+  "description": "Pita rolls with yum in every bite. Lebanese style chicken, hummus.\n",
+  "inStock": true,
+  "isVeg": false,
+  "price": 310,
+  "rating": 5,
+  "image": "https://images-gmi-pmc.edge-generalmills.com/9dbe823a-5bae-47cf-be42-ee5e886a0378.jpg",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "672dd5ba06f191edd952feb2"
+  },
+  "restro_id": {
+    "$oid": "672dd3bb06f191edd952fea1"
+  },
+  "name": "Granny's Baked Chicken Meatballs ",
+  "description": "Oven cooked meatballs with arrabiata & cheddar cheese",
+  "inStock": true,
+  "isVeg": false,
+  "price": 410,
+  "rating": 4.3,
+  "image": "https://images.themodernproper.com/billowy-turkey/production/posts/2019/Italian-Baked-Chicken-Meatballs-12.jpg?w=960&h=720&q=82&fm=jpg&fit=crop&dm=1599769248&s=b2dbfd17cff6662e53b90dff284b7e09",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "672dd5ba06f191edd952feb3"
+  },
+  "restro_id": {
+    "$oid": "672dd3bb06f191edd952fea1"
+  },
+  "name": "Beiruti Hummus",
+  "description": "Lebanese version of hummus sprinkled with sumac & za'atar served with home made pita\n",
+  "inStock": true,
+  "isVeg": true,
+  "price": 320,
+  "rating": 2.3,
+  "image": "https://cdn.tasteatlas.com/images/dishes/12885298a62f411bbe11d081bc0b187b.jpg?m=facebook",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "672dd5ba06f191edd952feb4"
+  },
+  "restro_id": {
+    "$oid": "672dd3bb06f191edd952fea2"
+  },
+  "name": "Butter Garlic Mushrooms",
+  "description": "Buttered mushrooms, white wine, micro greens and red chillies whic taste chilly",
+  "inStock": true,
+  "isVeg": true,
+  "price": 320,
+  "rating": 4.2,
+  "image": "https://www.eatwell101.com/wp-content/uploads/2019/11/Garlic-Butter-Mushroom-Skillet-2.jpg",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "672dd5ba06f191edd952feb5"
+  },
+  "restro_id": {
+    "$oid": "672dd3bb06f191edd952fea2"
+  },
+  "name": "Sizzling Bloom Bread",
+  "description": "Bread stuffed with mozzarella, cheddar, bell pepper sizzling cheese sauce & roasted garlic\n",
+  "inStock": true,
+  "isVeg": true,
+  "price": 320,
+  "rating": 3.9,
+  "image": "https://www.homecookingadventure.com/wp-content/uploads/2022/01/bloomin_onion_bread_mainimage.jpg",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "672dd5ba06f191edd952feb6"
+  },
+  "restro_id": {
+    "$oid": "672dd3bb06f191edd952fea3"
+  },
+  "name": "Patatas Bravas  ",
+  "description": "Spain's most popular tapas, crispy potatoes tossed with delicious Spanish tomato sauce\n",
+  "inStock": true,
+  "isVeg": true,
+  "price": 230,
+  "rating": 5,
+  "image": "https://www.goya.com/media/7699/spicy-potatoes.jpg?quality=80",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "672dd5ba06f191edd952feb7"
+  },
+  "restro_id": {
+    "$oid": "672dd3bb06f191edd952fea4"
+  },
+  "name": "Mint Lemonade",
+  "description": "Lemon juice, sugar & tons of fresh mint, fresh your mind\n",
+  "inStock": true,
+  "isVeg": true,
+  "price": 190,
+  "rating": 2.3,
+  "image": "https://food.fnr.sndimg.com/content/dam/images/food/fullset/2019/10/10/MW406_frozen-mint-lemonade_s4x3.jpg.rend.hgtvcom.616.462.suffix/1570722287611.jpeg",
+  "__v": 0
+}]

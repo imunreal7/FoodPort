@@ -1,0 +1,139 @@
+{
+	"info": {
+		"_postman_id": "175f1c08-b201-48eb-8a23-b2c610427a64",
+		"name": "FoodPort",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17277848"
+	},
+	"item": [
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "Read all products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/products",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Products",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n    {\n        \"restro_id\": \"672dd3bb06f191edd952fe9e\",\n        \"name\": \"Butter Garlic Prawns\",\n        \"description\": \"Extra butter extra garlic just the way grandma likes it, you also like it \\n\",\n        \"inStock\": true,\n        \"isVeg\": true,\n        \"price\": 550,\n        \"rating\": 4.3,\n        \"image\": \"https://www.thespruceeats.com/thmb/ZSpfxgvzlUPuoyY7lZDiOkejQsc=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/SES-butter-prawns-recipe-695128-239096b6cbed45bbb99582ce980addfc.jpg\"\n    },\n    {\n        \"restro_id\": \"672dd3bb06f191edd952fe9e\",\n        \"name\": \"Asian Style Pepper Chicken\",\n        \"description\": \"Crispy chicken bits served with home made volcano sauce\\n\",\n        \"inStock\": true,\n        \"isVeg\": false,\n        \"price\": 380,\n        \"rating\": 5,\n        \"image\": \"https://omnivorescookbook.com/wp-content/uploads/2022/06/220530_Black-Pepper-Chicken_3.jpg\"\n    },\n    {\n        \"restro_id\": \"672dd3bb06f191edd952fe9e\",\n        \"name\": \"Panko Fried Fish Fingers\",\n        \"description\": \"Crispy fish fingers served with tatar sauce you love to eat\\n\",\n        \"inStock\": true,\n        \"isVeg\": false,\n        \"price\": 460,\n        \"rating\": 3.8,\n        \"image\": \"https://www.budgetbytes.com/wp-content/uploads/2023/08/Fish-Sticks-dip.jpg\"\n    },\n    {\n        \"restro_id\": \"672dd3bb06f191edd952fea0\",\n        \"name\": \"Original Hot Buffalo Chicken Wings\",\n        \"description\": \"Flaky & crispy wings tossed in grandmamas proprietary sauces\\n\",\n        \"inStock\": true,\n        \"isVeg\": true,\n        \"price\": 360,\n        \"rating\": 4.7,\n        \"image\": \"https://mccormick.widen.net/content/ktngbujjcz/jpeg/Franks_RedHot_Buffalo_Chicken_Wings_desktop.jpg?crop=true&anchor=0,0&q=80&color=ffffffff&u=qtpeo3&w=1920&h=1080\"\n    },\n    {\n        \"restro_id\": \"672dd3bb06f191edd952fea0\",\n        \"name\": \"Chicken Shawarma\",\n        \"description\": \"Pita rolls with yum in every bite. Lebanese style chicken, hummus.\\n\",\n        \"inStock\": true,\n        \"isVeg\": false,\n        \"price\": 310,\n        \"rating\": 5,\n        \"image\": \"https://images-gmi-pmc.edge-generalmills.com/9dbe823a-5bae-47cf-be42-ee5e886a0378.jpg\"\n    },\n    {\n        \"restro_id\": \"672dd3bb06f191edd952fea1\",\n        \"name\": \"Granny's Baked Chicken Meatballs \",\n        \"description\": \"Oven cooked meatballs with arrabiata & cheddar cheese\",\n        \"inStock\": true,\n        \"isVeg\": false,\n        \"price\": 410,\n        \"rating\": 4.3,\n        \"image\": \"https://images.themodernproper.com/billowy-turkey/production/posts/2019/Italian-Baked-Chicken-Meatballs-12.jpg?w=960&h=720&q=82&fm=jpg&fit=crop&dm=1599769248&s=b2dbfd17cff6662e53b90dff284b7e09\"\n    },\n    {\n        \"restro_id\": \"672dd3bb06f191edd952fea1\",\n        \"name\": \"Beiruti Hummus\",\n        \"description\": \"Lebanese version of hummus sprinkled with sumac & za'atar served with home made pita\\n\",\n        \"inStock\": true,\n        \"isVeg\": true,\n        \"price\": 320,\n        \"rating\": 2.3,\n        \"image\": \"https://cdn.tasteatlas.com/images/dishes/12885298a62f411bbe11d081bc0b187b.jpg?m=facebook\"\n    },\n    {\n        \"restro_id\": \"672dd3bb06f191edd952fea2\",\n        \"name\": \"Butter Garlic Mushrooms\",\n        \"description\": \"Buttered mushrooms, white wine, micro greens and red chillies whic taste chilly\",\n        \"inStock\": true,\n        \"isVeg\": true,\n        \"price\": 320,\n        \"rating\": 4.2,\n        \"image\": \"https://www.eatwell101.com/wp-content/uploads/2019/11/Garlic-Butter-Mushroom-Skillet-2.jpg\"\n    },\n    {\n        \"restro_id\": \"672dd3bb06f191edd952fea2\",\n        \"name\": \"Sizzling Bloom Bread\",\n        \"description\": \"Bread stuffed with mozzarella, cheddar, bell pepper sizzling cheese sauce & roasted garlic\\n\",\n        \"inStock\": true,\n        \"isVeg\": true,\n        \"price\": 320,\n        \"rating\": 3.9,\n        \"image\": \"https://www.homecookingadventure.com/wp-content/uploads/2022/01/bloomin_onion_bread_mainimage.jpg\"\n    },\n    {\n        \"restro_id\": \"672dd3bb06f191edd952fea3\",\n        \"name\": \"Patatas Bravas  \",\n        \"description\": \"Spain's most popular tapas, crispy potatoes tossed with delicious Spanish tomato sauce\\n\",\n        \"inStock\": true,\n        \"isVeg\": true,\n        \"price\": 230,\n        \"rating\": 5,\n        \"image\": \"https://www.goya.com/media/7699/spicy-potatoes.jpg?quality=80\"\n    },\n    {\n        \"restro_id\": \"672dd3bb06f191edd952fea4\",\n        \"name\": \"Mint Lemonade\",\n        \"description\": \"Lemon juice, sugar & tons of fresh mint, fresh your mind\\n\",\n        \"inStock\": true,\n        \"isVeg\": true,\n        \"price\": 190,\n        \"rating\": 2.3,\n        \"image\": \"https://food.fnr.sndimg.com/content/dam/images/food/fullset/2019/10/10/MW406_frozen-mint-lemonade_s4x3.jpg.rend.hgtvcom.616.462.suffix/1570722287611.jpeg\"\n    }\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/products",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"products"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Restaurant",
+			"item": [
+				{
+					"name": "Read product of Restaurants",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/restaurant/672dd3bb06f191edd952fe9e",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"restaurant",
+								"672dd3bb06f191edd952fe9e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Read all Restaurants",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/restaurants",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"restaurants"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Restaurants",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n    {\n        \"name\": \"The Dark Roast\",\n        \"cloudinaryImageId\": \"mzdetw2s1ihmpiegkhyl\",\n        \"locality\": \"Market Plaza\",\n        \"areaName\": \"Delhi\",\n        \"costForTwo\": \"₹260 for two\",\n        \"cuisines\": [\n            \"Italian-American\",\n            \"Continental\",\n            \"Burgers\",\n            \"Pizzas\",\n            \"Pastas\",\n            \"Asian Fusion\",\n            \"Beverages\",\n            \"Healthy Options\"\n        ],\n        \"avgRating\": 3.2,\n        \"avgRatingString\": \"3.2\",\n        \"totalRatingsString\": \"10K+\",\n        \"isOpen\": true,\n        \"aggregatedDiscountInfoV3\": {\n            \"header\": \"₹100 OFF\",\n            \"subHeader\": \"ON ORDERS ABOVE ₹199\",\n            \"discountTag\": \"LIMITED TIME DEAL\"\n        }\n    },\n    {\n        \"name\": \"Crust Corner\",\n        \"cloudinaryImageId\": \"hgte5u6o5gvvluewdwet\",\n        \"locality\": \"Urban Square\",\n        \"areaName\": \"Sector 10\",\n        \"costForTwo\": \"₹270 for two\",\n        \"cuisines\": [\n            \"Pizzas\",\n            \"Burgers\",\n            \"Fast Food\",\n            \"Italian\",\n            \"Grill\",\n            \"Tandoor\"\n        ],\n        \"avgRating\": 4.2,\n        \"veg\": true,\n        \"avgRatingString\": \"4.2\",\n        \"totalRatingsString\": \"8K+\",\n        \"isOpen\": true\n    },\n    {\n        \"name\": \"Spicy Bucket\",\n        \"cloudinaryImageId\": \"56c9ab92bd79745fd152a30fa2525426\",\n        \"locality\": \"Food Hub Mall\",\n        \"areaName\": \"Sector 15\",\n        \"costForTwo\": \"₹420 for two\",\n        \"cuisines\": [\n            \"Burgers\",\n            \"American\",\n            \"Grill\",\n            \"Fast Food\"\n        ],\n        \"avgRating\": 4.9,\n        \"avgRatingString\": \"4.9\",\n        \"totalRatingsString\": \"5K+\",\n        \"isOpen\": true,\n        \"aggregatedDiscountInfoV3\": {\n            \"header\": \"20% OFF\",\n            \"subHeader\": \"UP TO ₹50\"\n        }\n    },\n    {\n        \"name\": \"Burger Haven\",\n        \"cloudinaryImageId\": \"e33e1d3ba7d6b2bb0d45e1001b731fcf\",\n        \"locality\": \"Central Square Mall\",\n        \"areaName\": \"Sector 15\",\n        \"costForTwo\": \"₹330 for two\",\n        \"cuisines\": [\n            \"American\",\n            \"Grill\"\n        ],\n        \"avgRating\": 4,\n        \"avgRatingString\": \"4.0\",\n        \"totalRatingsString\": \"9K+\",\n        \"isOpen\": true,\n        \"aggregatedDiscountInfoV3\": {\n            \"header\": \"SPECIAL MENU\",\n            \"subHeader\": \"@ ₹129 PER ITEM\"\n        }\n    },\n    {\n        \"name\": \"Momolicious\",\n        \"cloudinaryImageId\": \"0984acc0ed7b914206dbbcb90297becc\",\n        \"locality\": \"Sector 14\",\n        \"areaName\": \"Sector 14\",\n        \"costForTwo\": \"₹280 for two\",\n        \"cuisines\": [\n            \"Tibetan\",\n            \"Chinese\",\n            \"Fast Food\",\n            \"Continental\",\n            \"Beverages\"\n        ],\n        \"avgRating\": 4.8,\n        \"avgRatingString\": \"4.8\",\n        \"totalRatingsString\": \"2K+\",\n        \"isOpen\": true,\n        \"aggregatedDiscountInfoV3\": {\n            \"header\": \"SAVE 60%\",\n            \"subHeader\": \"UP TO ₹120\"\n        }\n    },\n    {\n        \"name\": \"Chai Break\",\n        \"cloudinaryImageId\": \"2beebd3688e63e027ee8a11c1c8a72c8\",\n        \"locality\": \"Old Market\",\n        \"areaName\": \"Sector 15\",\n        \"costForTwo\": \"₹230 for two\",\n        \"cuisines\": [\n            \"Bakery\",\n            \"Chaat\",\n            \"Tea & Snacks\",\n            \"Desserts\",\n            \"Street Food\"\n        ],\n        \"avgRating\": 3.2,\n        \"avgRatingString\": \"3.2\",\n        \"totalRatingsString\": \"2K+\",\n        \"textExtendedBadges\": [\n            {\n                \"iconId\": \"guiltfree/GF_Logo_android_3x\",\n                \"shortDescription\": \"Healthy Options Available\",\n                \"fontColor\": \"#7E808C\"\n            }\n        ],\n        \"isOpen\": true,\n        \"aggregatedDiscountInfoV3\": {\n            \"header\": \"SAVE 50%\",\n            \"subHeader\": \"UP TO ₹100\"\n        }\n    },\n    {\n        \"name\": \"Wrap ‘n Roll\",\n        \"cloudinaryImageId\": \"af33b81798b11deba338e94b7585d348\",\n        \"locality\": \"City Centre\",\n        \"areaName\": \"Industrial Township\",\n        \"costForTwo\": \"₹220 for two\",\n        \"cuisines\": [\n            \"Kebabs\",\n            \"Fast Food\",\n            \"Snacks\",\n            \"North Indian\",\n            \"Wraps\"\n        ],\n        \"avgRating\": 3.9,\n        \"avgRatingString\": \"3.9\",\n        \"totalRatingsString\": \"1.2K+\",\n        \"textExtendedBadges\": [\n            {\n                \"iconId\": \"guiltfree/GF_Logo_android_3x\",\n                \"shortDescription\": \"Healthy Options Available\",\n                \"fontColor\": \"#7E808C\"\n            }\n        ],\n        \"isOpen\": true,\n        \"aggregatedDiscountInfoV3\": {\n            \"header\": \"50% OFF\",\n            \"subHeader\": \"UP TO ₹100\"\n        }\n    },\n    {\n        \"name\": \"Nirula’s Deli\",\n        \"cloudinaryImageId\": \"whgmbmdif5udm6patgib\",\n        \"locality\": \"Downtown Market\",\n        \"areaName\": \"Sector 15\",\n        \"costForTwo\": \"₹510 for two\",\n        \"cuisines\": [\n            \"Burgers\",\n            \"Desserts\",\n            \"North Indian\",\n            \"Italian\",\n            \"Ice Cream\"\n        ],\n        \"avgRating\": 3,\n        \"avgRatingString\": \"3\",\n        \"totalRatingsString\": \"200+\",\n        \"textExtendedBadges\": [\n            {\n                \"iconId\": \"guiltfree/GF_Logo_android_3x\",\n                \"shortDescription\": \"Guilt-Free Choices\",\n                \"fontColor\": \"#7E808C\"\n            }\n        ],\n        \"isOpen\": true\n    },\n    {\n        \"name\": \"Asia Chow\",\n        \"cloudinaryImageId\": \"6e97ac8f5c89213610309ef1940afa05\",\n        \"locality\": \"Parkside Avenue\",\n        \"areaName\": \"Sector 15\",\n        \"costForTwo\": \"₹310 for two\",\n        \"cuisines\": [\n            \"Chinese\",\n            \"Thai\",\n            \"Asian Fusion\"\n        ],\n        \"avgRating\": 4,\n        \"avgRatingString\": \"4\",\n        \"totalRatingsString\": \"4.5K+\",\n        \"isOpen\": true,\n        \"aggregatedDiscountInfoV3\": {\n            \"header\": \"₹100 OFF\",\n            \"subHeader\": \"ON ORDERS ABOVE ₹200\",\n            \"discountTag\": \"SPECIAL OFFER\"\n        }\n    },\n    {\n        \"name\": \"Oven Story Pizza Co.\",\n        \"cloudinaryImageId\": \"f986df6f1a1fcf2ff24d2eaf44d570a7\",\n        \"locality\": \"Central Plaza\",\n        \"areaName\": \"New Industrial Township\",\n        \"costForTwo\": \"₹410 for two\",\n        \"cuisines\": [\n            \"Italian\",\n            \"Pizza\",\n            \"Beverages\"\n        ],\n        \"avgRating\": 3.7,\n        \"avgRatingString\": \"3.7\",\n        \"totalRatingsString\": \"900+\",\n        \"isOpen\": true,\n        \"aggregatedDiscountInfoV3\": {\n            \"header\": \"₹125 OFF\",\n            \"subHeader\": \"ON ORDERS ABOVE ₹1099\",\n            \"discountTag\": \"FLAT DEAL\"\n        }\n    },\n    {\n        \"name\": \"Slice Hut\",\n        \"cloudinaryImageId\": \"2b4f62d606d1b2bfba9ba9e5386fabb7\",\n        \"locality\": \"Metro Mall\",\n        \"areaName\": \"Industrial Zone\",\n        \"costForTwo\": \"₹340 for two\",\n        \"cuisines\": [\n            \"Pizza\"\n        ],\n        \"avgRating\": 3.6,\n        \"avgRatingString\": \"3.6\",\n        \"totalRatingsString\": \"1.2K+\",\n        \"isOpen\": true\n    }\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/restaurants",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"restaurants"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
