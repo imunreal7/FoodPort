@@ -178,6 +178,14 @@ The Postman collection is included in the project to test the API routes easily.
 -   **Payment Integration**: Integrate secure payment options for easy transactions.
 -   **Reviews and Ratings**: Enable users to rate and review restaurants.
 
+## Project Screenshot
+
+### Home Page
+
+Here is a screenshot of the **Home Page** of the FoodPort application:
+
+![Home Page](client/src/images/Screenshots/Home_Page.png)
+
 ## License
 
 This project is licensed under the ISC License.
