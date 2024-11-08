@@ -20,8 +20,20 @@ const productsOfRestro = async (req, res) => {
     }
 };
 
+// Add multiple products
+const addProducts = async (req, res) => {
+    try {
+        const products = req.body; // Expect an array of products
+        const newProducts = await Product.insertMany(products);
+        res.status(201).json(newProducts);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
+
 module.exports = {
     products,
     productsOfRestro,
+    addProducts,
 };
 
