@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", "Roboto", "Helvetica Neue", "Ubuntu", "Cantarell", "Fira Sans",
+        "Droid Sans", "Arial", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: auto;
+}
+
+code {
+    font-family: "Courier New", Consolas, Menlo, Monaco, "Fira Code", monospace;
+    font-weight: 500; /* Added a slight weight for better readability */
+    color: #374151; /* Slightly darkened text for better contrast */
+}
+
