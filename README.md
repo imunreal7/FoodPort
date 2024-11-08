@@ -130,8 +130,3 @@ This project is licensed under the ISC License.
 ## Author
 
 Developed by Aman Dubey.
-
-```
-
-Make sure to replace any placeholder values, such as `your-username` in the GitHub URL, and add your MongoDB connection details in the `.env` file. This README provides a structured overview of your project, including setup instructions, features, and potential improvements. Let me know if you need further customization!
-```
