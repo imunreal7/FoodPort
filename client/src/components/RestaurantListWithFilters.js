@@ -12,7 +12,7 @@ const RestaurantListWithFilters = (props) => {
 
     const getRestaurants = async () => {
         try {
-            const res = await axios.get("http://localhost:3001/api/restaurants");
+            const res = await axios.get("http://localhost:5000/api/restaurants");
             setRestaurantsList(res.data);
             setFilterRestaurant(res.data);
         } catch (error) {
@@ -112,3 +112,4 @@ const RestaurantListWithFilters = (props) => {
 };
 
 export default RestaurantListWithFilters;
+
