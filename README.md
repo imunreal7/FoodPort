@@ -79,6 +79,91 @@ The project is divided into two main directories:
     ```
 2. The application will run on `http://localhost:3000`.
 
+## Accessing Data and Postman Collection
+
+### 1. **Accessing and Using the MongoDB Data Locally**
+
+To set up the database on your local machine, follow these steps:
+
+#### Prerequisites:
+
+-   **MongoDB** should be installed locally. You can download and install MongoDB from [here](https://www.mongodb.com/try/download/community).
+-   **Node.js** and **npm** should be installed. You can download them from [here](https://nodejs.org/).
+
+#### Steps:
+
+1. **Clone the repository**:
+   Clone the repository to your local machine using the following command:
+    ```bash
+    git clone <repository-url>
+    ```
+2. **Navigate to the `DB` folder**:
+   Inside the project directory, go to the `backend/DB` folder. You will find two `.json` files:
+
+    - `restaurant.json`
+    - `product.json`
+
+3. **Import JSON files into MongoDB**:
+   To import these `.json` files into your local MongoDB database, use the following commands:
+
+    - First, start your MongoDB server if it's not already running:
+        ```bash
+        mongod
+        ```
+    - Next, open a terminal and use the `mongoimport` command to import the data:
+        ```bash
+        mongoimport --db <your-db-name> --collection restaurant --file <path-to-your-repository>/FoodPort/backend/DB/My\ DB/restaurant.json --jsonArray
+        mongoimport --db <your-db-name> --collection product --file <path-to-your-repository>/FoodPort/backend/DB/My\ DB/product.json --jsonArray
+        ```
+    - Replace `<your-db-name>` with the name of your database (e.g., `foodport`).
+
+4. **Verify data import**:
+
+    - Open the MongoDB shell by typing `mongo` in the terminal.
+    - Switch to the database:
+        ```bash
+        use <your-db-name>
+        ```
+    - Verify the collections:
+        ```bash
+        db.restaurant.find().pretty()
+        db.product.find().pretty()
+        ```
+
+5. **Start the backend server**:
+    - Install required dependencies by running:
+        ```bash
+        npm install
+        ```
+    - Start your backend server:
+        ```bash
+        npm start
+        ```
+    - Your MongoDB data should now be accessible via the backend routes.
+
+---
+
+### 2. **Using Postman Collection**
+
+The Postman collection is included in the project to test the API routes easily. Here's how to use it:
+
+1. **Install Postman**:
+   If you don't have Postman installed, download and install it from [here](https://www.postman.com/downloads/).
+
+2. **Import the Postman Collection**:
+
+    - Open Postman.
+    - Click on the **Import** button in the top left corner.
+    - Choose the **File** tab and select the `FoodPort.postman_collection.json` file from the `backend/Postman Collection` folder.
+    - The collection will be added to your Postman.
+
+3. **Test the API**:
+    - Once the collection is imported, you can start testing the API endpoints defined in the collection.
+    - Make sure your backend server is running (`npm start`), and then execute the requests from Postman.
+    - The collection contains predefined requests for different routes of the API, such as getting all restaurants, adding products, etc.
+
+---
+
 ## Features
 
 -   **Restaurant and Product Listings**: Explore various restaurants and their menu items.
