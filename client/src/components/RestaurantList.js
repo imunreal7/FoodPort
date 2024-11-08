@@ -8,7 +8,7 @@ const RestaurantDisplay = () => {
 
     const fetchRestaurants = async () => {
         try {
-            const response = await axios.get("http://localhost:3001/api/restaurants");
+            const response = await axios.get("http://localhost:5000/api/restaurants");
             setRestaurants(response.data);
         } catch (error) {
             console.error("Failed to fetch restaurants:", error);

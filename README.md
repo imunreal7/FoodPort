@@ -1,5 +1,3 @@
-
-```markdown
 # FoodPort
 
 FoodPort is an online food delivery web application that allows users to explore a variety of restaurants, browse menus, and place orders conveniently. The project is built with the MERN stack (MongoDB, Express, React, and Node.js) and styled with Tailwind CSS.
@@ -11,62 +9,34 @@ The project is divided into two main directories:
 -   **Backend**: Contains the server-side code, API routes, and database models.
 -   **Frontend (Client)**: Contains the React frontend application that interacts with the backend.
 
-### Folder Structure
-```
-
-FoodPort/
-├── backend/
-│ ├── controllers/
-│ │ ├── productController.js
-│ │ └── restaurantController.js
-│ ├── routes/
-│ │ ├── productRoutes.js
-│ │ └── restaurantRoutes.js
-│ ├── .env
-│ ├── index.js
-│ ├── package.json
-│ └── package-lock.json
-├── client/
-│ ├── src/
-│ │ ├── components/
-│ │ ├── images/
-│ │ ├── redux/
-│ │ ├── utils/
-│ │ ├── App.js
-│ │ ├── index.js
-│ │ └── logo.png
-│ ├── public/
-│ ├── package.json
-│ └── README.md
-└── README.md
-
-````
-
 ## Technologies Used
 
 ### Backend
-- **Node.js**: Server runtime
-- **Express.js**: Backend framework for building RESTful APIs
-- **MongoDB**: NoSQL database for storing data
-- **Mongoose**: ODM for MongoDB
-- **dotenv**: Environment variable management
-- **cors**: Middleware for handling Cross-Origin Resource Sharing
+
+-   **Node.js**: Server runtime
+-   **Express.js**: Backend framework for building RESTful APIs
+-   **MongoDB**: NoSQL database for storing data
+-   **Mongoose**: ODM for MongoDB
+-   **dotenv**: Environment variable management
+-   **cors**: Middleware for handling Cross-Origin Resource Sharing
 
 ### Frontend
-- **React**: JavaScript library for building user interfaces
-- **React Router**: For routing between different pages
-- **Redux Toolkit**: State management for handling global application state
-- **MUI (Material-UI)**: UI component library
-- **Axios**: For making HTTP requests
-- **Tailwind CSS**: Utility-first CSS framework for styling
+
+-   **React**: JavaScript library for building user interfaces
+-   **React Router**: For routing between different pages
+-   **Redux Toolkit**: State management for handling global application state
+-   **MUI (Material-UI)**: UI component library
+-   **Axios**: For making HTTP requests
+-   **Tailwind CSS**: Utility-first CSS framework for styling
 
 ## Installation
 
 1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/imunreal7/FoodPort.git
-   cd FoodPort
-````
+
+    ```bash
+    git clone https://github.com/imunreal7/FoodPort.git
+    cd FoodPort
+    ```
 
 2. **Install backend dependencies:**
 
@@ -130,3 +100,4 @@ This project is licensed under the ISC License.
 ## Author
 
 Developed by Aman Dubey.
+

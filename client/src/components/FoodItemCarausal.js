@@ -10,7 +10,7 @@ const FoodItemCarousel = ({ title }) => {
     const [menu, setMenu] = useState([]);
 
     const fetchMenuItems = async () => {
-        const response = await axios.get("http://localhost:3001/api/products");
+        const response = await axios.get("http://localhost:5000/api/products");
         setMenu(response.data);
     };
 

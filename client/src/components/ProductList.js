@@ -10,7 +10,7 @@ const ProductList = (params) => {
 
     const getProducts = async () => {
         try {
-            const res = await axios.get(`http://localhost:3001/api/restaurant/${params.id}`);
+            const res = await axios.get(`http://localhost:5000/api/restaurant/${params.id}`);
             setMenu(res.data);
             setFilterMenu(res.data);
         } catch (error) {
@@ -74,3 +74,4 @@ const ProductList = (params) => {
 };
 
 export default ProductList;
+
