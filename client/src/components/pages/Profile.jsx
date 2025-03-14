@@ -8,7 +8,8 @@ const Profile = () => {
         if (token) {
             fetch("http://localhost:5000/api/auth/me", {
                 headers: {
-                    Authorization: `${token}`,
+                    "Content-Type": "application/json",
+                    Authorization: token ? `Bearer ${token}` : "",
                 },
             })
                 .then((res) => res.json())

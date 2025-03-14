@@ -1,4 +1,4 @@
-// Index.js
+// index.js
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
@@ -17,6 +17,10 @@ import Cart from "./components/pages/Cart";
 import PersonalisedRecommendation from "./components/pages/PersonalisedRecommendation";
 import Profile from "./components/pages/Profile";
 
+// 1. Import Provider and your store
+import { Provider } from "react-redux";
+import appStore from "./redux/appStore";
+
 const router = createBrowserRouter([
     {
         path: "/",
@@ -30,7 +34,10 @@ const router = createBrowserRouter([
             { path: "/sign-up", element: <Signup /> },
             { path: "/restaurant/:id", element: <SingleRestaurant /> },
             { path: "/cart", element: <Cart /> },
-            { path: "/personalised-recommendation", element: <PersonalisedRecommendation /> },
+            {
+                path: "/personalised-recommendation",
+                element: <PersonalisedRecommendation />,
+            },
             { path: "/profile", element: <Profile /> },
         ],
         errorElement: <Error />,
@@ -38,7 +45,14 @@ const router = createBrowserRouter([
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<RouterProvider router={router} />);
+root.render(
+    // 2. Wrap the RouterProvider with Provider
+    <Provider store={appStore}>
+        <RouterProvider router={router} />
+    </Provider>
+);
 
+// If you want to measure performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
 reportWebVitals();
 

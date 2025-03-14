@@ -1,36 +1,48 @@
 import CloseIcon from "@mui/icons-material/Close";
 import { useDispatch } from "react-redux";
-import { removeItem } from "../redux/slices/cartSlice";
+import { removeFromCart } from "../redux/slices/cartSlice";
 import toast from "react-hot-toast";
 
 const CartItem = ({ item }) => {
     const dispatch = useDispatch();
 
-    const handleRemoveItem = (item) => {
-        dispatch(removeItem(item));
-        toast.success(`${item.name} removed from cart`, {
-            duration: 2000,
-            position: "top-center",
-            style: {
-                backgroundColor: "#fffbeb",
-                color: "#d84315",
-                fontWeight: 500,
-                borderRadius: "8px",
-                boxShadow: "0 4px 8px rgba(0, 0, 0, 0.15)",
-            },
-        });
+    const handleRemoveItem = (cartItem) => {
+        // The server expects { productId }, so we use cartItem.product._id
+        dispatch(removeFromCart({ productId: cartItem.product._id }))
+            .unwrap()
+            .then(() => {
+                toast.success(`${cartItem.product.name} removed from cart`, {
+                    duration: 2000,
+                    position: "top-center",
+                    style: {
+                        backgroundColor: "#fffbeb",
+                        color: "#d84315",
+                        fontWeight: 500,
+                        borderRadius: "8px",
+                        boxShadow: "0 4px 8px rgba(0, 0, 0, 0.15)",
+                    },
+                });
+            })
+            .catch((err) => {
+                toast.error(err);
+            });
     };
 
     return (
         <div className="flex flex-col lg:flex-row justify-between items-start p-4 rounded-xl shadow-lg bg-gradient-to-br from-white to-gray-50 hover:shadow-2xl border border-gray-100 transition-shadow duration-200 ease-in-out">
             {/* LEFT SECTION: Image, Name, Description */}
             <div className="flex gap-4 w-full lg:w-3/5 items-start">
-                <img className="rounded-md" src={item?.image} alt={item?.name} width="100px" />
+                <img
+                    className="rounded-md"
+                    src={item?.product?.image}
+                    alt={item?.product?.name}
+                    width="100px"
+                />
                 <div className="flex flex-col justify-between">
                     <h2 className="text-lg font-semibold text-gray-800 hover:text-lime-700 transition-colors duration-150">
-                        {item?.name}
+                        {item?.product?.name}
                     </h2>
-                    <p className="text-sm text-gray-600 mt-1">{item?.description}</p>
+                    <p className="text-sm text-gray-600 mt-1">{item?.product?.description}</p>
                 </div>
             </div>
 
