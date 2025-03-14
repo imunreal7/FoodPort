@@ -1,24 +1,34 @@
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { clearCart } from "../../redux/slices/cartSlice";
+import { fetchCart, clearCart } from "../../redux/slices/cartSlice";
 import toast from "react-hot-toast";
 import CartItem from "../CartItem";
 import CartSummary from "../CartSummary";
 
 const Cart = () => {
-    const cartItems = useSelector((state) => state.cart.items);
     const dispatch = useDispatch();
+    const cartItems = useSelector((state) => state.cart.items);
+
+    // Fetch the latest cart data on component mount
+    useEffect(() => {
+        dispatch(fetchCart());
+    }, [dispatch]);
 
     const handleClearCart = () => {
-        dispatch(clearCart());
-        toast.success("All items removed from your cart!", {
-            duration: 2000,
-            position: "top-center",
-            style: {
-                backgroundColor: "#FFE76B",
-                color: "red",
-                fontWeight: 600,
-            },
-        });
+        dispatch(clearCart())
+            .unwrap()
+            .then(() => {
+                toast.success("All items removed from your cart!", {
+                    duration: 2000,
+                    position: "top-center",
+                    style: {
+                        backgroundColor: "#FFE76B",
+                        color: "red",
+                        fontWeight: 600,
+                    },
+                });
+            })
+            .catch((err) => toast.error(err));
     };
 
     return (
@@ -44,8 +54,8 @@ const Cart = () => {
             <div className="grid grid-cols-1 lg:grid-cols-3 lg:gap-12 py-6">
                 <div className="flex flex-col py-8 gap-6 col-span-2">
                     {cartItems.map((item) => (
-                        // Use the unique id as key.
-                        <CartItem item={item} key={item.id} />
+                        // Use _id if available, otherwise fallback to item.id
+                        <CartItem item={item} key={item._id || item.id} />
                     ))}
                 </div>
                 <CartSummary cartItems={cartItems} />

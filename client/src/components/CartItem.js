@@ -7,7 +7,7 @@ const CartItem = ({ item }) => {
     const dispatch = useDispatch();
 
     const handleRemoveItem = (cartItem) => {
-        // The server expects { productId }, so we use cartItem.product._id
+        // Use the product's _id to remove the item
         dispatch(removeFromCart({ productId: cartItem.product._id }))
             .unwrap()
             .then(() => {
@@ -48,7 +48,7 @@ const CartItem = ({ item }) => {
 
             {/* RIGHT SECTION: Price, Quantity, Total, Remove */}
             <div className="mt-4 lg:mt-0 w-full lg:w-2/5 flex flex-col sm:flex-row lg:flex-row items-center justify-around gap-4 text-center">
-                <span className="text-lg font-semibold text-gray-700">₹{item?.price}</span>
+                <span className="text-lg font-semibold text-gray-700">₹{item?.product?.price}</span>
                 <span className="text-lg font-semibold text-gray-700">{item?.quantity}</span>
                 <span className="text-lg font-semibold text-gray-700">
                     ₹{item?.price * item?.quantity}
