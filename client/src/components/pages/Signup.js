@@ -121,14 +121,14 @@ const Signup = () => {
                             type="submit"
                             className="py-3 px-8 bg-lime-600 text-white font-semibold"
                         >
-                            Submit
+                            Sign Up
                         </button>
                     </div>
                 </form>
                 <p className="pt-8">
                     Already have an account?{" "}
                     <Link className="text-lime-600" to="/sign-in">
-                        Click here
+                        Log In
                     </Link>
                 </p>
             </div>
