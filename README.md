@@ -184,7 +184,7 @@ The Postman collection is included in the project to test the API routes easily.
 
 Here is a screenshot of the **Home Page** of the FoodPort application:
 
-![Home Page](client/src/images/Screenshots/Home_Page.png)
+![Home Page](client/src/images/Screenshots/HomePage.png)
 
 ## License
 
