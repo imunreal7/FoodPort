@@ -96,18 +96,19 @@ export const clearCart = createAsyncThunk("cart/clearCart", async (_, thunkAPI) 
 /**
  * Checkout -> create an order from the cart, then clear the cart in the backend.
  */
-export const createOrder = createAsyncThunk("cart/createOrder", async (_, thunkAPI) => {
+export const createOrder = createAsyncThunk("cart/createOrder", async (orderPayload, thunkAPI) => {
     try {
         const res = await fetch("http://localhost:5000/api/orders", {
             method: "POST",
             headers: getAuthHeaders(),
+            body: JSON.stringify(orderPayload), // Now sending payload
         });
         if (!res.ok) {
-            throw new Error("Failed to create order");
+            // Optionally, parse the error response for more detail:
+            const errorData = await res.json();
+            throw new Error(errorData.msg || "Failed to create order");
         }
         const orderData = await res.json();
-        // orderData = { _id, user, items, total, shippingFee, ... }
-
         return orderData;
     } catch (error) {
         return thunkAPI.rejectWithValue(error.message);

@@ -44,7 +44,7 @@ const Header = () => {
                                 <Link to="/" className="flex items-center space-x-2">
                                     <img className="h-8 w-auto" src={logo} alt="FoodPort Logo" />
                                     <div className="logo-text hidden lg:block">
-                                        Food <span className="logo-text-second">Port</span>
+                                        Food<span className="logo-text-second">Port</span>
                                     </div>
                                 </Link>
                             </div>
@@ -64,6 +64,14 @@ const Header = () => {
                                     >
                                         Restaurants
                                     </NavLink>
+                                    {isAuthenticated && (
+                                        <NavLink
+                                            to="/orders-history"
+                                            className="text-xl lg:text-sm font-medium text-gray-700 dark:text-white hover:text-lime-600"
+                                        >
+                                            My Orders
+                                        </NavLink>
+                                    )}
                                     <NavLink
                                         to="/about"
                                         className="text-xl lg:text-sm font-medium text-gray-700 dark:text-white hover:text-lime-600"
@@ -98,7 +106,7 @@ const Header = () => {
                                                 to="/personalised-recommendation"
                                                 className="text-sm font-medium text-gray-700 dark:text-white hover:text-lime-600"
                                             >
-                                                Your AI Personalised Recommendation
+                                                AI Recommendation
                                             </NavLink>
                                             <span
                                                 className="h-6 w-px bg-gray-200"
