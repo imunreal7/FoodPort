@@ -1,12 +1,12 @@
 // CartSummary.js
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const CartSummary = ({ cartItems }) => {
     const totalAmount = useSelector((store) => store.cart.total);
     const deliveryFee = useSelector((store) => store.cart.shippingFee) || 0; // Default to 0 if not defined
-
-    // Calculate total items as sum of each item's quantity
     const totalItems = cartItems.reduce((acc, item) => acc + item.quantity, 0);
+    const navigate = useNavigate();
 
     if (cartItems.length === 0) return null; // Don't show summary if cart is empty
 
@@ -30,7 +30,10 @@ const CartSummary = ({ cartItems }) => {
                     <p className="text-gray-600 font-semibold">Grand Total</p>
                     <p className="font-semibold">₹{totalAmount + deliveryFee}</p>
                 </div>
-                <button className="py-3 px-8 bg-teal-600 text-white font-semibold rounded-md hover:bg-teal-700 transition-colors">
+                <button
+                    onClick={() => navigate("/checkout")}
+                    className="py-3 px-8 bg-teal-600 text-white font-semibold rounded-md hover:bg-teal-700 transition-colors"
+                >
                     Proceed to Checkout
                 </button>
             </div>

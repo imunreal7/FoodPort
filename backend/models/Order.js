@@ -1,4 +1,3 @@
-// models/Order.js
 const mongoose = require("mongoose");
 
 const orderItemSchema = new mongoose.Schema({
@@ -35,7 +34,37 @@ const orderSchema = new mongoose.Schema(
         },
         status: {
             type: String,
-            default: "pending", // could be "paid", "shipped", "delivered", etc.
+            enum: ["pending", "paid", "shipped", "delivered", "cancelled", "rejected"],
+            default: "pending", // e.g., "pending", "paid", "shipped", "delivered", etc.
+        },
+        // New fields for checkout details:
+        customerName: {
+            type: String,
+            required: true,
+        },
+        customerPhone: {
+            type: String,
+            required: true,
+        },
+        customerAddress: {
+            type: String,
+            required: true,
+        },
+        instructions: {
+            type: String,
+        },
+        deliveryOption: {
+            type: String,
+            enum: ["immediate", "scheduled"],
+            default: "immediate",
+        },
+        scheduledTime: {
+            type: Date,
+        },
+        paymentMethod: {
+            type: String,
+            enum: ["card", "upi", "cod"],
+            default: "card",
         },
     },
     { timestamps: true }

@@ -2,19 +2,36 @@
 const Cart = require("../models/Cart");
 const Order = require("../models/Order");
 
-// @desc    Create an order from user's cart
+// @desc    Create an order from user's cart along with checkout details
 // @route   POST /api/orders
 exports.createOrder = async (req, res) => {
     try {
+        // Destructure checkout details from the request body
+        const {
+            customerName,
+            customerPhone,
+            customerAddress,
+            instructions,
+            deliveryOption,
+            scheduledTime, // expected as ISO string or date format
+            paymentMethod,
+        } = req.body;
+
+        // Validate required fields
+        if (!customerName || !customerPhone || !customerAddress) {
+            return res.status(400).json({ msg: "Customer details are required" });
+        }
+
+        // Find the user's cart
         const cart = await Cart.findOne({ user: req.user.userId });
         if (!cart || cart.items.length === 0) {
             return res.status(400).json({ msg: "Your cart is empty" });
         }
 
-        // Example shipping fee
+        // Set a default shipping fee (or calculate based on deliveryOption if needed)
         const shippingFee = 250;
 
-        // Create a new order
+        // Create a new order with the cart items and checkout details
         const newOrder = new Order({
             user: req.user.userId,
             items: cart.items.map((item) => ({
@@ -25,11 +42,18 @@ exports.createOrder = async (req, res) => {
             total: cart.total,
             shippingFee,
             status: "pending",
+            customerName,
+            customerPhone,
+            customerAddress,
+            instructions,
+            deliveryOption,
+            scheduledTime: deliveryOption === "scheduled" ? scheduledTime : null,
+            paymentMethod,
         });
 
         await newOrder.save();
 
-        // Clear the cart
+        // Clear the user's cart
         cart.items = [];
         cart.total = 0;
         await cart.save();

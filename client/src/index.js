@@ -16,6 +16,10 @@ import SingleRestaurant from "./components/pages/SingleRestaurant";
 import Cart from "./components/pages/Cart";
 import PersonalisedRecommendation from "./components/pages/PersonalisedRecommendation";
 import Profile from "./components/pages/Profile";
+import Checkout from "./components/pages/Checkout";
+import OrderSuccess from "./components/pages/OrderSuccess";
+import OrderHistory from "./components/pages/OrderHistory";
+import OrderDetail from "./components/pages/OrderDetail";
 
 // 1. Import Provider and your store
 import { Provider } from "react-redux";
@@ -39,6 +43,10 @@ const router = createBrowserRouter([
                 element: <PersonalisedRecommendation />,
             },
             { path: "/profile", element: <Profile /> },
+            { path: "/checkout", element: <Checkout /> },
+            { path: "/order-success", element: <OrderSuccess /> },
+            { path: "/orders-history", element: <OrderHistory /> },
+            { path: "/order/:orderId", element: <OrderDetail /> },
         ],
         errorElement: <Error />,
     },
