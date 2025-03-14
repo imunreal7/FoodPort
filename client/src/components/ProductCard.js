@@ -7,12 +7,10 @@ const ProductCard = ({ item }) => {
     const dispatch = useDispatch();
 
     const handleAddToCart = (item) => {
-        // Dispatch an action
         dispatch(additem(item));
         toast.success(`${item.name} added to cart`, {
             duration: 2000,
             position: "top-center",
-            // Styling
             style: {
                 backgroundColor: "#7BFFC2",
                 color: "green",
@@ -23,7 +21,7 @@ const ProductCard = ({ item }) => {
 
     return (
         <div className="rounded-lg shadow-lg hover:shadow-xl cursor-pointer overflow-hidden group dark:bg-gray-800 dark:border-gray-700 transition duration-300">
-            <a href="#">
+            <a href="">
                 <img
                     className="h-64 w-full rounded-t-lg transition-transform ease-in-out group-hover:scale-105 group-hover:-translate-y-1 duration-300"
                     src={item.image}

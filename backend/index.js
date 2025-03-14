@@ -5,6 +5,9 @@ var cors = require("cors");
 const app = express();
 const products = require("./routes/productRoutes");
 const restaurants = require("./routes/restaurantRoutes");
+const authRoutes = require("./routes/authRoutes");
+const cartRoutes = require("./routes/cartRoutes");
+const orderRoutes = require("./routes/orderRoutes");
 const mongoose = require("mongoose");
 const port = process.env.PORT;
 
@@ -22,7 +25,9 @@ app.use(express.json());
 
 app.use("/api", products);
 app.use("/api", restaurants);
-app.use("/api/auth", require("./routes/authRoutes"));
+app.use("/api/auth", authRoutes);
+app.use("/api/cart", cartRoutes);
+app.use("/api/orders", orderRoutes);
 
 app.listen(port, () => {
     console.log(`App Running on port ${port}`);
