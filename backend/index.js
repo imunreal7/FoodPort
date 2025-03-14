@@ -18,9 +18,12 @@ mongoose
     .then(() => console.log("Connected to MongoDB"))
     .catch((error) => console.error("MongoDB connection error:", error));
 
-app.use(express.json()); //used for parsing so that always the data return in json
+app.use(express.json());
+
 app.use("/api", products);
 app.use("/api", restaurants);
+app.use("/api/auth", require("./routes/authRoutes"));
+
 app.listen(port, () => {
     console.log(`App Running on port ${port}`);
 });
