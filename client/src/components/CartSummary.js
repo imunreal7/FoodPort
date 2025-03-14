@@ -1,19 +1,14 @@
+// CartSummary.js
 import { useSelector } from "react-redux";
 
 const CartSummary = ({ cartItems }) => {
-    // Pull the total and shippingFee from Redux
     const totalAmount = useSelector((store) => store.cart.total);
-    const shippingFee = useSelector((store) => store.cart.shippingFee);
-    // If your slice uses shipping_fee instead, do:
-    // const shippingFee = useSelector((store) => store.cart.shipping_fee);
+    const deliveryFee = useSelector((store) => store.cart.shippingFee) || 0; // Default to 0 if not defined
 
     // Calculate total items as sum of each item's quantity
     const totalItems = cartItems.reduce((acc, item) => acc + item.quantity, 0);
 
-    // If no items, don't render the summary
-    if (cartItems.length === 0) {
-        return null;
-    }
+    if (cartItems.length === 0) return null; // Don't show summary if cart is empty
 
     return (
         <div className="py-8">
@@ -29,11 +24,11 @@ const CartSummary = ({ cartItems }) => {
                 </div>
                 <div className="flex justify-between items-center text-lg font-medium">
                     <p className="text-gray-600">Shipping Fee</p>
-                    <p className="font-semibold">₹{shippingFee}</p>
+                    <p className="font-semibold">₹{deliveryFee}</p>
                 </div>
                 <div className="flex justify-between items-center text-lg font-medium">
                     <p className="text-gray-600 font-semibold">Grand Total</p>
-                    <p className="font-semibold">₹{totalAmount + shippingFee}</p>
+                    <p className="font-semibold">₹{totalAmount + deliveryFee}</p>
                 </div>
                 <button className="py-3 px-8 bg-teal-600 text-white font-semibold rounded-md hover:bg-teal-700 transition-colors">
                     Proceed to Checkout

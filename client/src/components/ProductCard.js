@@ -1,3 +1,4 @@
+// ProductCard.js
 import { useDispatch } from "react-redux";
 import { addToCart } from "../redux/slices/cartSlice";
 import StarIcon from "@mui/icons-material/Star";
@@ -7,10 +8,10 @@ const ProductCard = ({ item }) => {
     const dispatch = useDispatch();
 
     const handleAddToCart = (product) => {
-        // We'll assume 'product.id' is the unique identifier for the item
+        // Dispatch addToCart with product's unique ID, quantity, and price
         dispatch(
             addToCart({
-                product: product._id, // or product._id if your data uses _id
+                product: product._id, // use _id for MongoDB objects
                 quantity: 1,
                 price: product.price,
             })
