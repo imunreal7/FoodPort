@@ -12,7 +12,7 @@ const Home = () => {
                         <h1 className="lg:w-6/12 lg:pr-4 capitalize text-4xl lg:text-6xl font-bold leading-snug text-center lg:text-left">
                             The finest
                             <span className="logo-text-second"> Dining Spots </span>
-                            Around You!
+                            At Your Home
                         </h1>
                         <p className="lg:w-4/6 py-5 text-lg lg:text-lg text-gray-600 text-center lg:text-left">
                             Embark on a mouth-watering adventure with irresistible offers on beloved
