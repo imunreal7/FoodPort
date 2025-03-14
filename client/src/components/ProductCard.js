@@ -1,22 +1,35 @@
 import { useDispatch } from "react-redux";
-import { additem } from "../redux/slices/cartSlice";
+import { addToCart } from "../redux/slices/cartSlice";
 import StarIcon from "@mui/icons-material/Star";
 import toast from "react-hot-toast";
 
 const ProductCard = ({ item }) => {
     const dispatch = useDispatch();
 
-    const handleAddToCart = (item) => {
-        dispatch(additem(item));
-        toast.success(`${item.name} added to cart`, {
-            duration: 2000,
-            position: "top-center",
-            style: {
-                backgroundColor: "#7BFFC2",
-                color: "green",
-                fontWeight: 600,
-            },
-        });
+    const handleAddToCart = (product) => {
+        // We'll assume 'product.id' is the unique identifier for the item
+        dispatch(
+            addToCart({
+                product: product._id, // or product._id if your data uses _id
+                quantity: 1,
+                price: product.price,
+            })
+        )
+            .unwrap()
+            .then(() => {
+                toast.success(`${product.name} added to cart`, {
+                    duration: 2000,
+                    position: "top-center",
+                    style: {
+                        backgroundColor: "#7BFFC2",
+                        color: "green",
+                        fontWeight: 600,
+                    },
+                });
+            })
+            .catch((err) => {
+                toast.error(err);
+            });
     };
 
     return (

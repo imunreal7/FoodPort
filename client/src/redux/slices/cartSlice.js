@@ -1,45 +1,206 @@
-import { createSlice } from "@reduxjs/toolkit";
+// src/redux/slices/cartSlice.js
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+
+// Helper to set auth headers (e.g., for each fetch or axios call)
+const getAuthHeaders = () => {
+    const token = localStorage.getItem("token"); // or from Redux, etc.
+    return {
+        "Content-Type": "application/json",
+        Authorization: token ? `Bearer ${token}` : "",
+    };
+};
+
+console.log("getAuthHeaders()", getAuthHeaders());
+
+/**
+ * Fetch the existing cart from the server (if any).
+ */
+export const fetchCart = createAsyncThunk("cart/fetchCart", async (_, thunkAPI) => {
+    try {
+        const res = await fetch("http://localhost:5000/api/cart", {
+            method: "GET",
+            headers: getAuthHeaders(),
+        });
+        if (!res.ok) {
+            throw new Error("Failed to fetch cart");
+        }
+        const data = await res.json();
+        return data; // { items: [...], total: 123 }
+    } catch (error) {
+        return thunkAPI.rejectWithValue(error.message);
+    }
+});
+
+/**
+ * Add an item to the cart in the backend.
+ * Payload: { productId, quantity, price }
+ */
+export const addToCart = createAsyncThunk("cart/addToCart", async (payload, thunkAPI) => {
+    try {
+        console.log("payload", payload);
+        const res = await fetch("http://localhost:5000/api/cart/add", {
+            method: "POST",
+            headers: getAuthHeaders(),
+            body: JSON.stringify(payload),
+        });
+        if (!res.ok) {
+            throw new Error("Failed to add item to cart");
+        }
+        const data = await res.json();
+        return data; // updated cart
+    } catch (error) {
+        return thunkAPI.rejectWithValue(error.message);
+    }
+});
+
+/**
+ * Remove a specific item from the cart in the backend.
+ * Payload: { productId }
+ */
+export const removeFromCart = createAsyncThunk("cart/removeFromCart", async (payload, thunkAPI) => {
+    try {
+        const res = await fetch("http://localhost:5000/api/cart/remove", {
+            method: "POST",
+            headers: getAuthHeaders(),
+            body: JSON.stringify(payload),
+        });
+        if (!res.ok) {
+            throw new Error("Failed to remove item");
+        }
+        const data = await res.json();
+        return data; // updated cart
+    } catch (error) {
+        return thunkAPI.rejectWithValue(error.message);
+    }
+});
+
+/**
+ * Clear the cart in the backend.
+ */
+export const clearCart = createAsyncThunk("cart/clearCart", async (_, thunkAPI) => {
+    try {
+        const res = await fetch("http://localhost:5000/api/cart/clear", {
+            method: "POST",
+            headers: getAuthHeaders(),
+        });
+        if (!res.ok) {
+            throw new Error("Failed to clear cart");
+        }
+        const data = await res.json();
+        return data; // updated cart (now empty)
+    } catch (error) {
+        return thunkAPI.rejectWithValue(error.message);
+    }
+});
+
+/**
+ * Checkout -> create an order from the cart, then clear the cart in the backend.
+ */
+export const createOrder = createAsyncThunk("cart/createOrder", async (_, thunkAPI) => {
+    try {
+        const res = await fetch("http://localhost:5000/api/orders", {
+            method: "POST",
+            headers: getAuthHeaders(),
+        });
+        if (!res.ok) {
+            throw new Error("Failed to create order");
+        }
+        const orderData = await res.json();
+        // orderData = { _id, user, items, total, shippingFee, ... }
+
+        return orderData;
+    } catch (error) {
+        return thunkAPI.rejectWithValue(error.message);
+    }
+});
 
 const cartSlice = createSlice({
     name: "cart",
     initialState: {
         items: [],
-        shipping_fee: 250,
         total: 0,
+        shippingFee: 250,
+        loading: false,
+        error: null,
+        lastOrder: null, // to store the last placed order
     },
-    reducers: {
-        additem: (state, action) => {
-            // Use a unique identifier: if id exists use it; otherwise, use name.
-            const productId = action.payload.id ? action.payload.id : action.payload.name;
+    reducers: {},
+    extraReducers: (builder) => {
+        // fetchCart
+        builder.addCase(fetchCart.pending, (state) => {
+            state.loading = true;
+            state.error = null;
+        });
+        builder.addCase(fetchCart.fulfilled, (state, action) => {
+            state.loading = false;
+            state.items = action.payload.items || [];
+            state.total = action.payload.total || 0;
+        });
+        builder.addCase(fetchCart.rejected, (state, action) => {
+            state.loading = false;
+            state.error = action.payload;
+        });
 
-            // Find if the product already exists in the cart using the unique identifier.
-            const itemIndex = state.items.findIndex((item) => item.id === productId);
+        // addToCart
+        builder.addCase(addToCart.pending, (state) => {
+            state.loading = true;
+        });
+        builder.addCase(addToCart.fulfilled, (state, action) => {
+            state.loading = false;
+            state.items = action.payload.items || [];
+            state.total = action.payload.total || 0;
+        });
+        builder.addCase(addToCart.rejected, (state, action) => {
+            state.loading = false;
+            state.error = action.payload;
+        });
 
-            if (itemIndex >= 0) {
-                // If it exists, increase its quantity.
-                state.items[itemIndex].quantity += 1;
-            } else {
-                // Otherwise, add a new product entry with quantity set to 1.
-                const tempProduct = { ...action.payload, id: productId, quantity: 1 };
-                state.items.push(tempProduct);
-            }
+        // removeFromCart
+        builder.addCase(removeFromCart.pending, (state) => {
+            state.loading = true;
+        });
+        builder.addCase(removeFromCart.fulfilled, (state, action) => {
+            state.loading = false;
+            state.items = action.payload.items || [];
+            state.total = action.payload.total || 0;
+        });
+        builder.addCase(removeFromCart.rejected, (state, action) => {
+            state.loading = false;
+            state.error = action.payload;
+        });
 
-            // Recalculate the total as the sum of price * quantity for all items.
-            state.total = state.items.reduce((acc, item) => acc + item.price * item.quantity, 0);
-        },
-        removeItem: (state, action) => {
-            // Remove items by filtering out those with the matching unique id.
-            state.items = state.items.filter((item) => item.id !== action.payload.id);
-            // Recalculate the total after removal.
-            state.total = state.items.reduce((acc, item) => acc + item.price * item.quantity, 0);
-        },
-        clearCart: (state) => {
+        // clearCart
+        builder.addCase(clearCart.pending, (state) => {
+            state.loading = true;
+        });
+        builder.addCase(clearCart.fulfilled, (state, action) => {
+            state.loading = false;
+            state.items = action.payload.items || [];
+            state.total = action.payload.total || 0;
+        });
+        builder.addCase(clearCart.rejected, (state, action) => {
+            state.loading = false;
+            state.error = action.payload;
+        });
+
+        // createOrder
+        builder.addCase(createOrder.pending, (state) => {
+            state.loading = true;
+            state.lastOrder = null;
+        });
+        builder.addCase(createOrder.fulfilled, (state, action) => {
+            state.loading = false;
+            state.lastOrder = action.payload; // store the created order
+            // after createOrder, the cart is cleared in the backend
             state.items = [];
             state.total = 0;
-        },
+        });
+        builder.addCase(createOrder.rejected, (state, action) => {
+            state.loading = false;
+            state.error = action.payload;
+        });
     },
 });
 
-export const { additem, removeItem, clearCart } = cartSlice.actions;
 export default cartSlice.reducer;
 

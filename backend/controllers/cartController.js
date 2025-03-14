@@ -22,7 +22,7 @@ exports.getCart = async (req, res) => {
 // @route   POST /api/cart/add
 exports.addToCart = async (req, res) => {
     try {
-        const { productId, quantity, price } = req.body;
+        const { product, quantity, price } = req.body;
 
         // Find or create a cart for the user
         let cart = await Cart.findOne({ user: req.user.userId });
@@ -31,7 +31,7 @@ exports.addToCart = async (req, res) => {
         }
 
         // Check if item already in cart
-        const itemIndex = cart.items.findIndex((item) => item.product.toString() === productId);
+        const itemIndex = cart.items.findIndex((item) => item.product.toString() === product);
 
         if (itemIndex > -1) {
             // Item exists, update quantity
@@ -39,7 +39,7 @@ exports.addToCart = async (req, res) => {
         } else {
             // Push a new item
             cart.items.push({
-                product: productId,
+                product: product,
                 quantity,
                 price,
             });
