@@ -27,10 +27,10 @@ const Home = () => {
                 </div>
             </div>
             <TopCarousel />
-            <RestaurantList />
             <div className="mx-auto w-full max-w-screen-xl py-16 px-6 lg:px-8 border-y border-gray-200">
                 <FoodItemCarousel title="Popular Dishes" />
             </div>
+            <RestaurantList />
         </>
     );
 };

@@ -53,6 +53,44 @@ export const addToCart = createAsyncThunk("cart/addToCart", async (payload, thun
     }
 });
 
+export const addProduct = createAsyncThunk("product/add", async (payload, thunkAPI) => {
+    try {
+        console.log("payload", payload);
+        const res = await fetch("http://localhost:5000/api/products", {
+            method: "POST",
+            headers: getAuthHeaders(),
+            body: JSON.stringify(payload),
+        });
+        if (!res.ok) {
+            throw new Error("Failed to add product");
+        }
+        const data = await res.json();
+        return data; // updated cart
+    } catch (error) {
+        return thunkAPI.rejectWithValue(error.message);
+    }
+});
+
+export const getProduct = createAsyncThunk("product/getByName", async (name, thunkAPI) => {
+    try {
+        // Use the correct endpoint with a query parameter for the product name
+        const res = await fetch(
+            `http://localhost:5000/api/products/name?name=${encodeURIComponent(name)}`,
+            {
+                method: "GET",
+                headers: getAuthHeaders(),
+            },
+        );
+        if (!res.ok) {
+            throw new Error("Failed to fetch product");
+        }
+        const data = await res.json();
+        return data; // expected to be an array of products matching the name
+    } catch (error) {
+        return thunkAPI.rejectWithValue(error.message);
+    }
+});
+
 /**
  * Remove a specific item from the cart in the backend.
  * Payload: { productId }

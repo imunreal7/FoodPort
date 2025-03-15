@@ -54,23 +54,26 @@ else:
 def get_recommendations_for_user(req: RecommendationRequest, k: int = 10):
     # For demo: generate a random query embedding.
     query_embedding = np.random.rand(1, index.d).astype("float32")
-    # Retrieve more candidates than needed to allow for filtering.
+    # Retrieve more candidates than needed for filtering.
     distances, indices = index.search(query_embedding, k * 2)
 
     recommendations = []
     seen = set()  # To track product IDs already added
 
-    # First pass: Apply strict filtering based on dietary preferences and preferred cuisine.
+    # First pass: Strict filtering based on dietary preferences and preferred cuisine.
     for idx in indices[0]:
         if idx < len(product_metadata):
             prod = product_metadata[idx]
             prod_id = prod.get("_id")
+            # Ensure _id is a string
+            if prod_id is not None and not isinstance(prod_id, str):
+                prod["_id"] = str(prod_id)
+                prod_id = prod["_id"]
             if prod_id in seen:
                 continue  # Skip duplicates
-            # Filter by dietary preference (case-insensitive)
+            # Apply filters (case-insensitive)
             if req.dietary_preferences and prod.get("dietaryType", "").lower() != req.dietary_preferences.lower():
                 continue
-            # Filter by preferred cuisine (case-insensitive)
             if req.preferred_cuisine and prod.get("cuisine", "").lower() != req.preferred_cuisine.lower():
                 continue
             seen.add(prod_id)
@@ -78,12 +81,15 @@ def get_recommendations_for_user(req: RecommendationRequest, k: int = 10):
             if len(recommendations) >= k:
                 break
 
-    # Second pass: If fewer than 3 recommendations, add additional products ignoring filters.
+    # Second pass: If fewer than 3 recommendations, add additional unique products ignoring filters.
     if len(recommendations) < 3:
         for idx in indices[0]:
             if idx < len(product_metadata):
                 prod = product_metadata[idx]
                 prod_id = prod.get("_id")
+                if prod_id is not None and not isinstance(prod_id, str):
+                    prod["_id"] = str(prod_id)
+                    prod_id = prod["_id"]
                 if prod_id in seen:
                     continue
                 seen.add(prod_id)

@@ -10,6 +10,16 @@ const products = async (req, res) => {
     }
 };
 
+// Get products by name
+const getProductByName = async (req, res) => {
+    try {
+        const data = await Product.find({ name: req.query.name });
+        res.status(200).json(data);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
+
 // Get products by restaurant ID
 const productsOfRestro = async (req, res) => {
     try {
@@ -35,5 +45,6 @@ module.exports = {
     products,
     productsOfRestro,
     addProducts,
+    getProductByName,
 };
 
