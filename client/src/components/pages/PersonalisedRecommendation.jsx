@@ -1,17 +1,16 @@
-// PersonalisedRecommendation.js
 import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { addToCart, addProduct, getProduct } from "../../redux/slices/cartSlice";
 import toast from "react-hot-toast";
 
 const PersonalisedRecommendation = () => {
     const [recommendations, setRecommendations] = useState([]);
     const [user, setUser] = useState(null);
-
-    // Assume you have user details stored in localStorage or a global state
+    const dispatch = useDispatch();
     const token = localStorage.getItem("token");
-    console.log("User1:", user, "Token1:", token);
 
     useEffect(() => {
-        const token = localStorage.getItem("token");
+        // Fetch user details
         if (token) {
             fetch("http://localhost:5000/api/auth/me", {
                 headers: {
@@ -25,11 +24,9 @@ const PersonalisedRecommendation = () => {
                 })
                 .catch((err) => console.error("Error fetching user data:", err));
         }
-    }, []);
+    }, [token]);
 
     useEffect(() => {
-        console.log("User:", user, "Token:", token);
-
         const fetchRecommendations = async () => {
             try {
                 const res = await fetch("http://localhost:5000/api/recommendations", {
@@ -56,6 +53,44 @@ const PersonalisedRecommendation = () => {
         }
     }, [user, token]);
 
+    const handleAddToCart = async (product) => {
+        try {
+            // Attempt to find the product by name
+            const foundProducts = await dispatch(getProduct(product.name)).unwrap();
+
+            let productId;
+            if (foundProducts && foundProducts.length > 0) {
+                // Product exists: use the first matching product's _id
+                productId = foundProducts[0]._id;
+            } else {
+                // Product not found: create it in the database
+                const createdProduct = await dispatch(addProduct(product)).unwrap();
+                productId = createdProduct[0]._id;
+            }
+
+            // Now add the product to the cart using the determined productId
+            await dispatch(
+                addToCart({
+                    product: productId,
+                    quantity: 1,
+                    price: product.price,
+                }),
+            ).unwrap();
+
+            toast.success(`${product.name} added to cart`, {
+                duration: 2000,
+                position: "top-center",
+                style: {
+                    backgroundColor: "#7BFFC2",
+                    color: "green",
+                    fontWeight: 600,
+                },
+            });
+        } catch (error) {
+            toast.error(error.message);
+        }
+    };
+
     return (
         <div className="max-w-7xl mx-auto p-8">
             <h1 className="text-3xl font-bold mb-4">Your AI Personalised Recommendations</h1>
@@ -81,6 +116,12 @@ const PersonalisedRecommendation = () => {
                             <p className="text-sm text-gray-500">
                                 {product.cuisine} | {product.dietaryType} | {product.category}
                             </p>
+                            <button
+                                onClick={() => handleAddToCart(product)}
+                                className="mt-4 w-full py-2 px-4 border border-lime-600 text-lime-600 hover:bg-lime-600 hover:text-white rounded-md transition duration-300"
+                            >
+                                Add to cart
+                            </button>
                         </div>
                     ))}
                 </div>
