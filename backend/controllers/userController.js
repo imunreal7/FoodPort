@@ -63,12 +63,15 @@ exports.getUser = async (req, res) => {
 
 exports.updateUser = async (req, res) => {
     try {
-        const { name, email, phone } = req.body;
+        const { name, email, phone, dietaryPreferences, preferredCuisine } = req.body;
 
         const user = await User.findById(req.user.userId);
         user.name = name;
         user.email = email;
         user.phone = phone;
+        user.preferredCuisine = dietaryPreferences;
+        user.dietaryPreferences = preferredCuisine;
+
         await user.save();
 
         res.json(user);
