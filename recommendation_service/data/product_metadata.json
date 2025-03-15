@@ -1,0 +1,123 @@
+[
+    {
+        "_id": "1",
+        "name": "Pizza Margherita",
+        "description": "Classic Italian pizza with fresh basil and mozzarella.",
+        "image": "https://images.unsplash.com/photo-1601924582975-12a18e407c25?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+        "price": 500,
+        "cuisine": "Italian",
+        "ingredients": ["flour", "tomato", "mozzarella", "basil"],
+        "dietaryType": "veg",
+        "category": "main course"
+    },
+    {
+        "_id": "2",
+        "name": "Cheeseburger",
+        "description": "Juicy burger with melted cheese, lettuce, and tomato.",
+        "image": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+        "price": 300,
+        "cuisine": "American",
+        "ingredients": ["beef", "cheddar", "lettuce", "tomato", "bun"],
+        "dietaryType": "non-veg",
+        "category": "main course"
+    },
+    {
+        "_id": "3",
+        "name": "Vegan Salad Bowl",
+        "description": "A healthy bowl of mixed greens, quinoa, avocado, and cherry tomatoes.",
+        "image": "https://images.unsplash.com/photo-1572448862527-d2e1526a6c82?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+        "price": 250,
+        "cuisine": "International",
+        "ingredients": ["mixed greens", "quinoa", "avocado", "cherry tomatoes"],
+        "dietaryType": "vegan",
+        "category": "starter"
+    },
+    {
+        "_id": "4",
+        "name": "Spicy Tacos",
+        "description": "Delicious tacos with spicy chicken, salsa, and fresh cilantro.",
+        "image": "https://images.unsplash.com/photo-1601924572233-6f6c5b4f2d9c?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+        "price": 350,
+        "cuisine": "Mexican",
+        "ingredients": ["chicken", "tortilla", "salsa", "cilantro"],
+        "dietaryType": "non-veg",
+        "category": "main course"
+    },
+    {
+        "_id": "5",
+        "name": "Paneer Tikka",
+        "description": "Grilled paneer marinated in spices, served with mint chutney.",
+        "image": "https://images.unsplash.com/photo-1604908177529-18f5d7d0e7d3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+        "price": 400,
+        "cuisine": "Indian",
+        "ingredients": ["paneer", "yogurt", "spices", "mint"],
+        "dietaryType": "veg",
+        "category": "starter"
+    },
+    {
+        "_id": "6",
+        "name": "Grilled Salmon",
+        "description": "Perfectly grilled salmon served with lemon butter sauce.",
+        "image": "https://images.unsplash.com/photo-1562967916-eb82221dfb6a?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+        "price": 700,
+        "cuisine": "Continental",
+        "ingredients": ["salmon", "lemon", "butter", "herbs"],
+        "dietaryType": "non-veg",
+        "category": "main course"
+    },
+    {
+        "_id": "7",
+        "name": "Chocolate Lava Cake",
+        "description": "Decadent chocolate cake with a molten chocolate center.",
+        "image": "https://images.unsplash.com/photo-1601981012532-3efb3910ad9a?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+        "price": 250,
+        "cuisine": "French",
+        "ingredients": ["chocolate", "flour", "sugar", "eggs"],
+        "dietaryType": "veg",
+        "category": "dessert"
+    },
+    {
+        "_id": "8",
+        "name": "Sushi Platter",
+        "description": "Assorted sushi with fresh fish, avocado, and rice.",
+        "image": "https://images.unsplash.com/photo-1553621042-f6e147245754?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+        "price": 600,
+        "cuisine": "Japanese",
+        "ingredients": ["rice", "fish", "avocado", "nori"],
+        "dietaryType": "non-veg",
+        "category": "main course"
+    },
+    {
+        "_id": "9",
+        "name": "Margarita",
+        "description": "Classic cocktail with tequila, lime juice, and triple sec.",
+        "image": "https://images.unsplash.com/photo-1559703248-dcaaec9fab78?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+        "price": 200,
+        "cuisine": "Mexican",
+        "ingredients": ["tequila", "lime", "triple sec", "salt"],
+        "dietaryType": "veg",
+        "category": "beverage"
+    },
+    {
+        "_id": "10",
+        "name": "Vegan Smoothie",
+        "description": "Refreshing smoothie with almond milk, banana, and berries.",
+        "image": "https://images.unsplash.com/photo-1556912991-2213b3a300d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+        "price": 150,
+        "cuisine": "International",
+        "ingredients": ["almond milk", "banana", "berries", "ice"],
+        "dietaryType": "vegan",
+        "category": "beverage"
+    },
+    {
+        "_id": "11",
+        "name": "Chicken Biryani",
+        "description": "Aromatic basmati rice layered with spiced chicken, herbs, and saffron.",
+        "image": "https://media-assets.swiggy.com/swiggy/image/upload/f_auto,q_auto,fl_lossy/e28cc9f80cfc0a7dbf4e190c514a252d",
+        "price": 550,
+        "cuisine": "Indian",
+        "ingredients": ["chicken", "rice", "saffron", "spices", "herbs"],
+        "dietaryType": "non-veg",
+        "category": "main course"
+    }
+]

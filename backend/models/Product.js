@@ -1,14 +1,22 @@
+// models/Product.js
 const mongoose = require("mongoose");
 
-const productSchema = new mongoose.Schema({
-    restro_id: { type: mongoose.Schema.Types.ObjectId, ref: "Restaurant" },
-    name: String,
+const ProductSchema = new mongoose.Schema({
+    name: { type: String, required: true },
     description: String,
-    inStock: Boolean,
-    isVeg: Boolean,
-    price: Number,
-    rating: Number,
     image: String,
+    price: { type: Number, required: true },
+    cuisine: { type: String, required: true },
+    ingredients: [String],
+    dietaryType: {
+        type: String,
+        enum: ["veg", "non-veg", "vegan"],
+        required: true,
+    },
+    category: {
+        type: String,
+        enum: ["starter", "main course", "dessert", "beverage"],
+    },
 });
 
-module.exports = mongoose.model("Product", productSchema);
+module.exports = mongoose.model("Product", ProductSchema);
