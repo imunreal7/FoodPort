@@ -10,17 +10,17 @@ const Home = () => {
                 <div className="max-w-7xl mx-auto flex items-center justify-between flex-col lg:flex-row">
                     <div>
                         <h1 className="lg:w-6/12 lg:pr-4 capitalize text-4xl lg:text-6xl font-bold leading-snug text-center lg:text-left">
-                            The finest
-                            <span className="logo-text-second"> Dining Spots </span>
+                            Your Favorite
+                            <span className="logo-text-second"> Restaurants </span>
                             At Your Home
                         </h1>
                         <p className="lg:w-4/6 py-5 text-lg lg:text-lg text-gray-600 text-center lg:text-left">
-                            Embark on a mouth-watering adventure with irresistible offers on beloved
-                            dishes and eateries.
+                            Discover curated flavors, exclusive deals, and mouthwatering creations
+                            from top restaurants in your city.
                         </p>
 
                         <p className="text-center lg:text-left text-lg pb-6 capitalize text-green-700 font-semibold">
-                            Fuel your body, uplift your mood.
+                            Because every meal should be an adventure!
                         </p>
                     </div>
                     <img className="w-2/6" src={HeaderHero} alt="Delivery Service" />

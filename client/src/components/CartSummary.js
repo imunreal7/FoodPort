@@ -1,6 +1,6 @@
-// CartSummary.js
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const CartSummary = ({ cartItems }) => {
     const totalAmount = useSelector((store) => store.cart.total);
@@ -9,6 +9,18 @@ const CartSummary = ({ cartItems }) => {
     const navigate = useNavigate();
 
     if (cartItems.length === 0) return null; // Don't show summary if cart is empty
+
+    const handleProceedToCheckout = () => {
+        const token = localStorage.getItem("token");
+        if (!token) {
+            toast.error("Please log in to continue", {
+                duration: 2000,
+                position: "top-center",
+            });
+            return;
+        }
+        navigate("/checkout");
+    };
 
     return (
         <div className="py-8">
@@ -31,7 +43,7 @@ const CartSummary = ({ cartItems }) => {
                     <p className="font-semibold">₹{totalAmount + deliveryFee}</p>
                 </div>
                 <button
-                    onClick={() => navigate("/checkout")}
+                    onClick={handleProceedToCheckout}
                     className="py-3 px-8 bg-teal-600 text-white font-semibold rounded-md hover:bg-teal-700 transition-colors"
                 >
                     Proceed to Checkout

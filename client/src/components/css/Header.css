@@ -18,6 +18,9 @@ nav {
     background-color: #ffffff; /* Added background color to prevent overlay issues */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
 }
+.nav-link {
+    @apply text-sm font-medium text-gray-700 hover:text-lime-600 dark:text-white;
+}
 
 .react-multiple-carousel__arrow {
     z-index: 2 !important;

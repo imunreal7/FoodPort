@@ -6,10 +6,8 @@ import logo from "../logo.png";
 import "./css/Header.css";
 
 const Header = () => {
-    // Subscribe to cart items
     const cartItems = useSelector((store) => store.cart.items);
 
-    // Track authentication status
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const location = useLocation();
     const navigate = useNavigate();
@@ -39,7 +37,7 @@ const Header = () => {
                 >
                     <div className="max-w-7xl mx-auto">
                         <div className="flex h-16 items-center">
-                            {/* LOGO & Left Navigation */}
+                            {/* LOGO */}
                             <div className="flex lg:ml-0">
                                 <Link to="/" className="flex items-center space-x-2">
                                     <img className="h-8 w-auto" src={logo} alt="FoodPort Logo" />
@@ -49,98 +47,39 @@ const Header = () => {
                                 </Link>
                             </div>
 
-                            {/* MAIN NAV LINKS (Left Side) */}
+                            {/* MAIN NAV LINKS */}
                             <div id="toggleNavbar" className="hidden ml-8 lg:block">
                                 <div className="flex space-x-8 absolute lg:relative bg-white h-[33vh] lg:h-[0vh] w-full left-0 top-[101%] flex-col lg:flex-row items-center p-4 lg:p-0">
-                                    <NavLink
-                                        to="/"
-                                        className="text-xl lg:text-sm font-medium text-gray-700 dark:text-white hover:text-lime-600"
-                                    >
+                                    <NavLink to="/" className="nav-link">
                                         Home
                                     </NavLink>
-                                    <NavLink
-                                        to="/restaurants"
-                                        className="text-xl lg:text-sm font-medium text-gray-700 dark:text-white hover:text-lime-600"
-                                    >
+                                    <NavLink to="/restaurants" className="nav-link">
                                         Restaurants
                                     </NavLink>
+                                    <NavLink to="/about" className="nav-link">
+                                        About Us
+                                    </NavLink>
+                                    <NavLink to="/contact" className="nav-link">
+                                        Contact Us
+                                    </NavLink>
                                     {isAuthenticated && (
-                                        <NavLink
-                                            to="/orders-history"
-                                            className="text-xl lg:text-sm font-medium text-gray-700 dark:text-white hover:text-lime-600"
-                                        >
+                                        <NavLink to="/orders-history" className="nav-link">
                                             My Orders
                                         </NavLink>
                                     )}
-                                    <NavLink
-                                        to="/about"
-                                        className="text-xl lg:text-sm font-medium text-gray-700 dark:text-white hover:text-lime-600"
-                                    >
-                                        About Us
-                                    </NavLink>
-                                    <NavLink
-                                        to="/contact"
-                                        className="text-xl lg:text-sm font-medium text-gray-700 dark:text-white hover:text-lime-600"
-                                    >
-                                        Contact Us
-                                    </NavLink>
+                                    {isAuthenticated && (
+                                        <NavLink
+                                            to="/personalised-recommendation"
+                                            className="nav-link"
+                                        >
+                                            AI Recommendation
+                                        </NavLink>
+                                    )}
                                 </div>
                             </div>
 
-                            {/* RIGHT SIDE: Account/Utility */}
+                            {/* RIGHT SIDE */}
                             <div className="ml-auto flex items-center">
-                                <div className="pr-2 lg:pr-0 lg:flex lg:items-center lg:space-x-6">
-                                    {isAuthenticated ? (
-                                        <>
-                                            <NavLink
-                                                to="/profile"
-                                                className="text-sm font-medium text-gray-700 dark:text-white hover:text-lime-600"
-                                            >
-                                                Profile
-                                            </NavLink>
-                                            <span
-                                                className="h-6 w-px bg-gray-200"
-                                                aria-hidden="true"
-                                            />
-                                            <NavLink
-                                                to="/personalised-recommendation"
-                                                className="text-sm font-medium text-gray-700 dark:text-white hover:text-lime-600"
-                                            >
-                                                AI Recommendation
-                                            </NavLink>
-                                            <span
-                                                className="h-6 w-px bg-gray-200"
-                                                aria-hidden="true"
-                                            />
-                                            <button
-                                                onClick={handleLogout}
-                                                className="text-sm font-medium text-gray-700 dark:text-white hover:text-lime-600"
-                                            >
-                                                Logout
-                                            </button>
-                                        </>
-                                    ) : (
-                                        <>
-                                            <NavLink
-                                                to="/sign-in"
-                                                className="text-sm font-medium text-gray-700 dark:text-white hover:text-lime-600"
-                                            >
-                                                Log in
-                                            </NavLink>
-                                            <span
-                                                className="h-6 w-px bg-gray-200"
-                                                aria-hidden="true"
-                                            />
-                                            <NavLink
-                                                to="/sign-up"
-                                                className="text-sm font-medium text-gray-700 dark:text-white hover:text-lime-600"
-                                            >
-                                                Sign up
-                                            </NavLink>
-                                        </>
-                                    )}
-                                </div>
-
                                 {/* CART ICON */}
                                 <div className="ml-4 flow-root lg:ml-6">
                                     <NavLink
@@ -154,10 +93,31 @@ const Header = () => {
                                     </NavLink>
                                 </div>
 
+                                <div className="pr-2 lg:pr-0 lg:flex lg:items-center lg:space-x-6 ml-4">
+                                    {isAuthenticated ? (
+                                        <>
+                                            <NavLink to="/profile" className="nav-link">
+                                                Profile
+                                            </NavLink>
+                                            <button onClick={handleLogout} className="nav-link">
+                                                Logout
+                                            </button>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <NavLink to="/sign-in" className="nav-link">
+                                                Log in
+                                            </NavLink>
+                                            <NavLink to="/sign-up" className="nav-link">
+                                                Sign up
+                                            </NavLink>
+                                        </>
+                                    )}
+                                </div>
+
                                 {/* MOBILE MENU TOGGLE */}
                                 <div
                                     onClick={navbarToggle}
-                                    data-collapse-toggle="navbar-default"
                                     className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
                                     aria-controls="navbar-default"
                                     aria-expanded="false"
