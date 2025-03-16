@@ -60,6 +60,22 @@ const Header = () => {
                     </NavLink>
                     {isAuthenticated && (
                         <NavLink
+                            to="/personalised-recommendation"
+                            className={({ isActive }) =>
+                                `relative font-semibold px-3 py-1 rounded-lg transition bg-transparent
+                           ${
+                               isActive
+                                   ? "text-white bg-lime-600 shadow-md"
+                                   : "text-lime-700 dark:text-lime-400 hover:text-lime-600"
+                           }
+                           before:absolute before:-bottom-1 before:left-1/2 before:w-0 before:h-0.5 before:bg-lime-600 before:transition-all before:duration-300 before:ease-out before:content-[''] hover:before:w-full hover:before:left-0 hover:before:-bottom-1 hover:before:bg-lime-700 dark:hover:before:bg-lime-400`
+                            }
+                        >
+                            <span className="mr-1">✨</span> AI Recommendation
+                        </NavLink>
+                    )}
+                    {isAuthenticated && (
+                        <NavLink
                             to="/orders-history"
                             className={({ isActive }) =>
                                 isActive
@@ -70,18 +86,7 @@ const Header = () => {
                             My Orders
                         </NavLink>
                     )}
-                    {isAuthenticated && (
-                        <NavLink
-                            to="/personalised-recommendation"
-                            className={({ isActive }) =>
-                                isActive
-                                    ? "text-lime-600 font-medium"
-                                    : "text-gray-700 dark:text-gray-300 hover:text-lime-600 font-medium"
-                            }
-                        >
-                            AI Recommendation
-                        </NavLink>
-                    )}
+
                     <NavLink
                         to="/about"
                         className={({ isActive }) =>
