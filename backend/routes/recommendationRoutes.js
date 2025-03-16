@@ -11,7 +11,7 @@ router.post("/", authMiddleware, async (req, res) => {
         const { user_id, dietary_preferences, preferred_cuisine } = req.body;
 
         // Call the Python recommendation microservice
-        const response = await axios.post("http://localhost:8000/recommendations", {
+        const response = await axios.post("https://foodport-5nqf.onrender.com/recommendations", {
             user_id,
             dietary_preferences,
             preferred_cuisine,
