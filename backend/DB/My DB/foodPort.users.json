@@ -1,0 +1,34 @@
+[{
+  "_id": {
+    "$oid": "67d4078a626175a9105285dd"
+  },
+  "name": "John Doe",
+  "email": "john@example.com",
+  "password": "$2b$10$.6iZc2RUkDGivGoRnWdUYushcot8QgTpp2ZVjGT4rK1igCINoGxlm",
+  "createdAt": {
+    "$date": "2025-03-14T10:40:10.816Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-14T10:40:10.816Z"
+  },
+  "__v": 0,
+  "dietaryPreferences": "veg",
+  "preferredCuisine": "Italian"
+},
+{
+  "_id": {
+    "$oid": "67d40d6e5780543aff3ecf32"
+  },
+  "name": "Aman Dubey",
+  "email": "amandubey@gmail.com",
+  "password": "$2b$10$LRxtYS4m6FOWTlieeMaUJumj21snCnMExOTXy68BzFFnyv/Q.K27O",
+  "phone": "1111222333",
+  "createdAt": {
+    "$date": "2025-03-14T11:05:18.392Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-14T16:43:56.471Z"
+  },
+  "__v": 0,
+  "avatar": "https://png.pngtree.com/png-clipart/20240504/original/pngtree-vector-illustration-of-cute-pizza-emoji-png-image_15005236.png"
+}]

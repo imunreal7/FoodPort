@@ -1,20 +1,25 @@
 const mongoose = require("mongoose");
 
-const orderItemSchema = new mongoose.Schema({
-    product: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Product",
-        required: true,
+const orderItemSchema = new mongoose.Schema(
+    {
+        product: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Product",
+            required: true,
+        },
+        quantity: {
+            type: Number,
+            default: 1,
+            min: 1,
+        },
+        price: {
+            type: Number,
+            required: true,
+            min: 0,
+        },
     },
-    quantity: {
-        type: Number,
-        default: 1,
-    },
-    price: {
-        type: Number,
-        required: true,
-    },
-});
+    { _id: false },
+);
 
 const orderSchema = new mongoose.Schema(
     {
@@ -22,36 +27,42 @@ const orderSchema = new mongoose.Schema(
             type: mongoose.Schema.Types.ObjectId,
             ref: "User",
             required: true,
+            index: true,
         },
         items: [orderItemSchema],
         total: {
             type: Number,
             default: 0,
+            min: 0,
         },
         shippingFee: {
             type: Number,
             default: 0,
+            min: 0,
         },
         status: {
             type: String,
             enum: ["pending", "paid", "shipped", "delivered", "cancelled", "rejected"],
-            default: "pending", // e.g., "pending", "paid", "shipped", "delivered", etc.
+            default: "pending",
         },
-        // New fields for checkout details:
         customerName: {
             type: String,
             required: true,
+            trim: true,
         },
         customerPhone: {
             type: String,
             required: true,
+            trim: true,
         },
         customerAddress: {
             type: String,
             required: true,
+            trim: true,
         },
         instructions: {
             type: String,
+            trim: true,
         },
         deliveryOption: {
             type: String,
@@ -67,7 +78,7 @@ const orderSchema = new mongoose.Schema(
             default: "card",
         },
     },
-    { timestamps: true }
+    { timestamps: true, versionKey: false },
 );
 
 module.exports = mongoose.model("Order", orderSchema);

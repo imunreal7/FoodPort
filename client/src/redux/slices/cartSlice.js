@@ -95,7 +95,7 @@ export const getProduct = createAsyncThunk("product/getByName", async (name, thu
 export const removeFromCart = createAsyncThunk("cart/removeFromCart", async (payload, thunkAPI) => {
     try {
         const res = await fetch(`${apiUrl}/api/cart/remove`, {
-            method: "POST",
+            method: "PATCH",
             headers: getAuthHeaders(),
             body: JSON.stringify(payload),
         });
@@ -115,7 +115,7 @@ export const removeFromCart = createAsyncThunk("cart/removeFromCart", async (pay
 export const clearCart = createAsyncThunk("cart/clearCart", async (_, thunkAPI) => {
     try {
         const res = await fetch(`${apiUrl}/api/cart/clear`, {
-            method: "POST",
+            method: "PATCH",
             headers: getAuthHeaders(),
         });
         if (!res.ok) {

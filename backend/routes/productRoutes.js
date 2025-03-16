@@ -1,17 +1,15 @@
 const express = require("express");
 const router = express.Router();
+const productController = require("../controllers/productController");
 
-const {
-    products,
-    productsOfRestro,
-    addProducts,
-    getProductByName,
-} = require("../controllers/productController");
+// Endpoints for products
+router
+    .route("/")
+    .get(productController.products) // Get all products
+    .post(productController.addProducts); // Add multiple products
 
-router.get("/products", products); // Get all products
-router.get("/restaurant/:id", productsOfRestro); // Get products by restaurant ID
-router.post("/products", addProducts); // Add a new product
-router.get("/products/name", getProductByName);
+router.get("/name", productController.getProductByName); // Get products by name
+router.get("/restaurant/:id", productController.productsOfRestro); // Get products by restaurant ID
 
 module.exports = router;
 

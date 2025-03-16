@@ -1,0 +1,246 @@
+[{
+  "_id": {
+    "$oid": "67d45217f4886a0bc4a8e693"
+  },
+  "user": {
+    "$oid": "67d40d6e5780543aff3ecf32"
+  },
+  "items": [
+    {
+      "product": {
+        "$oid": "672dd5ba06f191edd952fead"
+      },
+      "quantity": 1,
+      "price": 550,
+      "_id": {
+        "$oid": "67d45217f4886a0bc4a8e694"
+      }
+    }
+  ],
+  "total": 550,
+  "shippingFee": 250,
+  "status": "delivered",
+  "createdAt": {
+    "$date": "2025-03-14T15:58:15.548Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-14T15:58:15.548Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67d4538ff4886a0bc4a8e6a7"
+  },
+  "user": {
+    "$oid": "67d40d6e5780543aff3ecf32"
+  },
+  "items": [
+    {
+      "product": {
+        "$oid": "672dd5ba06f191edd952feaf"
+      },
+      "quantity": 1,
+      "price": 460,
+      "_id": {
+        "$oid": "67d4538ff4886a0bc4a8e6a8"
+      }
+    }
+  ],
+  "total": 460,
+  "shippingFee": 250,
+  "status": "delivered",
+  "createdAt": {
+    "$date": "2025-03-14T16:04:31.432Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-14T16:04:31.432Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67d458ecbd3fe5184ee13c57"
+  },
+  "user": {
+    "$oid": "67d40d6e5780543aff3ecf32"
+  },
+  "items": [
+    {
+      "product": {
+        "$oid": "672dd5ba06f191edd952fead"
+      },
+      "quantity": 1,
+      "price": 550,
+      "_id": {
+        "$oid": "67d458ecbd3fe5184ee13c58"
+      }
+    },
+    {
+      "product": {
+        "$oid": "672dd5ba06f191edd952feaf"
+      },
+      "quantity": 1,
+      "price": 460,
+      "_id": {
+        "$oid": "67d458ecbd3fe5184ee13c59"
+      }
+    }
+  ],
+  "total": 1010,
+  "shippingFee": 250,
+  "status": "cancelled",
+  "customerName": "Aman Dubey",
+  "customerPhone": "09039163669",
+  "customerAddress": "Orai, Uttar Pradesh",
+  "instructions": "Leave food at door",
+  "deliveryOption": "scheduled",
+  "scheduledTime": {
+    "$date": "2025-03-14T18:29:00.000Z"
+  },
+  "paymentMethod": "card",
+  "createdAt": {
+    "$date": "2025-03-14T16:27:24.387Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-14T16:27:24.387Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67d65d94d3e2f3a51f49afaa"
+  },
+  "user": {
+    "$oid": "67d40d6e5780543aff3ecf32"
+  },
+  "items": [
+    {
+      "product": {
+        "$oid": "67d5aff7c6a7b7858aaded37"
+      },
+      "quantity": 2,
+      "price": 400,
+      "_id": {
+        "$oid": "67d65d94d3e2f3a51f49afab"
+      }
+    },
+    {
+      "product": {
+        "$oid": "67d5aff8c6a7b7858aaded3d"
+      },
+      "quantity": 1,
+      "price": 250,
+      "_id": {
+        "$oid": "67d65d94d3e2f3a51f49afac"
+      }
+    },
+    {
+      "product": {
+        "$oid": "67d5b0aec6a7b7858aaded58"
+      },
+      "quantity": 1,
+      "price": 500,
+      "_id": {
+        "$oid": "67d65d94d3e2f3a51f49afad"
+      }
+    },
+    {
+      "product": {
+        "$oid": "67d5af5ac6a7b7858aadecef"
+      },
+      "quantity": 1,
+      "price": 200,
+      "_id": {
+        "$oid": "67d65d94d3e2f3a51f49afae"
+      }
+    },
+    {
+      "product": {
+        "$oid": "672dd5ba06f191edd952feae"
+      },
+      "quantity": 2,
+      "price": 380,
+      "_id": {
+        "$oid": "67d65d94d3e2f3a51f49afaf"
+      }
+    },
+    {
+      "product": {
+        "$oid": "672dd5ba06f191edd952fead"
+      },
+      "quantity": 1,
+      "price": 550,
+      "_id": {
+        "$oid": "67d65d94d3e2f3a51f49afb0"
+      }
+    },
+    {
+      "product": {
+        "$oid": "67d5afadc6a7b7858aaded05"
+      },
+      "quantity": 1,
+      "price": 600,
+      "_id": {
+        "$oid": "67d65d94d3e2f3a51f49afb1"
+      }
+    },
+    {
+      "product": {
+        "$oid": "67d63f3bc6a7b7858aadee01"
+      },
+      "quantity": 1,
+      "price": 700,
+      "_id": {
+        "$oid": "67d65d94d3e2f3a51f49afb2"
+      }
+    },
+    {
+      "product": {
+        "$oid": "672dd5ba06f191edd952feaf"
+      },
+      "quantity": 1,
+      "price": 460,
+      "_id": {
+        "$oid": "67d65d94d3e2f3a51f49afb3"
+      }
+    },
+    {
+      "product": {
+        "$oid": "672dd5ba06f191edd952feb0"
+      },
+      "quantity": 1,
+      "price": 360,
+      "_id": {
+        "$oid": "67d65d94d3e2f3a51f49afb4"
+      }
+    },
+    {
+      "product": {
+        "$oid": "67d5ae89c6a7b7858aadecd6"
+      },
+      "quantity": 1,
+      "price": 150,
+      "_id": {
+        "$oid": "67d65d94d3e2f3a51f49afb5"
+      }
+    }
+  ],
+  "total": 5330,
+  "shippingFee": 250,
+  "status": "pending",
+  "customerName": "Aman Dubey",
+  "customerPhone": "09039163669",
+  "customerAddress": "Shushil Nagar",
+  "instructions": "",
+  "deliveryOption": "immediate",
+  "scheduledTime": null,
+  "paymentMethod": "card",
+  "createdAt": {
+    "$date": "2025-03-16T05:11:48.411Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-16T05:11:48.411Z"
+  },
+  "__v": 0
+}]

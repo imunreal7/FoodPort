@@ -28,6 +28,8 @@ const PersonalisedRecommendation = () => {
         }
     }, [token]);
 
+    console.log("user", user);
+
     // Fetch personalized recommendations once user info is available
     useEffect(() => {
         const fetchRecommendations = async () => {

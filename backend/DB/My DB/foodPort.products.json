@@ -1,0 +1,352 @@
+[{
+  "_id": {
+    "$oid": "67d5ae89c6a7b7858aadecd6"
+  },
+  "name": "Vegan Smoothie",
+  "description": "Refreshing smoothie with almond milk, banana, and berries.",
+  "image": "https://media-assets.swiggy.com/swiggy/image/upload/f_auto,q_auto,fl_lossy/g2vyo9us6yv8wkt3kd1l",
+  "price": 150,
+  "cuisine": "International",
+  "ingredients": [],
+  "dietaryType": "vegan",
+  "category": "beverage",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67d5afadc6a7b7858aaded05"
+  },
+  "name": "Sushi Platter",
+  "description": "Assorted juicy sushi with fresh fish, avocado, and rice.",
+  "image": "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_366/RX_THUMBNAIL/IMAGES/VENDOR/2024/6/17/97239208-8c20-4437-805d-0af21d3ba048_815932.jpg",
+  "price": 600,
+  "cuisine": "Japanese",
+  "ingredients": [],
+  "dietaryType": "non-veg",
+  "category": "main course",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67d5afaec6a7b7858aaded11"
+  },
+  "name": "Cheeseburger",
+  "description": "Juicy burger with melted cheese, lettuce, and tomato.",
+  "image": "https://media-assets.swiggy.com/swiggy/image/upload/f_auto,q_auto,fl_lossy/ovrowsp76xfxy0sjjb4r",
+  "price": 300,
+  "cuisine": "American",
+  "ingredients": [],
+  "dietaryType": "non-veg",
+  "category": "main course",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67d5aff7c6a7b7858aaded37"
+  },
+  "name": "Paneer Tikka",
+  "description": "Grilled paneer marinated in spices, served with mint chutney.",
+  "image": "https://media-assets.swiggy.com/swiggy/image/upload/f_auto,q_auto,fl_lossy/zcbomkcobsc0iwqijw3b",
+  "price": 400,
+  "cuisine": "Indian",
+  "ingredients": [],
+  "dietaryType": "veg",
+  "category": "starter",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67d5aff8c6a7b7858aaded3d"
+  },
+  "name": "Vegan Salad Bowl",
+  "description": "A healthy bowl of mixed greens, quinoa, avocado, and cherry tomatoes.",
+  "image": "https://media-assets.swiggy.com/swiggy/image/upload/f_auto,q_auto,fl_lossy/kjgmc2x9wm93xmtiyqez",
+  "price": 250,
+  "cuisine": "International",
+  "ingredients": [],
+  "dietaryType": "vegan",
+  "category": "starter",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67d5b0aec6a7b7858aaded58"
+  },
+  "name": "Pizza Margherita",
+  "description": "Classic Italian pizza with fresh basil and mozzarella Cheese.",
+  "image": "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_366/RX_THUMBNAIL/IMAGES/VENDOR/2024/11/15/9a7bb0cd-5877-4c86-be03-26345b8a1db8_989823.jpg",
+  "price": 500,
+  "cuisine": "Italian",
+  "ingredients": [],
+  "dietaryType": "veg",
+  "category": "main course",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67d63f3bc6a7b7858aadee01"
+  },
+  "name": "Grilled Salmon",
+  "description": "Perfectly grilled salmon served with lemon butter sauce.",
+  "image": "https://media-assets.swiggy.com/swiggy/image/upload/f_auto,q_auto,fl_lossy/tzyesm8nrulretclxgmz",
+  "price": 700,
+  "cuisine": "Continental",
+  "ingredients": [],
+  "dietaryType": "non-veg",
+  "category": "main course",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "a1b2c3d4e5f60718293a0b1c"
+  },
+  "restro_id": {
+    "$oid": "b1c2d3e4f5a60718293a0b1d"
+  },
+  "name": "Lemon Herb Shrimp",
+  "description": "Succulent shrimp tossed in lemon herb butter for a delightful zest.",
+  "inStock": true,
+  "isVeg": false,
+  "price": 600,
+  "rating": 4.5,
+  "image": "https://www.thespruceeats.com/thmb/ZSpfxgvzlUPuoyY7lZDiOkejQsc=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/SES-butter-prawns-recipe-695128-239096b6cbed45bbb99582ce980addfc.jpg",
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "b2c3d4e5f60718293a0b1c2d"
+  },
+  "restro_id": {
+    "$oid": "c2d3e4f5a60718293a0b1c2e"
+  },
+  "name": "Zesty Pepper Chicken Bites",
+  "description": "Crisp chicken morsels drizzled with a fiery homemade sauce.",
+  "inStock": true,
+  "isVeg": false,
+  "price": 420,
+  "rating": 4.8,
+  "image": "https://omnivorescookbook.com/wp-content/uploads/2022/06/220530_Black-Pepper-Chicken_3.jpg",
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "c3d4e5f60718293a0b1c2d3e"
+  },
+  "restro_id": {
+    "$oid": "d3e4f5a60718293a0b1c2d3f"
+  },
+  "name": "Crunchy Fish Sticks",
+  "description": "Golden fish sticks paired with a tangy tartar dip for extra crunch.",
+  "inStock": true,
+  "isVeg": false,
+  "price": 490,
+  "rating": 4,
+  "image": "https://www.budgetbytes.com/wp-content/uploads/2023/08/Fish-Sticks-dip.jpg",
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "d4e5f60718293a0b1c2d3e4f"
+  },
+  "restro_id": {
+    "$oid": "e4f5a60718293a0b1c2d3e4f"
+  },
+  "name": "Fiery Chicken Wings",
+  "description": "Crispy chicken wings coated in a bold, spicy glaze for a kick.",
+  "inStock": true,
+  "isVeg": false,
+  "price": 400,
+  "rating": 4.5,
+  "image": "https://mccormick.widen.net/content/ktngbujjcz/jpeg/Franks_RedHot_Buffalo_Chicken_Wings_desktop.jpg?crop=true&anchor=0,0&q=80&color=ffffffff&u=qtpeo3&w=1920&h=1080",
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "e5f60718293a0b1c2d3e4f50"
+  },
+  "restro_id": {
+    "$oid": "f5a60718293a0b1c2d3e4f51"
+  },
+  "name": "Grilled Chicken Wrap",
+  "description": "Tender grilled chicken wrapped in soft pita with zesty sauces and fresh greens.",
+  "inStock": true,
+  "isVeg": false,
+  "price": 330,
+  "rating": 4.9,
+  "image": "https://images-gmi-pmc.edge-generalmills.com/9dbe823a-5bae-47cf-be42-ee5e886a0378.jpg",
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "f60718293a0b1c2d3e4f5071"
+  },
+  "restro_id": {
+    "$oid": "a60718293a0b1c2d3e4f5072"
+  },
+  "name": "Cedar Hummus Dip",
+  "description": "Creamy hummus blended with roasted garlic and herbs, served with artisan flatbread.",
+  "inStock": true,
+  "isVeg": true,
+  "price": 350,
+  "rating": 3,
+  "image": "https://cdn.tasteatlas.com/images/dishes/12885298a62f411bbe11d081bc0b187b.jpg?m=facebook",
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "a718293a0b1c2d3e4f5073ba"
+  },
+  "restro_id": {
+    "$oid": "b718293a0b1c2d3e4f5073bb"
+  },
+  "name": "Herb Infused Mushrooms",
+  "description": "Sautéed mushrooms drizzled with herb butter and a splash of white wine, garnished with spices.",
+  "inStock": true,
+  "isVeg": true,
+  "price": 340,
+  "rating": 4,
+  "image": "https://www.eatwell101.com/wp-content/uploads/2019/11/Garlic-Butter-Mushroom-Skillet-2.jpg",
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "c819293a0b1c2d3e4f5073de"
+  },
+  "restro_id": {
+    "$oid": "d819293a0b1c2d3e4f5073df"
+  },
+  "name": "Cool Mint Refresher",
+  "description": "A revitalizing blend of tangy lemon and fresh mint with a touch of sweetness.",
+  "inStock": true,
+  "isVeg": true,
+  "price": 210,
+  "rating": 2.5,
+  "image": "https://food.fnr.sndimg.com/content/dam/images/food/fullset/2019/10/10/MW406_frozen-mint-lemonade_s4x3.jpg.rend.hgtvcom.616.462.suffix/1570722287611.jpeg",
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "d91a293a0b1c2d3e4f5073ff"
+  },
+  "name": "Tropical Vegan Shake",
+  "description": "A vibrant blend of tropical fruits with almond milk for a refreshing vegan treat.",
+  "image": "https://media-assets.swiggy.com/swiggy/image/upload/f_auto,q_auto,fl_lossy/g2vyo9us6yv8wkt3kd1l",
+  "price": 170,
+  "cuisine": "Fusion",
+  "ingredients": [],
+  "dietaryType": "plant-based",
+  "category": "refreshment",
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "e91a293a0b1c2d3e4f507300"
+  },
+  "name": "Citrus Margarita Twist",
+  "description": "A refreshing cocktail blending tequila, zesty lime, and a hint of orange liqueur.",
+  "image": "https://blog.swiggy.com/wp-content/uploads/2024/09/Image-8_Jaljeera-1024x538.png",
+  "price": 220,
+  "cuisine": "Southwestern",
+  "ingredients": [],
+  "dietaryType": "vegetarian",
+  "category": "cocktail",
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "f91a293a0b1c2d3e4f507311"
+  },
+  "name": "Assorted Sushi Delight",
+  "description": "An exquisite selection of sushi featuring fresh seafood, avocado, and perfectly seasoned rice.",
+  "image": "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_366/RX_THUMBNAIL/IMAGES/VENDOR/2024/6/17/97239208-8c20-4437-805d-0af21d3ba048_815932.jpg",
+  "price": 650,
+  "cuisine": "Sushi",
+  "ingredients": [],
+  "dietaryType": "non-veg",
+  "category": "entree",
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "fa1a293a0b1c2d3e4f507322"
+  },
+  "name": "Double Cheese Burger",
+  "description": "A hearty burger stacked with melted cheeses, fresh lettuce, and ripe tomatoes.",
+  "image": "https://media-assets.swiggy.com/swiggy/image/upload/f_auto,q_auto,fl_lossy/ovrowsp76xfxy0sjjb4r",
+  "price": 320,
+  "cuisine": "Fast Food",
+  "ingredients": [],
+  "dietaryType": "non-veg",
+  "category": "burger",
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "fb1a293a0b1c2d3e4f507333"
+  },
+  "name": "Spiced Paneer Skewers",
+  "description": "Cubes of paneer marinated in a blend of aromatic spices, grilled to perfection.",
+  "image": "https://media-assets.swiggy.com/swiggy/image/upload/f_auto,q_auto,fl_lossy/zcbomkcobsc0iwqijw3b",
+  "price": 430,
+  "cuisine": "North Indian",
+  "ingredients": [],
+  "dietaryType": "veg",
+  "category": "appetizer",
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "fc1a293a0b1c2d3e4f507344"
+  },
+  "name": "Rainbow Veggie Bowl",
+  "description": "A vibrant mix of fresh greens, quinoa, avocado, and cherry tomatoes tossed in a light dressing.",
+  "image": "https://media-assets.swiggy.com/swiggy/image/upload/f_auto,q_auto,fl_lossy/kjgmc2x9wm93xmtiyqez",
+  "price": 270,
+  "cuisine": "Global",
+  "ingredients": [],
+  "dietaryType": "plant-based",
+  "category": "salad",
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "fd1a293a0b1c2d3e4f507355"
+  },
+  "name": "Classic Margherita Pizza",
+  "description": "Traditional Italian pizza topped with fresh basil leaves and creamy mozzarella.",
+  "image": "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_366/RX_THUMBNAIL/IMAGES/VENDOR/2024/11/15/9a7bb0cd-5877-4c86-be03-26345b8a1db8_989823.jpg",
+  "price": 520,
+  "cuisine": "Neapolitan",
+  "ingredients": [],
+  "dietaryType": "veg",
+  "category": "pizza",
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "fe1a293a0b1c2d3e4f507366"
+  },
+  "name": "Citrus Grilled Salmon",
+  "description": "Tender salmon fillet grilled to perfection and drizzled with a tangy lemon butter sauce.",
+  "image": "https://media-assets.swiggy.com/swiggy/image/upload/f_auto,q_auto,fl_lossy/tzyesm8nrulretclxgmz",
+  "price": 730,
+  "cuisine": "Modern European",
+  "ingredients": [],
+  "dietaryType": "non-veg",
+  "category": "entree",
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "67d6c2bdd3e2f3a51f49b1d9"
+  },
+  "name": "Spicy Tacos",
+  "description": "Delicious tacos with spicy chicken, salsa, and fresh cilantro.",
+  "image": "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_240,h_240/5e070da0922f3dc7ce66ab3c3db00373",
+  "price": 350,
+  "cuisine": "Mexican",
+  "ingredients": [],
+  "dietaryType": "non-veg",
+  "category": "main course",
+  "__v": 0
+}]

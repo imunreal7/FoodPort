@@ -1,0 +1,334 @@
+[{
+  "_id": {
+    "$oid": "672dd3bb06f191edd952fea6"
+  },
+  "name": "Asia Chow",
+  "cloudinaryImageId": "6e97ac8f5c89213610309ef1940afa05",
+  "locality": "Parkside Avenue",
+  "areaName": "Sector 15",
+  "costForTwo": "₹310 for two",
+  "cuisines": [
+    "Chinese",
+    "Thai",
+    "Asian Fusion"
+  ],
+  "avgRating": 4,
+  "avgRatingString": "4",
+  "totalRatingsString": "4.5K+",
+  "isOpen": true,
+  "aggregatedDiscountInfoV3": {
+    "header": "₹100 OFF",
+    "subHeader": "ON ORDERS ABOVE ₹200",
+    "discountTag": "SPECIAL OFFER"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "672dd3bb06f191edd952fea7"
+  },
+  "name": "Oven Story Pizza Co.",
+  "cloudinaryImageId": "f986df6f1a1fcf2ff24d2eaf44d570a7",
+  "locality": "Central Plaza",
+  "areaName": "New Industrial Township",
+  "costForTwo": "₹410 for two",
+  "cuisines": [
+    "Italian",
+    "Pizza",
+    "Beverages"
+  ],
+  "avgRating": 3.7,
+  "avgRatingString": "3.7",
+  "totalRatingsString": "900+",
+  "isOpen": true,
+  "aggregatedDiscountInfoV3": {
+    "header": "₹125 OFF",
+    "subHeader": "ON ORDERS ABOVE ₹1099",
+    "discountTag": "FLAT DEAL"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "672dd3bb06f191edd952fea8"
+  },
+  "name": "Slice Hut",
+  "cloudinaryImageId": "2b4f62d606d1b2bfba9ba9e5386fabb7",
+  "locality": "Metro Mall",
+  "areaName": "Industrial Zone",
+  "costForTwo": "₹340 for two",
+  "cuisines": [
+    "Pizza"
+  ],
+  "avgRating": 3.6,
+  "avgRatingString": "3.6",
+  "totalRatingsString": "1.2K+",
+  "isOpen": true,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "a1b2c3d4e5f6789012345678"
+  },
+  "name": "Moonlight Brew",
+  "cloudinaryImageId": "mzdetw2s1ihmpiegkhyl",
+  "locality": "Sunset Alley",
+  "areaName": "Bengaluru",
+  "costForTwo": "₹320 for two",
+  "cuisines": [
+    "Café",
+    "Bakery",
+    "Snacks",
+    "Healthy Fare",
+    "Mediterranean",
+    "Fusion"
+  ],
+  "avgRating": 3.7,
+  "avgRatingString": "3.7",
+  "totalRatingsString": "12K+",
+  "isOpen": false,
+  "aggregatedDiscountInfoV3": {
+    "header": "₹150 OFF",
+    "subHeader": "On orders above ₹250",
+    "discountTag": "Exclusive Offer"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "b1c2d3e4f5a6b7c8d9e0f1a2"
+  },
+  "name": "Urban Slice",
+  "cloudinaryImageId": "hgte5u6o5gvvluewdwet",
+  "locality": "Downtown District",
+  "areaName": "Sector 15",
+  "costForTwo": "₹290 for two",
+  "cuisines": [
+    "Pizza",
+    "Pasta",
+    "Barbecue",
+    "Salads",
+    "Wraps"
+  ],
+  "avgRating": 4.3,
+  "avgRatingString": "4.3",
+  "totalRatingsString": "9K+",
+  "isOpen": false,
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "c1d2e3f4a5b6c7d8e9f01234"
+  },
+  "name": "Fiery Vessel",
+  "cloudinaryImageId": "56c9ab92bd79745fd152a30fa2525426",
+  "locality": "Culinary Plaza",
+  "areaName": "Sector 20",
+  "costForTwo": "₹450 for two",
+  "cuisines": [
+    "Grilled Specialties",
+    "Fast Casual",
+    "American Classics",
+    "Snack Bites"
+  ],
+  "avgRating": 4.6,
+  "avgRatingString": "4.6",
+  "totalRatingsString": "4.8K+",
+  "isOpen": true,
+  "aggregatedDiscountInfoV3": {
+    "header": "15% OFF",
+    "subHeader": "Save up to ₹60"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "d1e2f3a4b5c6d7e8f9012345"
+  },
+  "name": "Patty Paradise",
+  "cloudinaryImageId": "e33e1d3ba7d6b2bb0d45e1001b731fcf",
+  "locality": "Grand Arcade",
+  "areaName": "Sector 18",
+  "costForTwo": "₹350 for two",
+  "cuisines": [
+    "Gourmet Burgers",
+    "Chargrilled Specialties"
+  ],
+  "avgRating": 3.8,
+  "avgRatingString": "3.8",
+  "totalRatingsString": "7.5K+",
+  "isOpen": true,
+  "aggregatedDiscountInfoV3": {
+    "header": "Combo Offer",
+    "subHeader": "Starting at ₹150"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "e1f2a3b4c5d6e7f809123456"
+  },
+  "name": "Zen Diner",
+  "cloudinaryImageId": "0984acc0ed7b914206dbbcb90297becc",
+  "locality": "Heritage Lane",
+  "areaName": "Old Town",
+  "costForTwo": "₹300 for two",
+  "cuisines": [
+    "Asian",
+    "Fusion",
+    "Street Food",
+    "Light Bites",
+    "Smoothies"
+  ],
+  "avgRating": 4.5,
+  "avgRatingString": "4.5",
+  "totalRatingsString": "2.3K+",
+  "isOpen": false,
+  "aggregatedDiscountInfoV3": {
+    "header": "SAVE 55%",
+    "subHeader": "Max Discount ₹110"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "f1a2b3c4d5e6f70819283746"
+  },
+  "name": "Tea Time Stop",
+  "cloudinaryImageId": "2beebd3688e63e027ee8a11c1c8a72c8",
+  "locality": "Heritage Market",
+  "areaName": "Central Market",
+  "costForTwo": "₹250 for two",
+  "cuisines": [
+    "Tea House",
+    "Bakery Delights",
+    "Quick Bites",
+    "Sweets",
+    "Local Snacks"
+  ],
+  "avgRating": 3.5,
+  "avgRatingString": "3.5",
+  "totalRatingsString": "1.8K+",
+  "isOpen": true,
+  "aggregatedDiscountInfoV3": {
+    "header": "Extra 40% OFF",
+    "subHeader": "When you order 2 or more"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "0123456789abcdef01234567"
+  },
+  "name": "Roll & Wrap",
+  "cloudinaryImageId": "af33b81798b11deba338e94b7585d348",
+  "locality": "Central Hub",
+  "areaName": "Central Market",
+  "costForTwo": "₹240 for two",
+  "cuisines": [
+    "Street Kebabs",
+    "Quick Bites",
+    "Local Snacks",
+    "North Flavors",
+    "Rolls"
+  ],
+  "avgRating": 4.1,
+  "avgRatingString": "4.1",
+  "totalRatingsString": "1.3K+",
+  "isOpen": false,
+  "aggregatedDiscountInfoV3": {
+    "header": "30% OFF",
+    "subHeader": "Save up to ₹80"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "89abcdef0123456789abcdef"
+  },
+  "name": "Nirvana Bites",
+  "cloudinaryImageId": "whgmbmdif5udm6patgib",
+  "locality": "Central Market",
+  "areaName": "Sector 15",
+  "costForTwo": "₹480 for two",
+  "cuisines": [
+    "Gourmet Burgers",
+    "Sweet Treats",
+    "Fusion Cuisine",
+    "Handcrafted Pizzas",
+    "Frozen Delights"
+  ],
+  "avgRating": 3.2,
+  "avgRatingString": "3.2",
+  "totalRatingsString": "350+",
+  "isOpen": true,
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "abcdef0123456789abcdef01"
+  },
+  "name": "Eastern Spice",
+  "cloudinaryImageId": "6e97ac8f5c89213610309ef1940afa05",
+  "locality": "Riverside Drive",
+  "areaName": "Sector 15",
+  "costForTwo": "₹330 for two",
+  "cuisines": [
+    "Asian",
+    "Southeast Asian",
+    "Fusion Delights"
+  ],
+  "avgRating": 4.2,
+  "avgRatingString": "4.2",
+  "totalRatingsString": "5K+",
+  "isOpen": false,
+  "aggregatedDiscountInfoV3": {
+    "header": "₹120 OFF",
+    "subHeader": "On orders above ₹250",
+    "discountTag": "Exclusive Deal"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "fedcba9876543210fedcba98"
+  },
+  "name": "Baked Bliss Pizza",
+  "cloudinaryImageId": "f986df6f1a1fcf2ff24d2eaf44d570a7",
+  "locality": "Prime Plaza",
+  "areaName": "Innovation Park",
+  "costForTwo": "₹430 for two",
+  "cuisines": [
+    "Italian",
+    "Artisan Pizza",
+    "Craft Beverages"
+  ],
+  "avgRating": 3.9,
+  "avgRatingString": "3.9",
+  "totalRatingsString": "1K+",
+  "isOpen": true,
+  "aggregatedDiscountInfoV3": {
+    "header": "₹110 OFF",
+    "subHeader": "On orders above ₹999",
+    "discountTag": "Special Offer"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "112233445566778899aabbcc"
+  },
+  "name": "Pizza Corner",
+  "cloudinaryImageId": "2b4f62d606d1b2bfba9ba9e5386fabb7",
+  "locality": "City Mall",
+  "areaName": "Central Market",
+  "costForTwo": "₹360 for two",
+  "cuisines": [
+    "Gourmet Pizza"
+  ],
+  "avgRating": 3.8,
+  "avgRatingString": "3.8",
+  "totalRatingsString": "1.1K+",
+  "isOpen": false,
+  "__v": 1
+}]

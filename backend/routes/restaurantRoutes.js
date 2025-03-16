@@ -1,10 +1,12 @@
 const express = require("express");
 const router = express.Router();
+const restaurantController = require("../controllers/restaurantController");
 
-const { restaurants, addRestaurants } = require("../controllers/restaurantController");
-
-router.get("/restaurants", restaurants); // Get all restaurants
-router.post("/restaurants", addRestaurants); // Add a new restaurant
+// Endpoints for restaurants
+router
+    .route("/")
+    .get(restaurantController.restaurants) // Get all restaurants
+    .post(restaurantController.addRestaurants); // Add multiple restaurants
 
 module.exports = router;
 

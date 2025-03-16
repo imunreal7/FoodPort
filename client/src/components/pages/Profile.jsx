@@ -19,9 +19,12 @@ const Profile = () => {
         name: "",
         email: "",
         phone: "",
-        avatar: "", // Added avatar field
+        avatar: "",
+        dietaryPreferences: "",
+        preferredCuisine: "",
     });
 
+    // Fetch user data on component mount
     useEffect(() => {
         const token = localStorage.getItem("token");
         if (token) {
@@ -38,13 +41,16 @@ const Profile = () => {
                         name: data.name || "",
                         email: data.email || "",
                         phone: data.phone || "",
-                        avatar: data.avatar || "", // populate avatar if it exists
+                        avatar: data.avatar || "",
+                        dietaryPreferences: data.dietaryPreferences || "",
+                        preferredCuisine: data.preferredCuisine || "",
                     });
                 })
                 .catch((err) => console.error("Error fetching user data:", err));
         }
     }, []);
 
+    // Handle form input changes
     const handleInputChange = (e) => {
         setFormData((prev) => ({
             ...prev,
@@ -52,23 +58,24 @@ const Profile = () => {
         }));
     };
 
+    // Handle avatar selection
     const handleAvatarSelect = (url) => {
         setFormData((prev) => ({ ...prev, avatar: url }));
     };
 
+    // Handle updating the user profile
     const handleUpdate = () => {
         // Basic validation
         if (!formData.name || !formData.email || !formData.phone) {
             toast.error("Please fill in all required fields.");
             return;
         }
-        // Optionally, ensure an avatar is selected (if required)
         if (!formData.avatar) {
             toast.error("Please select an avatar.");
             return;
         }
         const token = localStorage.getItem("token");
-        fetch(`${apiUrl}/api/auth/update/${user._id}`, {
+        fetch(`${apiUrl}/api/auth/update`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
@@ -92,6 +99,7 @@ const Profile = () => {
             });
     };
 
+    // Render a loading state while fetching data
     if (!user) {
         return (
             <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-lime-50 via-lime-100 to-lime-50">
@@ -104,11 +112,10 @@ const Profile = () => {
     }
 
     return (
-        <div className="min-h-screen to-green-100 bg-gradient-to-br from-lime-50 via-lime-100 to-lime-50    flex items-center justify-center">
+        <div className="min-h-screen bg-gradient-to-br from-lime-50 via-lime-100 to-lime-50 flex items-center justify-center">
             <div className="max-w-3xl w-full bg-white/80 backdrop-blur-md rounded-lg shadow-xl p-8">
-                {/* Avatar + Heading */}
+                {/* Avatar and Heading */}
                 <div className="flex flex-col items-center mb-8">
-                    {/* Show the selected avatar if available, otherwise a default icon */}
                     <div className="rounded-full border-4 border-lime-500 p-1 mb-4">
                         {formData.avatar ? (
                             <img
@@ -124,7 +131,7 @@ const Profile = () => {
                     <p className="text-gray-600 text-sm">Manage your personal information</p>
                 </div>
 
-                {/* Profile Details / Edit Form */}
+                {/* View Mode */}
                 {!editMode ? (
                     <div className="text-center sm:text-left">
                         <div className="mb-4">
@@ -139,6 +146,18 @@ const Profile = () => {
                                     <span className="font-semibold">Phone:</span> {user.phone}
                                 </p>
                             )}
+                            {user.dietaryPreferences && (
+                                <p className="text-lg">
+                                    <span className="font-semibold">Dietary Preferences:</span>{" "}
+                                    {user.dietaryPreferences}
+                                </p>
+                            )}
+                            {user.preferredCuisine && (
+                                <p className="text-lg">
+                                    <span className="font-semibold">Preferred Cuisine:</span>{" "}
+                                    {user.preferredCuisine}
+                                </p>
+                            )}
                         </div>
                         <div className="flex justify-center sm:justify-start">
                             <button
@@ -150,6 +169,7 @@ const Profile = () => {
                         </div>
                     </div>
                 ) : (
+                    // Edit Mode
                     <div>
                         <div className="mb-4">
                             <label className="block text-gray-700 font-medium mb-1">Name</label>
@@ -181,8 +201,35 @@ const Profile = () => {
                                 className="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-lime-400"
                             />
                         </div>
-
-                        {/* Food-Themed Avatar Selection */}
+                        <div className="mb-4">
+                            <label className="block text-gray-700 font-medium mb-1">
+                                Dietary Preferences
+                            </label>
+                            <select
+                                name="dietaryPreferences"
+                                value={formData.dietaryPreferences}
+                                onChange={handleInputChange}
+                                className="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-lime-400"
+                            >
+                                <option value="">Select</option>
+                                <option value="veg">Vegetarian</option>
+                                <option value="non-veg">Non-Vegetarian</option>
+                                <option value="vegan">Vegan</option>
+                            </select>
+                        </div>
+                        <div className="mb-4">
+                            <label className="block text-gray-700 font-medium mb-1">
+                                Preferred Cuisine
+                            </label>
+                            <input
+                                type="text"
+                                name="preferredCuisine"
+                                value={formData.preferredCuisine}
+                                onChange={handleInputChange}
+                                className="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-lime-400"
+                            />
+                        </div>
+                        {/* Avatar Selection */}
                         <div className="mb-4">
                             <p className="block text-gray-700 font-medium mb-1">Select an Avatar</p>
                             <div className="flex flex-wrap gap-4">
@@ -205,7 +252,6 @@ const Profile = () => {
                                 ))}
                             </div>
                         </div>
-
                         <div className="flex space-x-4">
                             <button
                                 onClick={handleUpdate}

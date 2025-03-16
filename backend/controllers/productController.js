@@ -1,50 +1,28 @@
 const Product = require("../models/Product");
+const asyncHandler = require("../middleware/asyncHandler");
 
 // Get all products
-const products = async (req, res) => {
-    try {
-        const data = await Product.find();
-        res.status(200).json(data);
-    } catch (error) {
-        res.status(500).json({ message: error.message });
-    }
-};
+exports.products = asyncHandler(async (req, res) => {
+    const data = await Product.find();
+    res.status(200).json(data);
+});
 
 // Get products by name
-const getProductByName = async (req, res) => {
-    try {
-        const data = await Product.find({ name: req.query.name });
-        res.status(200).json(data);
-    } catch (error) {
-        res.status(500).json({ message: error.message });
-    }
-};
+exports.getProductByName = asyncHandler(async (req, res) => {
+    const data = await Product.find({ name: req.query.name });
+    res.status(200).json(data);
+});
 
 // Get products by restaurant ID
-const productsOfRestro = async (req, res) => {
-    try {
-        const filtered = await Product.find({ restro_id: req.params.id });
-        res.status(200).json(filtered);
-    } catch (error) {
-        res.status(500).json({ message: error.message });
-    }
-};
+exports.productsOfRestro = asyncHandler(async (req, res) => {
+    const filtered = await Product.find({ restro_id: req.params.id });
+    res.status(200).json(filtered);
+});
 
 // Add multiple products
-const addProducts = async (req, res) => {
-    try {
-        const products = req.body; // Expect an array of products
-        const newProducts = await Product.insertMany(products);
-        res.status(201).json(newProducts);
-    } catch (error) {
-        res.status(500).json({ message: error.message });
-    }
-};
-
-module.exports = {
-    products,
-    productsOfRestro,
-    addProducts,
-    getProductByName,
-};
+exports.addProducts = asyncHandler(async (req, res) => {
+    const products = req.body; // Expect an array of products
+    const newProducts = await Product.insertMany(products);
+    res.status(201).json(newProducts);
+});
 
