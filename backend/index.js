@@ -10,7 +10,7 @@ const cartRoutes = require("./routes/cartRoutes");
 const orderRoutes = require("./routes/orderRoutes");
 const recommendationRoutes = require("./routes/recommendationRoutes");
 const mongoose = require("mongoose");
-const port = process.env.PORT;
+const port = 5000;
 
 app.use(cors());
 
