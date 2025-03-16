@@ -5,7 +5,7 @@ const jwt = require("jsonwebtoken");
 // @desc Register a new user
 exports.registerUser = async (req, res) => {
     try {
-        const { name, email, password, phone } = req.body;
+        const { name, email, password, phone, avatar } = req.body;
 
         // Check if the user already exists
         let user = await User.findOne({ email });
@@ -15,14 +15,14 @@ exports.registerUser = async (req, res) => {
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(password, salt);
 
-        // Create user
-        user = new User({ name, email, phone, password: hashedPassword });
+        // Create user (include avatar if provided)
+        user = new User({ name, email, phone, password: hashedPassword, avatar });
         await user.save();
 
         // Generate JWT token
         const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: "7d" });
 
-        res.json({ token, user: { id: user._id, name, email } });
+        res.json({ token, user: { id: user._id, name, email, avatar } });
     } catch (err) {
         res.status(500).json({ msg: "Server error" });
     }
@@ -44,7 +44,7 @@ exports.loginUser = async (req, res) => {
         // Generate JWT token
         const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: "7d" });
 
-        res.json({ token, user: { id: user._id, name: user.name, email } });
+        res.json({ token, user: { id: user._id, name: user.name, email, avatar: user.avatar } });
     } catch (err) {
         console.log(err);
         res.status(500).json({ msg: "Server error" });
@@ -61,16 +61,18 @@ exports.getUser = async (req, res) => {
     }
 };
 
+// @desc Update user profile
 exports.updateUser = async (req, res) => {
     try {
-        const { name, email, phone, dietaryPreferences, preferredCuisine } = req.body;
+        const { name, email, phone, dietaryPreferences, preferredCuisine, avatar } = req.body;
 
         const user = await User.findById(req.user.userId);
         user.name = name;
         user.email = email;
         user.phone = phone;
-        user.preferredCuisine = dietaryPreferences;
-        user.dietaryPreferences = preferredCuisine;
+        user.dietaryPreferences = dietaryPreferences;
+        user.preferredCuisine = preferredCuisine;
+        user.avatar = avatar; // update avatar
 
         await user.save();
 

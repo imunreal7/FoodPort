@@ -51,7 +51,7 @@ if os.path.exists(PRODUCT_METADATA_PATH):
 else:
     product_metadata = []
 
-def get_recommendations_for_user(req: RecommendationRequest, k: int = 10):
+def get_recommendations_for_user(req: RecommendationRequest, k: int = 3):
     # For demo: generate a random query embedding.
     query_embedding = np.random.rand(1, index.d).astype("float32")
     # Retrieve more candidates than needed for filtering.
@@ -106,7 +106,7 @@ def get_recommendations_for_user(req: RecommendationRequest, k: int = 10):
 async def recommendations_endpoint(req: RecommendationRequest):
     if index is None or not product_metadata:
         raise HTTPException(status_code=500, detail="Recommendation engine not ready")
-    recs = get_recommendations_for_user(req, k=10)
+    recs = get_recommendations_for_user(req, k=3)
     return {"recommendations": recs}
 
 if __name__ == "__main__":

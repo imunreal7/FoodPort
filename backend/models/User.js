@@ -11,6 +11,7 @@ const UserSchema = new mongoose.Schema({
         enum: ["veg", "non-veg", "vegan"],
     },
     preferredCuisine: { type: String }, // e.g., "Italian", "Indian", etc.
+    avatar: { type: String }, // new field to store the selected avatar URL
 });
 
 module.exports = mongoose.model("User", UserSchema);

@@ -4,16 +4,16 @@ import Benefits from "../Benefits";
 const About = () => {
     return (
         <>
-            <PageHeader
-                title="About us"
-                style={{ fontSize: "1.5rem", fontFamily: "Arial, sans-serif" }}
-            />
-            <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
+            <PageHeader title="About us" />
+            <div
+                className="mx-auto w-full max-w-screen-xl py-16 px-6 lg:px-8 border-b"
+                style={{ maxWidth: "1200px", margin: "0 auto" }}
+            >
                 <p
                     style={{
                         padding: "1.25rem",
                         fontSize: "1rem",
-                        color: "#64748b",
+                        color: "#6c757d",
                         textAlign: "justify",
                         textAlignLast: "center",
                         paddingLeft: "1rem",

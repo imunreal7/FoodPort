@@ -9,8 +9,8 @@ const PersonalisedRecommendation = () => {
     const dispatch = useDispatch();
     const token = localStorage.getItem("token");
 
+    // Fetch user details
     useEffect(() => {
-        // Fetch user details
         if (token) {
             fetch("http://localhost:5000/api/auth/me", {
                 headers: {
@@ -26,6 +26,7 @@ const PersonalisedRecommendation = () => {
         }
     }, [token]);
 
+    // Fetch personalized recommendations once user info is available
     useEffect(() => {
         const fetchRecommendations = async () => {
             try {
@@ -53,6 +54,7 @@ const PersonalisedRecommendation = () => {
         }
     }, [user, token]);
 
+    // Add product to cart (creates product if not found)
     const handleAddToCart = async (product) => {
         try {
             // Attempt to find the product by name
@@ -91,41 +93,66 @@ const PersonalisedRecommendation = () => {
         }
     };
 
+    // Reload page to get fresh recommendations
+    const handleReload = () => {
+        window.location.reload();
+    };
+
     return (
-        <div className="max-w-7xl mx-auto p-8">
-            <h1 className="text-3xl font-bold mb-4">Your AI Personalised Recommendations</h1>
-            {recommendations.length === 0 ? (
-                <p className="text-center text-gray-500">
-                    No recommendations available at the moment.
-                </p>
-            ) : (
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-                    {recommendations.map((product) => (
-                        <div
-                            key={product._id}
-                            className="border p-4 rounded-md shadow hover:shadow-lg transition-shadow duration-200"
-                        >
-                            <img
-                                src={product.image}
-                                alt={product.name}
-                                className="w-full h-48 object-cover rounded-md mb-4"
-                            />
-                            <h2 className="text-xl font-semibold">{product.name}</h2>
-                            <p className="text-gray-600">{product.description}</p>
-                            <p className="mt-2 font-bold">₹{product.price}</p>
-                            <p className="text-sm text-gray-500">
-                                {product.cuisine} | {product.dietaryType} | {product.category}
-                            </p>
-                            <button
-                                onClick={() => handleAddToCart(product)}
-                                className="mt-4 w-full py-2 px-4 border border-lime-600 text-lime-600 hover:bg-lime-600 hover:text-white rounded-md transition duration-300"
-                            >
-                                Add to cart
-                            </button>
-                        </div>
-                    ))}
+        <div className="to-green-100 bg-gradient-to-br from-gray-100 to-gray-200 py-8 px-4">
+            <div className="max-w-7xl mx-auto space-y-6">
+                {/* Header + Reload Button */}
+                <div className="flex items-center justify-between">
+                    <h1 className="text-3xl font-extrabold text-lime-700">
+                        Your AI Personalised Recommendations
+                    </h1>
+                    <button
+                        onClick={handleReload}
+                        className="py-2 px-4 bg-lime-600 text-white rounded-md shadow hover:bg-lime-700 transition-colors"
+                    >
+                        Try Something Else
+                    </button>
                 </div>
-            )}
+
+                {/* Recommendation List */}
+                {recommendations.length === 0 ? (
+                    <p className="text-center text-gray-500">
+                        No recommendations available at the moment.
+                    </p>
+                ) : (
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                        {recommendations.map((product) => (
+                            <div
+                                key={product._id}
+                                className="border border-lime-200 p-4 rounded-lg shadow hover:shadow-xl
+                           transition-shadow duration-300 bg-white"
+                            >
+                                <img
+                                    src={product.image}
+                                    alt={product.name}
+                                    className="w-full h-48 object-cover rounded-md mb-4"
+                                />
+                                <h2 className="text-xl font-semibold text-gray-800">
+                                    {product.name}
+                                </h2>
+                                <p className="text-gray-600 mt-1">{product.description}</p>
+                                <p className="mt-2 font-bold text-gray-800">₹{product.price}</p>
+                                <p className="text-sm text-gray-500">
+                                    {product.cuisine} | {product.dietaryType} | {product.category}
+                                </p>
+                                <button
+                                    onClick={() => handleAddToCart(product)}
+                                    className="mt-4 w-full py-2 px-4 border border-lime-600
+                             text-lime-600 hover:bg-lime-600 hover:text-white
+                             rounded-md transition-colors duration-300 font-semibold"
+                                >
+                                    Add to cart
+                                </button>
+                            </div>
+                        ))}
+                    </div>
+                )}
+            </div>
         </div>
     );
 };

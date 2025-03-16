@@ -17,6 +17,7 @@ const CartSummary = ({ cartItems }) => {
                 duration: 2000,
                 position: "top-center",
             });
+            navigate("/sign-in");
             return;
         }
         navigate("/checkout");

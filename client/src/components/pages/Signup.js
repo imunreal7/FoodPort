@@ -1,16 +1,18 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import "./css/custom.css";
+import background from "../../images/FoodPort-Background2.jpg";
 
 const Signup = () => {
     const navigate = useNavigate();
-
-    // Track all form fields, including phone if you want it
     const [formData, setFormData] = useState({
         name: "",
         email: "",
         phone: "",
         password: "",
     });
+    const [errors, setErrors] = useState({});
+    const [serverError, setServerError] = useState("");
 
     // Update state on input change
     const handleChange = (e) => {
@@ -20,48 +22,76 @@ const Signup = () => {
         }));
     };
 
+    // Client-side validation for sign-up
+    const validate = () => {
+        let errors = {};
+        if (!formData.name) {
+            errors.name = "Name is required";
+        }
+        if (!formData.email) {
+            errors.email = "Email is required";
+        } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+            errors.email = "Enter a valid email address";
+        }
+        if (!formData.phone) {
+            errors.phone = "Phone number is required";
+        } else if (!/^\d{10}$/.test(formData.phone)) {
+            errors.phone = "Phone number must be 10 digits";
+        }
+        if (!formData.password) {
+            errors.password = "Password is required";
+        } else if (formData.password.length < 6) {
+            errors.password = "Password must be at least 6 characters";
+        }
+        setErrors(errors);
+        return Object.keys(errors).length === 0;
+    };
+
     // Handle form submission
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setServerError("");
+        if (!validate()) return;
         try {
             const response = await fetch("http://localhost:5000/api/auth/register", {
                 method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
+                headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(formData),
             });
 
             const data = await response.json();
 
-            // If registration failed (e.g., user already exists), handle error
             if (!response.ok) {
                 throw new Error(data.msg || "Something went wrong");
             }
 
-            // If successful, save the JWT token (and user info) as needed
             localStorage.setItem("token", data.token);
-
-            // Optionally navigate to home or a profile page
             navigate("/");
         } catch (error) {
             console.error("Registration error:", error);
-            // You can display an error message or toast here
+            setServerError(error.message);
         }
     };
 
     return (
-        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row my-20 pt-8 lg:px-8 pb-8 lg:gap-16 items-center">
-            <div className="shadow-xl sm:w-full lg:w-3/5 mx-auto p-8">
-                <h1 className="text-center text-5xl font-extrabold">Sign Up</h1>
+        <div
+            className="min-h-screen flex items-center justify-center bg-cover bg-center bg-no-repeat py-12 px-4 shadow lg:shadow-lg border border-gray-200 sm:px-6 lg:px-8"
+            style={{
+                backgroundImage: `url(${background})`,
+            }}
+        >
+            <div className="card w-full max-w-md p-8">
+                <h1 className="text-center text-4xl font-extrabold text-gray-800 mb-6">Sign Up</h1>
+                {serverError && <p className="text-red-600 text-center my-2">{serverError}</p>}
                 <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-                    {/* NAME */}
                     <div className="flex flex-col">
-                        <label htmlFor="name" className="mb-2">
+                        <label htmlFor="name" className="mb-2 text-gray-700">
                             Name
                         </label>
                         <input
-                            className="p-3 border rounded"
+                            className={`p-3 border rounded ${
+                                errors.name ? "border-red-500" : "border-gray-300"
+                            }`}
                             type="text"
                             name="name"
                             placeholder="Enter name"
@@ -69,14 +99,16 @@ const Signup = () => {
                             value={formData.name}
                             onChange={handleChange}
                         />
+                        {errors.name && <p className="text-red-600 text-sm mt-1">{errors.name}</p>}
                     </div>
-                    {/* EMAIL */}
                     <div className="flex flex-col">
-                        <label htmlFor="email" className="mb-2">
+                        <label htmlFor="email" className="mb-2 text-gray-700">
                             Email
                         </label>
                         <input
-                            className="p-3 border rounded"
+                            className={`p-3 border rounded ${
+                                errors.email ? "border-red-500" : "border-gray-300"
+                            }`}
                             type="email"
                             name="email"
                             placeholder="Enter email"
@@ -84,14 +116,18 @@ const Signup = () => {
                             value={formData.email}
                             onChange={handleChange}
                         />
+                        {errors.email && (
+                            <p className="text-red-600 text-sm mt-1">{errors.email}</p>
+                        )}
                     </div>
-                    {/* PHONE (Optional) */}
                     <div className="flex flex-col">
-                        <label htmlFor="phone" className="mb-2">
+                        <label htmlFor="phone" className="mb-2 text-gray-700">
                             Phone
                         </label>
                         <input
-                            className="p-3 border rounded"
+                            className={`p-3 border rounded ${
+                                errors.phone ? "border-red-500" : "border-gray-300"
+                            }`}
                             type="text"
                             name="phone"
                             placeholder="Enter phone"
@@ -99,14 +135,18 @@ const Signup = () => {
                             value={formData.phone}
                             onChange={handleChange}
                         />
+                        {errors.phone && (
+                            <p className="text-red-600 text-sm mt-1">{errors.phone}</p>
+                        )}
                     </div>
-                    {/* PASSWORD */}
                     <div className="flex flex-col">
-                        <label htmlFor="password" className="mb-2">
+                        <label htmlFor="password" className="mb-2 text-gray-700">
                             Password
                         </label>
                         <input
-                            className="p-3 border rounded"
+                            className={`p-3 border rounded ${
+                                errors.password ? "border-red-500" : "border-gray-300"
+                            }`}
                             type="password"
                             name="password"
                             placeholder="Enter password"
@@ -114,20 +154,20 @@ const Signup = () => {
                             value={formData.password}
                             onChange={handleChange}
                         />
+                        {errors.password && (
+                            <p className="text-red-600 text-sm mt-1">{errors.password}</p>
+                        )}
                     </div>
-
-                    <div>
-                        <button
-                            type="submit"
-                            className="py-3 px-8 bg-lime-600 text-white font-semibold"
-                        >
-                            Sign Up
-                        </button>
-                    </div>
+                    <button
+                        type="submit"
+                        className="py-3 px-8 bg-lime-600 text-white font-semibold rounded hover:bg-lime-700 transition-colors duration-200"
+                    >
+                        Sign Up
+                    </button>
                 </form>
-                <p className="pt-8">
+                <p className="pt-8 text-center">
                     Already have an account?{" "}
-                    <Link className="text-lime-600" to="/sign-in">
+                    <Link className="text-lime-600 font-medium" to="/sign-in">
                         Log In
                     </Link>
                 </p>

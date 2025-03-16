@@ -1,11 +1,14 @@
 const PageHeader = (props) => {
-    return(
+    return (
         <>
-        <div className="h-52 w-full bg-[#feffcb] flex items-center justify-center">
-            <h2 className="logo-text-second capitalize text-4xl lg:text-6xl font-extrabold text-center lg:text-left">{props.title}</h2>
-        </div>
+            <div className=" h-40 w-full bg-gradient-to-t from-lime-100 via-lime-200 flex items-center justify-center">
+                <h2 className="text-4xl font-bold text-lime-600 capitalize text-center lg:text-lef">
+                    {props.title}
+                </h2>
+            </div>
         </>
-    )
-}
+    );
+};
 
-export default PageHeader
+export default PageHeader;
+

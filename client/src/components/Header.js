@@ -2,7 +2,6 @@ import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import { NavLink, Link, useLocation, useNavigate } from "react-router-dom";
 import ShoppingCartCheckoutIcon from "@mui/icons-material/ShoppingCartCheckout";
-import logo from "../logo.png";
 import "./css/Header.css";
 
 const Header = () => {
@@ -40,7 +39,6 @@ const Header = () => {
                             {/* LOGO */}
                             <div className="flex lg:ml-0">
                                 <Link to="/" className="flex items-center space-x-2">
-                                    <img className="h-8 w-auto" src={logo} alt="FoodPort Logo" />
                                     <div className="logo-text hidden lg:block">
                                         Food<span className="logo-text-second">Port</span>
                                     </div>
@@ -56,12 +54,6 @@ const Header = () => {
                                     <NavLink to="/restaurants" className="nav-link">
                                         Restaurants
                                     </NavLink>
-                                    <NavLink to="/about" className="nav-link">
-                                        About Us
-                                    </NavLink>
-                                    <NavLink to="/contact" className="nav-link">
-                                        Contact Us
-                                    </NavLink>
                                     {isAuthenticated && (
                                         <NavLink to="/orders-history" className="nav-link">
                                             My Orders
@@ -75,6 +67,12 @@ const Header = () => {
                                             AI Recommendation
                                         </NavLink>
                                     )}
+                                    <NavLink to="/about" className="nav-link">
+                                        About Us
+                                    </NavLink>
+                                    <NavLink to="/contact" className="nav-link">
+                                        Contact Us
+                                    </NavLink>
                                 </div>
                             </div>
 
