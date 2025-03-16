@@ -88,6 +88,15 @@ const RestaurantListWithFilters = (props) => {
                     </div>
                     {/* Sector 15 */}
                     <div
+                        onClick={() => handleFilter("Central Market")}
+                        className="flex items-center gap-1 py-2 px-3 bg-white border border-gray-200
+                       rounded-md shadow-sm hover:bg-lime-600 hover:text-white
+                       cursor-pointer transition-colors"
+                    >
+                        <WhereToVoteOutlinedIcon />
+                        <span className="font-semibold">Central Market</span>
+                    </div>
+                    <div
                         onClick={() => handleFilter("sector 15")}
                         className="flex items-center gap-1 py-2 px-3 bg-white border border-gray-200
                        rounded-md shadow-sm hover:bg-lime-600 hover:text-white

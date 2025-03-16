@@ -1,4 +1,3 @@
-// ProductCard.js
 import { useDispatch } from "react-redux";
 import { addToCart } from "../redux/slices/cartSlice";
 import StarIcon from "@mui/icons-material/Star";
@@ -8,13 +7,12 @@ const ProductCard = ({ item }) => {
     const dispatch = useDispatch();
 
     const handleAddToCart = (product) => {
-        // Dispatch addToCart with product's unique ID, quantity, and price
         dispatch(
             addToCart({
-                product: product._id, // use _id for MongoDB objects
+                product: product._id,
                 quantity: 1,
                 price: product.price,
-            })
+            }),
         )
             .unwrap()
             .then(() => {
@@ -35,13 +33,12 @@ const ProductCard = ({ item }) => {
 
     return (
         <div className="rounded-lg shadow-lg hover:shadow-xl cursor-pointer overflow-hidden group dark:bg-gray-800 dark:border-gray-700 transition duration-300">
-            <a href="">
-                <img
-                    className="h-64 w-full rounded-t-lg transition-transform ease-in-out group-hover:scale-105 group-hover:-translate-y-1 duration-300"
-                    src={item.image}
-                    alt="product"
-                />
-            </a>
+            {/* Use object-cover so images keep their aspect ratio */}
+            <img
+                className="w-full h-64 object-cover rounded-t-lg transition-transform ease-in-out group-hover:scale-105 group-hover:-translate-y-1 duration-300"
+                src={item.image}
+                alt={item.name}
+            />
             <div className="p-5">
                 <h5 className="text-xl font-semibold text-gray-800 dark:text-white">{item.name}</h5>
                 <p className="text-sm text-gray-500 font-normal mt-2">{item.description}</p>

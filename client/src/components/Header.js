@@ -2,12 +2,12 @@ import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import { NavLink, Link, useLocation, useNavigate } from "react-router-dom";
 import ShoppingCartCheckoutIcon from "@mui/icons-material/ShoppingCartCheckout";
-import "./css/Header.css";
+import logo from "../logo.png";
 
 const Header = () => {
     const cartItems = useSelector((store) => store.cart.items);
-
     const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const location = useLocation();
     const navigate = useNavigate();
 
@@ -22,127 +22,272 @@ const Header = () => {
         navigate("/");
     };
 
-    function navbarToggle() {
-        const element = document.getElementById("toggleNavbar");
-        element.classList.toggle("hidden");
-    }
-
     return (
-        <div className="bg-white sticky top-0 z-50">
-            <header className="relative bg-white">
-                <nav
-                    aria-label="Top"
-                    className="px-5 sm:px-7 lg:px-9 border-b border-gray-300 dark:bg-gray-800 dark:border-neutral-900"
-                >
-                    <div className="max-w-7xl mx-auto">
-                        <div className="flex h-16 items-center">
-                            {/* LOGO */}
-                            <div className="flex lg:ml-0">
-                                <Link to="/" className="flex items-center space-x-2">
-                                    <div className="logo-text hidden lg:block">
-                                        Food<span className="logo-text-second">Port</span>
-                                    </div>
-                                </Link>
-                            </div>
+        <header className="bg-gray-50 dark:bg-gray-900 sticky top-0 z-50 border-b border-gray-300 dark:border-gray-700">
+            <div className="max-w-screen-xl mx-auto px-6 py-4 flex items-center justify-between">
+                {/* Logo */}
+                <div className="flex-shrink-0">
+                    <Link to="/" className="flex items-center space-x-2">
+                        {/* Replace the src with your logo path */}
+                        <img src={logo} alt="FoodPort Logo" className="h-8 w-auto" />
+                        <span className="text-xl font-bold text-gray-800 dark:text-white">
+                            Food<span className="text-lime-600">Port</span>
+                        </span>
+                    </Link>
+                </div>
 
-                            {/* MAIN NAV LINKS */}
-                            <div id="toggleNavbar" className="hidden ml-8 lg:block">
-                                <div className="flex space-x-8 absolute lg:relative bg-white h-[33vh] lg:h-[0vh] w-full left-0 top-[101%] flex-col lg:flex-row items-center p-4 lg:p-0">
-                                    <NavLink to="/" className="nav-link">
-                                        Home
-                                    </NavLink>
-                                    <NavLink to="/restaurants" className="nav-link">
-                                        Restaurants
-                                    </NavLink>
-                                    {isAuthenticated && (
-                                        <NavLink to="/orders-history" className="nav-link">
-                                            My Orders
-                                        </NavLink>
-                                    )}
-                                    {isAuthenticated && (
-                                        <NavLink
-                                            to="/personalised-recommendation"
-                                            className="nav-link"
-                                        >
-                                            AI Recommendation
-                                        </NavLink>
-                                    )}
-                                    <NavLink to="/about" className="nav-link">
-                                        About Us
-                                    </NavLink>
-                                    <NavLink to="/contact" className="nav-link">
-                                        Contact Us
-                                    </NavLink>
-                                </div>
-                            </div>
+                {/* Desktop Navigation */}
+                <nav className="hidden md:flex space-x-6">
+                    <NavLink
+                        to="/"
+                        className={({ isActive }) =>
+                            isActive
+                                ? "text-lime-600 font-medium"
+                                : "text-gray-700 dark:text-gray-300 hover:text-lime-600 font-medium"
+                        }
+                    >
+                        Home
+                    </NavLink>
+                    <NavLink
+                        to="/restaurants"
+                        className={({ isActive }) =>
+                            isActive
+                                ? "text-lime-600 font-medium"
+                                : "text-gray-700 dark:text-gray-300 hover:text-lime-600 font-medium"
+                        }
+                    >
+                        Restaurants
+                    </NavLink>
+                    {isAuthenticated && (
+                        <NavLink
+                            to="/orders-history"
+                            className={({ isActive }) =>
+                                isActive
+                                    ? "text-lime-600 font-medium"
+                                    : "text-gray-700 dark:text-gray-300 hover:text-lime-600 font-medium"
+                            }
+                        >
+                            My Orders
+                        </NavLink>
+                    )}
+                    {isAuthenticated && (
+                        <NavLink
+                            to="/personalised-recommendation"
+                            className={({ isActive }) =>
+                                isActive
+                                    ? "text-lime-600 font-medium"
+                                    : "text-gray-700 dark:text-gray-300 hover:text-lime-600 font-medium"
+                            }
+                        >
+                            AI Recommendation
+                        </NavLink>
+                    )}
+                    <NavLink
+                        to="/about"
+                        className={({ isActive }) =>
+                            isActive
+                                ? "text-lime-600 font-medium"
+                                : "text-gray-700 dark:text-gray-300 hover:text-lime-600 font-medium"
+                        }
+                    >
+                        About Us
+                    </NavLink>
+                    <NavLink
+                        to="/contact"
+                        className={({ isActive }) =>
+                            isActive
+                                ? "text-lime-600 font-medium"
+                                : "text-gray-700 dark:text-gray-300 hover:text-lime-600 font-medium"
+                        }
+                    >
+                        Contact Us
+                    </NavLink>
+                </nav>
 
-                            {/* RIGHT SIDE */}
-                            <div className="ml-auto flex items-center">
-                                {/* CART ICON */}
-                                <div className="ml-4 flow-root lg:ml-6">
+                {/* Right Side */}
+                <div className="flex items-center">
+                    <Link
+                        to="/cart"
+                        className="relative p-2 text-gray-700 dark:text-gray-300 hover:text-lime-600"
+                    >
+                        <ShoppingCartCheckoutIcon />
+                        {cartItems.length > 0 && (
+                            <span className="absolute -top-1 -right-1 bg-lime-600 text-white text-xs font-semibold rounded-full h-5 w-5 flex items-center justify-center">
+                                {cartItems.length}
+                            </span>
+                        )}
+                    </Link>
+                    {isAuthenticated ? (
+                        <div className="hidden md:flex items-center space-x-4 ml-4">
+                            <NavLink
+                                to="/profile"
+                                className={({ isActive }) =>
+                                    isActive
+                                        ? "text-lime-600 font-medium"
+                                        : "text-gray-700 dark:text-gray-300 hover:text-lime-600 font-medium"
+                                }
+                            >
+                                Profile
+                            </NavLink>
+                            <button
+                                onClick={handleLogout}
+                                className="text-gray-700 dark:text-gray-300 hover:text-lime-600 font-medium"
+                            >
+                                Logout
+                            </button>
+                        </div>
+                    ) : (
+                        <div className="hidden md:flex items-center space-x-4 ml-4">
+                            <NavLink
+                                to="/sign-in"
+                                className={({ isActive }) =>
+                                    isActive
+                                        ? "text-lime-600 font-medium"
+                                        : "text-gray-700 dark:text-gray-300 hover:text-lime-600 font-medium"
+                                }
+                            >
+                                Log in
+                            </NavLink>
+                            <NavLink
+                                to="/sign-up"
+                                className={({ isActive }) =>
+                                    isActive
+                                        ? "text-lime-600 font-medium"
+                                        : "text-gray-700 dark:text-gray-300 hover:text-lime-600 font-medium"
+                                }
+                            >
+                                Sign up
+                            </NavLink>
+                        </div>
+                    )}
+
+                    {/* Mobile Menu Toggle */}
+                    <div className="md:hidden ml-4">
+                        <button
+                            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                            className="p-2 text-gray-700 dark:text-gray-300 hover:text-lime-600 focus:outline-none"
+                        >
+                            <svg
+                                className="w-6 h-6"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                {mobileMenuOpen ? (
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth="2"
+                                        d="M6 18L18 6M6 6l12 12"
+                                    />
+                                ) : (
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth="2"
+                                        d="M4 6h16M4 12h16M4 18h16"
+                                    />
+                                )}
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            {/* Mobile Navigation */}
+            {mobileMenuOpen && (
+                <nav className="md:hidden bg-gray-50 dark:bg-gray-900 border-t border-gray-300 dark:border-gray-700">
+                    <div className="px-6 py-4 space-y-3">
+                        <NavLink
+                            onClick={() => setMobileMenuOpen(false)}
+                            to="/"
+                            className="block text-gray-700 dark:text-gray-300 hover:text-lime-600 font-medium"
+                        >
+                            Home
+                        </NavLink>
+                        <NavLink
+                            onClick={() => setMobileMenuOpen(false)}
+                            to="/restaurants"
+                            className="block text-gray-700 dark:text-gray-300 hover:text-lime-600 font-medium"
+                        >
+                            Restaurants
+                        </NavLink>
+                        {isAuthenticated && (
+                            <NavLink
+                                onClick={() => setMobileMenuOpen(false)}
+                                to="/orders-history"
+                                className="block text-gray-700 dark:text-gray-300 hover:text-lime-600 font-medium"
+                            >
+                                My Orders
+                            </NavLink>
+                        )}
+                        {isAuthenticated && (
+                            <NavLink
+                                onClick={() => setMobileMenuOpen(false)}
+                                to="/personalised-recommendation"
+                                className="block text-gray-700 dark:text-gray-300 hover:text-lime-600 font-medium"
+                            >
+                                AI Recommendation
+                            </NavLink>
+                        )}
+                        <NavLink
+                            onClick={() => setMobileMenuOpen(false)}
+                            to="/about"
+                            className="block text-gray-700 dark:text-gray-300 hover:text-lime-600 font-medium"
+                        >
+                            About Us
+                        </NavLink>
+                        <NavLink
+                            onClick={() => setMobileMenuOpen(false)}
+                            to="/contact"
+                            className="block text-gray-700 dark:text-gray-300 hover:text-lime-600 font-medium"
+                        >
+                            Contact Us
+                        </NavLink>
+                        <div className="pt-3 border-t border-gray-300 dark:border-gray-700">
+                            {isAuthenticated ? (
+                                <>
                                     <NavLink
-                                        to="/cart"
-                                        className="group -m-2 flex items-center p-2"
+                                        onClick={() => setMobileMenuOpen(false)}
+                                        to="/profile"
+                                        className="block text-gray-700 dark:text-gray-300 hover:text-lime-600 font-medium"
                                     >
-                                        <ShoppingCartCheckoutIcon className="text-gray-700 dark:text-white hover:text-lime-600" />
-                                        <span className="ml-1 text-sm font-medium text-gray-700 dark:text-white group-hover:text-lime-600">
-                                            {cartItems.length}
-                                        </span>
+                                        Profile
                                     </NavLink>
-                                </div>
-
-                                <div className="pr-2 lg:pr-0 lg:flex lg:items-center lg:space-x-6 ml-4">
-                                    {isAuthenticated ? (
-                                        <>
-                                            <NavLink to="/profile" className="nav-link">
-                                                Profile
-                                            </NavLink>
-                                            <button onClick={handleLogout} className="nav-link">
-                                                Logout
-                                            </button>
-                                        </>
-                                    ) : (
-                                        <>
-                                            <NavLink to="/sign-in" className="nav-link">
-                                                Log in
-                                            </NavLink>
-                                            <NavLink to="/sign-up" className="nav-link">
-                                                Sign up
-                                            </NavLink>
-                                        </>
-                                    )}
-                                </div>
-
-                                {/* MOBILE MENU TOGGLE */}
-                                <div
-                                    onClick={navbarToggle}
-                                    className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-                                    aria-controls="navbar-default"
-                                    aria-expanded="false"
-                                >
-                                    <span className="sr-only">Open main menu</span>
-                                    <svg
-                                        className="w-5 h-5"
-                                        aria-hidden="true"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        fill="none"
-                                        viewBox="0 0 17 14"
+                                    <button
+                                        onClick={() => {
+                                            setMobileMenuOpen(false);
+                                            handleLogout();
+                                        }}
+                                        className="block w-full text-left text-gray-700 dark:text-gray-300 hover:text-lime-600 font-medium"
                                     >
-                                        <path
-                                            stroke="currentColor"
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                            strokeWidth="2"
-                                            d="M1 1h15M1 7h15M1 13h15"
-                                        />
-                                    </svg>
-                                </div>
-                            </div>
+                                        Logout
+                                    </button>
+                                </>
+                            ) : (
+                                <>
+                                    <NavLink
+                                        onClick={() => setMobileMenuOpen(false)}
+                                        to="/sign-in"
+                                        className="block text-gray-700 dark:text-gray-300 hover:text-lime-600 font-medium"
+                                    >
+                                        Log in
+                                    </NavLink>
+                                    <NavLink
+                                        onClick={() => setMobileMenuOpen(false)}
+                                        to="/sign-up"
+                                        className="block text-gray-700 dark:text-gray-300 hover:text-lime-600 font-medium"
+                                    >
+                                        Sign up
+                                    </NavLink>
+                                </>
+                            )}
                         </div>
                     </div>
                 </nav>
-            </header>
-        </div>
+            )}
+        </header>
     );
 };
 
