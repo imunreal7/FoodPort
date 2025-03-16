@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
+const apiUrl = process.env.REACT_APP_API_URL || "http://localhost:5000";
 
 const OrderHistory = () => {
     const [orders, setOrders] = useState([]);
@@ -9,7 +10,7 @@ const OrderHistory = () => {
     useEffect(() => {
         const fetchOrders = async () => {
             try {
-                const res = await fetch("http://localhost:5000/api/orders", {
+                const res = await fetch(`${apiUrl}/api/orders`, {
                     method: "GET",
                     headers: {
                         "Content-Type": "application/json",

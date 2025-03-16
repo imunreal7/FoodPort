@@ -3,6 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 import "./css/custom.css";
 import background from "../../images/FoodPort-Background.jpg";
 
+const apiUrl = process.env.REACT_APP_API_URL || "http://localhost:5000";
+
 const Signin = () => {
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
@@ -41,7 +43,7 @@ const Signin = () => {
         setServerError("");
         if (!validate()) return;
         try {
-            const response = await fetch("http://localhost:5000/api/auth/login", {
+            const response = await fetch(`${apiUrl}/api/auth/login`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(formData),

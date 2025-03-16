@@ -10,6 +10,8 @@ const avatarOptions = [
     "https://png.pngtree.com/png-clipart/20240504/original/pngtree-vector-illustration-of-cute-pizza-emoji-png-image_15005236.png",
 ];
 
+const apiUrl = process.env.REACT_APP_API_URL || "http://localhost:5000";
+
 const Profile = () => {
     const [user, setUser] = useState(null);
     const [editMode, setEditMode] = useState(false);
@@ -23,7 +25,7 @@ const Profile = () => {
     useEffect(() => {
         const token = localStorage.getItem("token");
         if (token) {
-            fetch("http://localhost:5000/api/auth/me", {
+            fetch(`${apiUrl}/api/auth/me`, {
                 headers: {
                     "Content-Type": "application/json",
                     Authorization: token ? `Bearer ${token}` : "",
@@ -66,7 +68,7 @@ const Profile = () => {
             return;
         }
         const token = localStorage.getItem("token");
-        fetch(`http://localhost:5000/api/auth/update/${user._id}`, {
+        fetch(`${apiUrl}/api/auth/update/${user._id}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",

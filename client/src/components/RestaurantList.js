@@ -3,12 +3,14 @@ import RestaurantCard from "./RestaurantCard";
 import axios from "axios";
 import RestaurantShimmer from "./shimmer/RestaurantShimmer";
 
+const apiUrl = process.env.REACT_APP_API_URL || "http://localhost:5000";
+
 const RestaurantDisplay = () => {
     const [restaurants, setRestaurants] = useState([]);
 
     const fetchRestaurants = async () => {
         try {
-            const response = await axios.get("http://localhost:5000/api/restaurants");
+            const response = await axios.get(`${apiUrl}/api/restaurants`);
             setRestaurants(response.data);
         } catch (error) {
             console.error("Failed to fetch restaurants:", error);

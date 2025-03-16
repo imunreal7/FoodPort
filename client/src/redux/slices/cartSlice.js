@@ -10,14 +10,14 @@ const getAuthHeaders = () => {
     };
 };
 
-console.log("getAuthHeaders()", getAuthHeaders());
+const apiUrl = process.env.REACT_APP_API_URL || "http://localhost:5000";
 
 /**
  * Fetch the existing cart from the server (if any).
  */
 export const fetchCart = createAsyncThunk("cart/fetchCart", async (_, thunkAPI) => {
     try {
-        const res = await fetch("http://localhost:5000/api/cart", {
+        const res = await fetch(`${apiUrl}/api/cart`, {
             method: "GET",
             headers: getAuthHeaders(),
         });
@@ -38,7 +38,7 @@ export const fetchCart = createAsyncThunk("cart/fetchCart", async (_, thunkAPI) 
 export const addToCart = createAsyncThunk("cart/addToCart", async (payload, thunkAPI) => {
     try {
         console.log("payload", payload);
-        const res = await fetch("http://localhost:5000/api/cart/add", {
+        const res = await fetch(`${apiUrl}/api/cart/add`, {
             method: "POST",
             headers: getAuthHeaders(),
             body: JSON.stringify(payload),
@@ -56,7 +56,7 @@ export const addToCart = createAsyncThunk("cart/addToCart", async (payload, thun
 export const addProduct = createAsyncThunk("product/add", async (payload, thunkAPI) => {
     try {
         console.log("payload", payload);
-        const res = await fetch("http://localhost:5000/api/products", {
+        const res = await fetch(`${apiUrl}/api/products`, {
             method: "POST",
             headers: getAuthHeaders(),
             body: JSON.stringify(payload),
@@ -74,13 +74,10 @@ export const addProduct = createAsyncThunk("product/add", async (payload, thunkA
 export const getProduct = createAsyncThunk("product/getByName", async (name, thunkAPI) => {
     try {
         // Use the correct endpoint with a query parameter for the product name
-        const res = await fetch(
-            `http://localhost:5000/api/products/name?name=${encodeURIComponent(name)}`,
-            {
-                method: "GET",
-                headers: getAuthHeaders(),
-            },
-        );
+        const res = await fetch(`${apiUrl}/api/products/name?name=${encodeURIComponent(name)}`, {
+            method: "GET",
+            headers: getAuthHeaders(),
+        });
         if (!res.ok) {
             throw new Error("Failed to fetch product");
         }
@@ -97,7 +94,7 @@ export const getProduct = createAsyncThunk("product/getByName", async (name, thu
  */
 export const removeFromCart = createAsyncThunk("cart/removeFromCart", async (payload, thunkAPI) => {
     try {
-        const res = await fetch("http://localhost:5000/api/cart/remove", {
+        const res = await fetch(`${apiUrl}/api/cart/remove`, {
             method: "POST",
             headers: getAuthHeaders(),
             body: JSON.stringify(payload),
@@ -117,7 +114,7 @@ export const removeFromCart = createAsyncThunk("cart/removeFromCart", async (pay
  */
 export const clearCart = createAsyncThunk("cart/clearCart", async (_, thunkAPI) => {
     try {
-        const res = await fetch("http://localhost:5000/api/cart/clear", {
+        const res = await fetch(`${apiUrl}/api/cart/clear`, {
             method: "POST",
             headers: getAuthHeaders(),
         });
@@ -136,7 +133,7 @@ export const clearCart = createAsyncThunk("cart/clearCart", async (_, thunkAPI) 
  */
 export const createOrder = createAsyncThunk("cart/createOrder", async (orderPayload, thunkAPI) => {
     try {
-        const res = await fetch("http://localhost:5000/api/orders", {
+        const res = await fetch(`${apiUrl}/api/orders`, {
             method: "POST",
             headers: getAuthHeaders(),
             body: JSON.stringify(orderPayload), // Now sending payload

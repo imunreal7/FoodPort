@@ -6,6 +6,8 @@ import WhereToVoteOutlinedIcon from "@mui/icons-material/WhereToVoteOutlined";
 import RestaurantCard from "./RestaurantCard";
 import RestaurantShimmer from "./shimmer/RestaurantShimmer";
 
+const apiUrl = process.env.REACT_APP_API_URL || "http://localhost:5000";
+
 const RestaurantListWithFilters = (props) => {
     const [restaurantsList, setRestaurantsList] = useState([]);
     const [filterRestaurant, setFilterRestaurant] = useState([]);
@@ -14,7 +16,7 @@ const RestaurantListWithFilters = (props) => {
     // Fetch restaurants
     const getRestaurants = async () => {
         try {
-            const res = await axios.get("http://localhost:5000/api/restaurants");
+            const res = await axios.get(`${apiUrl}/api/restaurants`);
             setRestaurantsList(res.data);
             setFilterRestaurant(res.data);
         } catch (error) {

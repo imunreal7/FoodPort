@@ -3,6 +3,8 @@ import { useDispatch } from "react-redux";
 import { addToCart, addProduct, getProduct } from "../../redux/slices/cartSlice";
 import toast from "react-hot-toast";
 
+const apiUrl = process.env.REACT_APP_API_URL || "http://localhost:5000";
+
 const PersonalisedRecommendation = () => {
     const [recommendations, setRecommendations] = useState([]);
     const [user, setUser] = useState(null);
@@ -12,7 +14,7 @@ const PersonalisedRecommendation = () => {
     // Fetch user details
     useEffect(() => {
         if (token) {
-            fetch("http://localhost:5000/api/auth/me", {
+            fetch(`${apiUrl}/api/auth/me`, {
                 headers: {
                     "Content-Type": "application/json",
                     Authorization: token ? `Bearer ${token}` : "",
@@ -30,7 +32,7 @@ const PersonalisedRecommendation = () => {
     useEffect(() => {
         const fetchRecommendations = async () => {
             try {
-                const res = await fetch("http://localhost:5000/api/recommendations", {
+                const res = await fetch(`${apiUrl}/api/recommendations`, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",

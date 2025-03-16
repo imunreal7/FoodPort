@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import toast from "react-hot-toast";
 
+const apiUrl = process.env.REACT_APP_API_URL || "http://localhost:5000";
+
 const OrderDetail = () => {
     const { orderId } = useParams();
     const navigate = useNavigate();
@@ -11,7 +13,7 @@ const OrderDetail = () => {
     useEffect(() => {
         const fetchOrder = async () => {
             try {
-                const res = await fetch(`http://localhost:5000/api/orders/${orderId}`, {
+                const res = await fetch(`${apiUrl}/api/orders/${orderId}`, {
                     method: "GET",
                     headers: {
                         "Content-Type": "application/json",

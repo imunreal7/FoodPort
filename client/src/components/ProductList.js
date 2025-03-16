@@ -3,6 +3,8 @@ import ProductCard from "./ProductCard";
 import axios from "axios";
 import RestaurantShimmer from "./shimmer/RestaurantShimmer";
 
+const apiUrl = process.env.REACT_APP_API_URL || "http://localhost:5000";
+
 const ProductList = (params) => {
     const [menu, setMenu] = useState([]);
     const [filterMenu, setFilterMenu] = useState([]);
@@ -10,7 +12,7 @@ const ProductList = (params) => {
 
     const getProducts = async () => {
         try {
-            const res = await axios.get(`http://localhost:5000/api/restaurant/${params.id}`);
+            const res = await axios.get(`${apiUrl}/api/restaurant/${params.id}`);
             setMenu(res.data);
             setFilterMenu(res.data);
         } catch (error) {
@@ -24,7 +26,7 @@ const ProductList = (params) => {
 
     const handleSearch = () => {
         const searchMenu = menu.filter((product) =>
-            product.name.toLowerCase().includes(searchText.toLowerCase())
+            product.name.toLowerCase().includes(searchText.toLowerCase()),
         );
         if (searchMenu.length > 0) {
             setFilterMenu(searchMenu);
