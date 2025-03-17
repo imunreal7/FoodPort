@@ -1,12 +1,12 @@
 # FoodPort - Next Generation Food Delivery Platform
 
-**FoodPort** is a state-of-the-art online food delivery platform designed using a robust microservices architecture and advanced AI techniques. This project demonstrates deep full‑stack engineering expertise—from scalable backend services and microservices to a dynamic, responsive React frontend. It is built to deliver a seamless user experience while leveraging cutting‑edge AI recommendation systems to personalize food suggestions.
+**FoodPort** is a state-of-the-art online food delivery platform designed using a robust microservices architecture and advanced **AI Recommendation Service**. This project demonstrates deep full‑stack engineering expertise—from scalable backend services and microservices to a dynamic, responsive React frontend. It is built to deliver a seamless user experience while leveraging cutting‑edge AI recommendation systems to personalize food suggestions.
 
 ---
 
 ## Table of Contents
 
--   [Overview](#overview)
+-   [Demo](#demo)
 -   [Key Features](#key-features)
 -   [Architecture & Technologies](#architecture--technologies)
 -   [AI Recommendation Service](#ai-recommendation-service)
@@ -22,9 +22,13 @@
 
 ---
 
-## Overview
+## Demo
 
-FoodPort is an innovative online food delivery application that allows users to explore diverse restaurants, browse curated menus, and place orders with ease. A key differentiator is our **AI Recommendation Service** that uses deep learning and similarity search to suggest personalized food items based on user dietary preferences and cuisine interests. This project is a comprehensive demonstration of full‑stack development, advanced AI, and scalable microservices design.
+Watch our demo video to see FoodPort in action:
+
+[![Demo Video](client/public/youtube-thumbnail.png)](https://youtu.be/s2aFIs4AMcU)
+
+_Click the image above to watch the demo video._
 
 ---
 
@@ -35,16 +39,6 @@ FoodPort is an innovative online food delivery application that allows users to 
 -   **Modern UI/UX**: A sleek, intuitive front-end built with React, Redux, and Tailwind CSS.
 -   **Secure & Optimized Backend**: Robust Express.js and MongoDB stack with authentication, rate limiting, and best security practices.
 -   **Cloud Deployment**: Hosted on Vercel (frontend), Render/Railway (backend & AI service), and MongoDB Atlas (database).
-
----
-
-## Demo
-
-Watch our demo video to see FoodPort in action:
-
-[![Demo Video](client/public/youtube-thumbnail.png)](https://youtu.be/s2aFIs4AMcU)
-
-_Click the image above to watch the demo video._
 
 ---
 
