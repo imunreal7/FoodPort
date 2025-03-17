@@ -42,7 +42,7 @@ FoodPort is an innovative online food delivery application that allows users to 
 
 Watch our demo video to see FoodPort in action:
 
-[![Demo Video](client/public/demo-thumbnail1.png)](https://youtu.be/s2aFIs4AMcU)
+[![Demo Video](client/public/youtube-thumbnail.png)](https://youtu.be/s2aFIs4AMcU)
 
 _Click the image above to watch the demo video._
 
