@@ -1,12 +1,18 @@
-const express = require("express");
-const router = express.Router();
-const restaurantController = require("../controllers/restaurantController");
+import { Router } from "express";
+const router = Router();
+import {
+    restaurants,
+    cacheRestaurants,
+    addRestaurants,
+} from "../controllers/restaurantController.js";
 
 // Endpoints for restaurants
 router
     .route("/")
-    .get(restaurantController.restaurants) // Get all restaurants
-    .post(restaurantController.addRestaurants); // Add multiple restaurants
+    // The GET request uses caching middleware for restaurants
+    .get(cacheRestaurants, restaurants)
+    // Adding new restaurants will invalidate the cache in the controller
+    .post(addRestaurants);
 
-module.exports = router;
+export default router;
 

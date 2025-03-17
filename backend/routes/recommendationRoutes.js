@@ -1,8 +1,8 @@
-const express = require("express");
-const axios = require("axios");
-const router = express.Router();
-const authMiddleware = require("../middleware/authMiddleware");
-const asyncHandler = require("../middleware/asyncHandler");
+import { Router } from "express";
+import axios from "axios";
+const router = Router();
+import authMiddleware from "../middleware/authMiddleware.js";
+import asyncHandler from "../middleware/asyncHandler.js";
 
 const isProduction = process.env.NODE_ENV === "production";
 const recommendation_url = isProduction
@@ -17,7 +17,7 @@ router.post(
         const { user_id, dietary_preferences, preferred_cuisine } = req.body;
 
         try {
-            const response = await axios.post(`${recommendation_url}/recommendations`, {
+            const response = await post(`${recommendation_url}/recommendations`, {
                 user_id,
                 dietary_preferences,
                 preferred_cuisine,
@@ -31,4 +31,4 @@ router.post(
     }),
 );
 
-module.exports = router;
+export default router;

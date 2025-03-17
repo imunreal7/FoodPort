@@ -1,15 +1,23 @@
-const express = require("express");
-const router = express.Router();
-const productController = require("../controllers/productController");
+import { Router } from "express";
+const router = Router();
+import {
+    products,
+    cacheProducts,
+    addProducts,
+    getProductByName,
+    productsOfRestro,
+} from "../controllers/productController.js";
 
 // Endpoints for products
 router
     .route("/")
-    .get(productController.products) // Get all products
-    .post(productController.addProducts); // Add multiple products
+    // The GET request uses the caching middleware
+    .get(cacheProducts, products)
+    // When new products are added, the cache is invalidated in the controller
+    .post(addProducts);
 
-router.get("/name", productController.getProductByName); // Get products by name
-router.get("/restaurant/:id", productController.productsOfRestro); // Get products by restaurant ID
+router.get("/name", getProductByName); // Get products by name
+router.get("/restaurant/:id", productsOfRestro); // Get products by restaurant ID
 
-module.exports = router;
+export default router;
 

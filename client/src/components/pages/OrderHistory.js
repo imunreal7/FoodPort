@@ -6,7 +6,7 @@ const apiUrl = process.env.REACT_APP_API_URL || "http://localhost:5000";
 const OrderHistory = () => {
     const [orders, setOrders] = useState([]);
     const token = localStorage.getItem("token");
-
+    console.log("token", token);
     useEffect(() => {
         const fetchOrders = async () => {
             try {

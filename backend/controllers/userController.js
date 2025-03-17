@@ -1,10 +1,10 @@
-const User = require("../models/User");
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
-const asyncHandler = require("../middleware/asyncHandler");
+import User from "../models/User.js";
+import { genSalt, hash, compare } from "bcryptjs";
+import asyncHandler from "../middleware/asyncHandler.js";
+import pkg from "jsonwebtoken";
+const { sign } = pkg;
 
-// @desc Register a new user
-exports.registerUser = asyncHandler(async (req, res) => {
+export const registerUser = asyncHandler(async (req, res) => {
     const { name, email, password, phone, avatar } = req.body;
 
     // Check if the user already exists
@@ -15,23 +15,22 @@ exports.registerUser = asyncHandler(async (req, res) => {
     }
 
     // Hash password
-    const salt = await bcrypt.genSalt(10);
-    const hashedPassword = await bcrypt.hash(password, salt);
+    const salt = await genSalt(10);
+    const hashedPassword = await hash(password, salt);
 
     // Create user (include avatar if provided)
     user = new User({ name, email, phone, password: hashedPassword, avatar });
     await user.save();
 
     // Generate JWT token
-    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {
+    const token = sign({ userId: user._id }, process.env.JWT_SECRET, {
         expiresIn: process.env.JWT_EXPIRES_IN,
     });
 
     res.json({ token, user: { id: user._id, name, email, avatar } });
 });
 
-// @desc Login user
-exports.loginUser = asyncHandler(async (req, res) => {
+export const loginUser = asyncHandler(async (req, res) => {
     const { email, password } = req.body;
 
     // Check if the user exists
@@ -42,27 +41,25 @@ exports.loginUser = asyncHandler(async (req, res) => {
     }
 
     // Check password
-    const isMatch = await bcrypt.compare(password, user.password);
+    const isMatch = await compare(password, user.password);
     if (!isMatch) {
         res.status(400);
         throw new Error("Invalid credentials");
     }
 
     // Generate JWT token
-    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {
+    const token = sign({ userId: user._id }, process.env.JWT_SECRET, {
         expiresIn: process.env.JWT_EXPIRES_IN,
     });
     res.json({ token, user: { id: user._id, name: user.name, email, avatar: user.avatar } });
 });
 
-// @desc Get authenticated user
-exports.getUser = asyncHandler(async (req, res) => {
+export const getUser = asyncHandler(async (req, res) => {
     const user = await User.findById(req.user.userId).select("-password");
     res.json(user);
 });
 
-// @desc Update user profile
-exports.updateUser = asyncHandler(async (req, res) => {
+export const updateUser = asyncHandler(async (req, res) => {
     const { name, email, phone, dietaryPreferences, preferredCuisine, avatar } = req.body;
 
     const user = await User.findById(req.user.userId);

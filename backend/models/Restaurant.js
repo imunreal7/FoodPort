@@ -1,6 +1,6 @@
-const mongoose = require("mongoose");
+import { Schema, model } from "mongoose";
 
-const restaurantSchema = new mongoose.Schema(
+const restaurantSchema = new Schema(
     {
         name: {
             type: String,
@@ -64,4 +64,4 @@ restaurantSchema.set("toJSON", {
     },
 });
 
-module.exports = mongoose.model("Restaurant", restaurantSchema);
+export default model("Restaurant", restaurantSchema);

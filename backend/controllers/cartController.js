@@ -1,10 +1,8 @@
 // controllers/cartController.js
-const Cart = require("../models/Cart");
-const asyncHandler = require("../middleware/asyncHandler");
+import Cart from "../models/Cart.js";
+import asyncHandler from "../middleware/asyncHandler.js";
 
-// @desc    Get user's cart
-// @route   GET /api/cart
-exports.getCart = asyncHandler(async (req, res) => {
+export const getCart = asyncHandler(async (req, res) => {
     const cart = await Cart.findOne({ user: req.user.userId }).populate("items.product");
     if (!cart) {
         return res.json({ items: [], total: 0 });
@@ -12,9 +10,7 @@ exports.getCart = asyncHandler(async (req, res) => {
     res.json(cart);
 });
 
-// @desc    Add an item to cart (or increment quantity if exists)
-// @route   POST /api/cart/add
-exports.addToCart = asyncHandler(async (req, res) => {
+export const addToCart = asyncHandler(async (req, res) => {
     const { product, quantity, price } = req.body;
 
     // Find or create a cart for the user
@@ -39,9 +35,7 @@ exports.addToCart = asyncHandler(async (req, res) => {
     res.json(cart);
 });
 
-// @desc    Remove a specific item from cart
-// @route   POST /api/cart/remove
-exports.removeFromCart = asyncHandler(async (req, res) => {
+export const removeFromCart = asyncHandler(async (req, res) => {
     const { productId } = req.body;
     const cart = await Cart.findOne({ user: req.user.userId });
     if (!cart) {
@@ -57,9 +51,7 @@ exports.removeFromCart = asyncHandler(async (req, res) => {
     res.json(cart);
 });
 
-// @desc    Clear the entire cart
-// @route   POST /api/cart/clear
-exports.clearCart = asyncHandler(async (req, res) => {
+export const clearCart = asyncHandler(async (req, res) => {
     const cart = await Cart.findOne({ user: req.user.userId });
     if (!cart) {
         res.status(404);

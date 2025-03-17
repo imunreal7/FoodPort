@@ -1,11 +1,9 @@
 // controllers/orderController.js
-const Cart = require("../models/Cart");
-const Order = require("../models/Order");
-const asyncHandler = require("../middleware/asyncHandler");
+import Cart from "../models/Cart.js";
+import Order from "../models/Order.js";
+import asyncHandler from "../middleware/asyncHandler.js";
 
-// @desc    Create an order from user's cart along with checkout details
-// @route   POST /api/orders
-exports.createOrder = asyncHandler(async (req, res) => {
+export const createOrder = asyncHandler(async (req, res) => {
     const {
         customerName,
         customerPhone,
@@ -62,18 +60,14 @@ exports.createOrder = asyncHandler(async (req, res) => {
     res.json(newOrder);
 });
 
-// @desc    Get all orders for the logged-in user
-// @route   GET /api/orders
-exports.getUserOrders = asyncHandler(async (req, res) => {
+export const getUserOrders = asyncHandler(async (req, res) => {
     const orders = await Order.find({ user: req.user.userId })
         .populate("items.product")
         .sort({ createdAt: -1 });
     res.json(orders);
 });
 
-// @desc    Get a single order by ID (if it belongs to the user)
-// @route   GET /api/orders/:orderId
-exports.getSingleOrder = asyncHandler(async (req, res) => {
+export const getSingleOrder = asyncHandler(async (req, res) => {
     const { orderId } = req.params;
     const order = await Order.findOne({
         _id: orderId,
@@ -87,9 +81,7 @@ exports.getSingleOrder = asyncHandler(async (req, res) => {
     res.json(order);
 });
 
-// @desc    Update order status (e.g., from 'pending' to 'shipped')
-// @route   PUT /api/orders/:orderId
-exports.updateOrderStatus = asyncHandler(async (req, res) => {
+export const updateOrderStatus = asyncHandler(async (req, res) => {
     const { orderId } = req.params;
     const { status } = req.body;
 

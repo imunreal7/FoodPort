@@ -1,6 +1,7 @@
-const jwt = require("jsonwebtoken");
+import pkg from "jsonwebtoken";
+const { verify } = pkg;
 
-module.exports = (req, res, next) => {
+export default (req, res, next) => {
     const authHeader = req.header("Authorization");
     if (!authHeader) {
         return res.status(401).json({ msg: "No token, authorization denied" });
@@ -15,7 +16,9 @@ module.exports = (req, res, next) => {
     const token = parts[1]; // Extract just the raw JWT
 
     try {
-        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        console.log("token: ", token);
+        const decoded = verify(token, process.env.JWT_SECRET);
+        console.log("decoded: ", decoded);
         req.user = decoded; // e.g. { userId: '...' }
         next();
     } catch (err) {
