@@ -24,7 +24,7 @@
 
 ## Overview
 
-FoodPort is an innovative online food delivery application that allows users to explore diverse restaurants, browse curated menus, and place orders with ease. A key differentiator is our **AI Recommendation Service** that uses deep learning and similarity search to suggest personalized food items based on user dietary preferences and cuisine interests. This project is a comprehensive demonstration of full‑stack development, advanced AI, and scalable microservices design suitable for roles at top tech companies like FAANG, Meta, Amazon, and Google.
+FoodPort is an innovative online food delivery application that allows users to explore diverse restaurants, browse curated menus, and place orders with ease. A key differentiator is our **AI Recommendation Service** that uses deep learning and similarity search to suggest personalized food items based on user dietary preferences and cuisine interests. This project is a comprehensive demonstration of full‑stack development, advanced AI, and scalable microservices design.
 
 ---
 
