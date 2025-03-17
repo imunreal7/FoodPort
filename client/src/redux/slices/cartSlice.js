@@ -3,13 +3,14 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 // Helper to set auth headers (e.g., for each fetch or axios call)
 const getAuthHeaders = () => {
-    const token = localStorage.getItem("token"); // or from Redux, etc.
+    const token = localStorage.getItem("token"); // or from Redux state
     return {
         "Content-Type": "application/json",
         Authorization: token ? `Bearer ${token}` : "",
     };
 };
 
+// Defaults to localhost if REACT_APP_API_URL is not set
 const apiUrl = process.env.REACT_APP_API_URL || "http://localhost:5000";
 
 /**
@@ -24,8 +25,7 @@ export const fetchCart = createAsyncThunk("cart/fetchCart", async (_, thunkAPI) 
         if (!res.ok) {
             throw new Error("Failed to fetch cart");
         }
-        const data = await res.json();
-        return data; // { items: [...], total: 123 }
+        return await res.json(); // { items: [...], total: 123 }
     } catch (error) {
         return thunkAPI.rejectWithValue(error.message);
     }
@@ -37,7 +37,6 @@ export const fetchCart = createAsyncThunk("cart/fetchCart", async (_, thunkAPI) 
  */
 export const addToCart = createAsyncThunk("cart/addToCart", async (payload, thunkAPI) => {
     try {
-        console.log("payload", payload);
         const res = await fetch(`${apiUrl}/api/cart/add`, {
             method: "POST",
             headers: getAuthHeaders(),
@@ -46,16 +45,18 @@ export const addToCart = createAsyncThunk("cart/addToCart", async (payload, thun
         if (!res.ok) {
             throw new Error("Failed to add item to cart");
         }
-        const data = await res.json();
-        return data; // updated cart
+        return await res.json(); // updated cart
     } catch (error) {
         return thunkAPI.rejectWithValue(error.message);
     }
 });
 
+/**
+ * Add a new product in the backend.
+ * Payload: { name, price, ... }
+ */
 export const addProduct = createAsyncThunk("product/add", async (payload, thunkAPI) => {
     try {
-        console.log("payload", payload);
         const res = await fetch(`${apiUrl}/api/products`, {
             method: "POST",
             headers: getAuthHeaders(),
@@ -64,16 +65,18 @@ export const addProduct = createAsyncThunk("product/add", async (payload, thunkA
         if (!res.ok) {
             throw new Error("Failed to add product");
         }
-        const data = await res.json();
-        return data; // updated cart
+        return await res.json();
     } catch (error) {
         return thunkAPI.rejectWithValue(error.message);
     }
 });
 
+/**
+ * Get a product by name from the backend.
+ * Payload: name (string)
+ */
 export const getProduct = createAsyncThunk("product/getByName", async (name, thunkAPI) => {
     try {
-        // Use the correct endpoint with a query parameter for the product name
         const res = await fetch(`${apiUrl}/api/products/name?name=${encodeURIComponent(name)}`, {
             method: "GET",
             headers: getAuthHeaders(),
@@ -81,8 +84,7 @@ export const getProduct = createAsyncThunk("product/getByName", async (name, thu
         if (!res.ok) {
             throw new Error("Failed to fetch product");
         }
-        const data = await res.json();
-        return data; // expected to be an array of products matching the name
+        return await res.json(); // array of products
     } catch (error) {
         return thunkAPI.rejectWithValue(error.message);
     }
@@ -102,8 +104,7 @@ export const removeFromCart = createAsyncThunk("cart/removeFromCart", async (pay
         if (!res.ok) {
             throw new Error("Failed to remove item");
         }
-        const data = await res.json();
-        return data; // updated cart
+        return await res.json(); // updated cart
     } catch (error) {
         return thunkAPI.rejectWithValue(error.message);
     }
@@ -121,8 +122,7 @@ export const clearCart = createAsyncThunk("cart/clearCart", async (_, thunkAPI) 
         if (!res.ok) {
             throw new Error("Failed to clear cart");
         }
-        const data = await res.json();
-        return data; // updated cart (now empty)
+        return await res.json(); // updated cart (now empty)
     } catch (error) {
         return thunkAPI.rejectWithValue(error.message);
     }
@@ -130,21 +130,21 @@ export const clearCart = createAsyncThunk("cart/clearCart", async (_, thunkAPI) 
 
 /**
  * Checkout -> create an order from the cart, then clear the cart in the backend.
+ * Payload: { ... }
  */
 export const createOrder = createAsyncThunk("cart/createOrder", async (orderPayload, thunkAPI) => {
     try {
         const res = await fetch(`${apiUrl}/api/orders`, {
             method: "POST",
             headers: getAuthHeaders(),
-            body: JSON.stringify(orderPayload), // Now sending payload
+            body: JSON.stringify(orderPayload),
         });
         if (!res.ok) {
-            // Optionally, parse the error response for more detail:
+            // Optionally parse the error response for more detail
             const errorData = await res.json();
             throw new Error(errorData.msg || "Failed to create order");
         }
-        const orderData = await res.json();
-        return orderData;
+        return await res.json();
     } catch (error) {
         return thunkAPI.rejectWithValue(error.message);
     }
@@ -158,7 +158,7 @@ const cartSlice = createSlice({
         shippingFee: 250,
         loading: false,
         error: null,
-        lastOrder: null, // to store the last placed order
+        lastOrder: null, // store the last placed order
     },
     reducers: {},
     extraReducers: (builder) => {
