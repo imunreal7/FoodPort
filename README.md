@@ -42,7 +42,7 @@ FoodPort is an innovative online food delivery application that allows users to 
 
 Watch our demo video to see FoodPort in action:
 
-[![Demo Video](client/public/demo-thumbnail.png)](https://youtu.be/your-demo-video-link)
+[![Demo Video](client/public/demo-thumbnail1.png)](https://youtu.be/s2aFIs4AMcU)
 
 _Click the image above to watch the demo video._
 
@@ -85,6 +85,24 @@ The **AI Recommendation Service** is the heart of FoodPort’s personalization. 
 -   **Containerization**: Leverage Docker (and Kubernetes) to ensure consistent deployment across environments.
 -   **CI/CD Pipeline**: Automated testing, linting, and continuous deployment ensure rapid and reliable releases.
 -   **Monitoring & Logging**: Robust error handling, logging (PM2, centralized logging), and performance monitoring are integrated to maintain system resilience.
+
+---
+
+---
+
+## Screenshot
+
+Home
+![Home Page](./client/public/demo-thumbnail2.png)
+
+Personalized AI Recommedation
+![Personalized AI Recommedation](./client/public/AI-recommendation.png)
+
+Restaurants
+![Restaurants](./client/public/restaurants.png)
+
+Cart
+![Cart](./client/public/cart.png)
 
 ---
 
