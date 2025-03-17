@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./css/custom.css";
-import background from "../../images/FoodPort-Background2.jpg";
 
 const apiUrl = process.env.REACT_APP_API_URL || "http://localhost:5000";
 
@@ -79,7 +78,7 @@ const Signup = () => {
         <div
             className="min-h-screen flex items-center justify-center bg-cover bg-center bg-no-repeat py-12 px-4 shadow lg:shadow-lg border border-gray-200 sm:px-6 lg:px-8"
             style={{
-                backgroundImage: `url(${background})`,
+                backgroundImage: `url("/FoodPort-Background2.jpg")`,
             }}
         >
             <div className="card w-full max-w-md p-8">

@@ -16,9 +16,7 @@ export default (req, res, next) => {
     const token = parts[1]; // Extract just the raw JWT
 
     try {
-        console.log("token: ", token);
         const decoded = verify(token, process.env.JWT_SECRET);
-        console.log("decoded: ", decoded);
         req.user = decoded; // e.g. { userId: '...' }
         next();
     } catch (err) {

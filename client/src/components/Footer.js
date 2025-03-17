@@ -2,7 +2,6 @@ import { Link, NavLink } from "react-router-dom";
 import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import TwitterIcon from "@mui/icons-material/Twitter";
-import logo from "../logo.png";
 
 const Footer = () => {
     return (
@@ -13,7 +12,7 @@ const Footer = () => {
                     {/* Brand + Tagline */}
                     <div className="mb-6 md:mb-0 flex flex-col space-y-2">
                         <Link to="/" className="flex items-center space-x-2">
-                            <img src={logo} className="h-9" alt="FoodPort Logo" />
+                            <img src="/logo.png" className="h-9" alt="FoodPort Logo" />
                             <span className="text-2xl font-bold text-gray-800 dark:text-white">
                                 Food<span className="text-lime-600">Port</span>
                             </span>

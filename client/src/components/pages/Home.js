@@ -1,4 +1,3 @@
-import HeaderHero from "../../images/headerHero.jpeg";
 import RestaurantList from "../RestaurantList";
 import FoodItemCarousel from "../FoodItemCarausal";
 
@@ -27,7 +26,7 @@ const Home = () => {
                             Because every meal should be an adventure!
                         </p>
                     </div>
-                    <img className="w-2/6" src={HeaderHero} alt="Delivery Service" />
+                    <img className="w-2/6" src="/headerHero.jpeg" alt="Delivery Service" />
                 </div>
             </div>
             <div className="mx-auto w-full max-w-screen-xl py-16 px-6 lg:px-8 border-y border-gray-200">

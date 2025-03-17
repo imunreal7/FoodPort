@@ -1,6 +1,5 @@
 import { useParams } from "react-router-dom";
 import ProductList from "../ProductList";
-import SingleRestaurantOfferList from "../SingleRestaurantOffersList";
 
 const SingleRestaurant = () => {
     const { id } = useParams();
@@ -9,10 +8,10 @@ const SingleRestaurant = () => {
             <h2 className="text-3xl font-semibold capitalize pb-3">Brijwasi Sweets</h2>
             <p className="capitalize text-stone-400">Dessert, South Indian</p>
             <p className="capitalize text-stone-400">a/89 Delhi Gurugram</p>
-            <SingleRestaurantOfferList />
             <ProductList id={id} />
         </div>
     );
 };
 
 export default SingleRestaurant;
+

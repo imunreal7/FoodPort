@@ -2,7 +2,6 @@ import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import { NavLink, Link, useLocation, useNavigate } from "react-router-dom";
 import ShoppingCartCheckoutIcon from "@mui/icons-material/ShoppingCartCheckout";
-import logo from "../logo.png";
 
 const Header = () => {
     const cartItems = useSelector((store) => store.cart.items);
@@ -29,7 +28,7 @@ const Header = () => {
                 <div className="flex-shrink-0">
                     <Link to="/" className="flex items-center space-x-2">
                         {/* Replace the src with your logo path */}
-                        <img src={logo} alt="FoodPort Logo" className="h-8 w-auto" />
+                        <img src="/logo.png" alt="FoodPort Logo" className="h-8 w-auto" />
                         <span className="text-xl font-bold text-gray-800 dark:text-white">
                             Food<span className="text-lime-600">Port</span>
                         </span>
