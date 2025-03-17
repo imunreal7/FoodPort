@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import RestaurantCard from "./RestaurantCard";
 import axios from "axios";
 import RestaurantShimmer from "./shimmer/RestaurantShimmer";

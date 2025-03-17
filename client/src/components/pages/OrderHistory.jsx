@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
+
 const apiUrl = process.env.REACT_APP_API_URL || "http://localhost:5000";
 
 const OrderHistory = () => {
     const [orders, setOrders] = useState([]);
     const token = localStorage.getItem("token");
-    console.log("token", token);
+
     useEffect(() => {
         const fetchOrders = async () => {
             try {
@@ -30,7 +31,6 @@ const OrderHistory = () => {
         fetchOrders();
     }, [token]);
 
-    // Add a colorful left border depending on status
     const getStatusBorder = (status) => {
         const lowerStatus = status.toLowerCase();
         if (lowerStatus === "pending") return "border-l-yellow-400";
@@ -39,7 +39,6 @@ const OrderHistory = () => {
         return "border-l-gray-300";
     };
 
-    // Badge colors
     const getStatusStyle = (status) => {
         const lowerStatus = status.toLowerCase();
         if (lowerStatus === "pending") return "bg-yellow-100 text-yellow-800";

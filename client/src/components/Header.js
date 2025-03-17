@@ -1,5 +1,5 @@
+import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { useState, useEffect } from "react";
 import { NavLink, Link, useLocation, useNavigate } from "react-router-dom";
 import ShoppingCartCheckoutIcon from "@mui/icons-material/ShoppingCartCheckout";
 
@@ -27,7 +27,6 @@ const Header = () => {
                 {/* Logo */}
                 <div className="flex-shrink-0">
                     <Link to="/" className="flex items-center space-x-2">
-                        {/* Replace the src with your logo path */}
                         <img src="/logo.png" alt="FoodPort Logo" className="h-8 w-auto" />
                         <span className="text-xl font-bold text-gray-800 dark:text-white">
                             Food<span className="text-lime-600">Port</span>
@@ -61,13 +60,11 @@ const Header = () => {
                         <NavLink
                             to="/personalised-recommendation"
                             className={({ isActive }) =>
-                                `relative font-semibold px-3 py-1 rounded-lg transition bg-transparent
-                           ${
-                               isActive
-                                   ? "text-white bg-lime-600 shadow-md"
-                                   : "text-lime-700 dark:text-lime-400 hover:text-lime-600"
-                           }
-                           before:absolute before:-bottom-1 before:left-1/2 before:w-0 before:h-0.5 before:bg-lime-600 before:transition-all before:duration-300 before:ease-out before:content-[''] hover:before:w-full hover:before:left-0 hover:before:-bottom-1 hover:before:bg-lime-700 dark:hover:before:bg-lime-400`
+                                `relative font-semibold px-3 py-1 rounded-lg transition bg-transparent ${
+                                    isActive
+                                        ? "text-white bg-lime-600 shadow-md"
+                                        : "text-lime-700 dark:text-lime-400 hover:text-lime-600"
+                                }`
                             }
                         >
                             <span className="mr-1">✨</span> AI Recommendation
@@ -85,7 +82,6 @@ const Header = () => {
                             My Orders
                         </NavLink>
                     )}
-
                     <NavLink
                         to="/about"
                         className={({ isActive }) =>
@@ -164,7 +160,6 @@ const Header = () => {
                             </NavLink>
                         </div>
                     )}
-
                     {/* Mobile Menu Toggle */}
                     <div className="md:hidden ml-4">
                         <button

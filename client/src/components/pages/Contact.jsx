@@ -1,11 +1,11 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import toast from "react-hot-toast";
 import BenefitCard from "../BenefitCard";
 import WhereToVoteOutlinedIcon from "@mui/icons-material/WhereToVoteOutlined";
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 import LocalPhoneOutlinedIcon from "@mui/icons-material/LocalPhoneOutlined";
 import QueryBuilderOutlinedIcon from "@mui/icons-material/QueryBuilderOutlined";
-import "./css/custom.css"; // Same CSS used by your Sign Up page
+import "./css/custom.css"; // Reuse the same custom CSS as needed
 
 const Contact = () => {
     const [formData, setFormData] = useState({
@@ -23,7 +23,6 @@ const Contact = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Show dummy success toast using react-hot-toast
         toast.success("Thank you for getting in touch. We will get back to you soon!", {
             duration: 3000,
             position: "top-center",
@@ -33,23 +32,20 @@ const Contact = () => {
                 fontWeight: 600,
             },
         });
-        // Reset form after submission
         setFormData({ name: "", email: "", comment: "" });
     };
 
     return (
         <div className="min-h-screen to-green-100 bg-gradient-to-br from-gray-100 to-gray-200 py-8 px-4">
             <div className="mx-auto w-full max-w-screen-xl">
-                {/* Split layout: Left form, Right 2x2 boxes */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                     {/* Left: Contact Form */}
                     <div className="flex justify-center items-center">
-                        <div className="card w-full max-w-md p-12 bg-white rounded shadow-2xl md:mt-0">
+                        <div className="card w-full max-w-md p-12 bg-white rounded shadow-2xl">
                             <h1 className="text-center text-3xl font-extrabold text-gray-800 mb-6">
                                 Get in touch with us
                             </h1>
                             <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-                                {/* NAME FIELD */}
                                 <div className="flex flex-col">
                                     <label htmlFor="name" className="mb-2 text-gray-700">
                                         Name
@@ -64,7 +60,6 @@ const Contact = () => {
                                         onChange={handleChange}
                                     />
                                 </div>
-                                {/* EMAIL FIELD */}
                                 <div className="flex flex-col">
                                     <label htmlFor="email" className="mb-2 text-gray-700">
                                         Email
@@ -79,7 +74,6 @@ const Contact = () => {
                                         onChange={handleChange}
                                     />
                                 </div>
-                                {/* COMMENT FIELD */}
                                 <div className="flex flex-col">
                                     <label htmlFor="comment" className="mb-2 text-gray-700">
                                         Comment
@@ -94,7 +88,6 @@ const Contact = () => {
                                         onChange={handleChange}
                                     ></textarea>
                                 </div>
-                                {/* SUBMIT BUTTON */}
                                 <button
                                     type="submit"
                                     className="py-3 px-8 bg-lime-600 text-white font-semibold rounded hover:bg-lime-700 transition-colors duration-200"
@@ -105,69 +98,42 @@ const Contact = () => {
                         </div>
                     </div>
 
-                    {/* Right: 2×2 Benefit Boxes (Smaller) */}
-                    <div className="grid grid-cols-1 md:grid-cols-2  mt-20">
-                        {/* Each box is wrapped in a <div> with inline CSS to make it smaller */}
-                        <div
-                            style={{
-                                width: "250px",
-                                height: "250px",
-                                margin: "auto",
-                            }}
-                        >
-                            <BenefitCard
-                                icon={
+                    {/* Right: 2x2 Benefit Boxes */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-20">
+                        {[
+                            {
+                                icon: (
                                     <WhereToVoteOutlinedIcon
                                         sx={{ fontSize: 40 }}
                                         color="success"
                                     />
-                                }
-                                desc="Delhi, India"
-                            />
-                        </div>
-                        <div
-                            style={{
-                                width: "250px",
-                                height: "250px",
-                                margin: "auto",
-                            }}
-                        >
-                            <BenefitCard
-                                icon={<EmailOutlinedIcon sx={{ fontSize: 40 }} color="success" />}
-                                desc="support@foodport.com"
-                            />
-                        </div>
-                        <div
-                            style={{
-                                width: "250px",
-                                height: "250px",
-                                margin: "auto",
-                            }}
-                        >
-                            <BenefitCard
-                                icon={
+                                ),
+                                desc: "Delhi, India",
+                            },
+                            {
+                                icon: <EmailOutlinedIcon sx={{ fontSize: 40 }} color="success" />,
+                                desc: "support@foodport.com",
+                            },
+                            {
+                                icon: (
                                     <LocalPhoneOutlinedIcon sx={{ fontSize: 40 }} color="success" />
-                                }
-                                desc="+91 1234567890"
-                            />
-                        </div>
-                        <div
-                            style={{
-                                width: "250px",
-                                height: "250px",
-                                margin: "auto",
-                            }}
-                        >
-                            <BenefitCard
-                                icon={
+                                ),
+                                desc: "+91 1234567890",
+                            },
+                            {
+                                icon: (
                                     <QueryBuilderOutlinedIcon
                                         sx={{ fontSize: 40 }}
                                         color="success"
                                     />
-                                }
-                                desc="Mon-Fri: 9AM - 12PM"
-                            />
-                        </div>
+                                ),
+                                desc: "Mon-Fri: 9AM - 12PM",
+                            },
+                        ].map((item, index) => (
+                            <div key={index} className="w-[250px] h-[250px] mx-auto">
+                                <BenefitCard icon={item.icon} desc={item.desc} />
+                            </div>
+                        ))}
                     </div>
                 </div>
             </div>

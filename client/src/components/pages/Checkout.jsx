@@ -10,7 +10,6 @@ const Checkout = () => {
     const { items, total, shippingFee, loading } = useSelector((state) => state.cart);
     const grandTotal = total + (shippingFee || 0);
 
-    // Local state for checkout details
     const [customer, setCustomer] = useState({
         name: "",
         phone: "",
@@ -26,17 +25,14 @@ const Checkout = () => {
     };
 
     const handlePlaceOrder = () => {
-        // Basic validation for required fields
         if (!customer.name || !customer.phone || !customer.address) {
             toast.error("Please fill in all required customer details.");
             return;
         }
-        // If scheduled delivery is selected, ensure a future date–time is provided
         if (deliveryOption === "scheduled" && !scheduledTime) {
             toast.error("Please select a scheduled delivery time.");
             return;
         }
-        // Bundle checkout details with the order creation
         const orderData = {
             customerName: customer.name,
             customerPhone: customer.phone,
@@ -51,7 +47,6 @@ const Checkout = () => {
             .unwrap()
             .then((orderData) => {
                 toast.success("Order placed successfully!");
-                // Redirect to order success page after successful order placement
                 navigate("/order-success", { state: { orderData } });
             })
             .catch((err) => {

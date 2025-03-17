@@ -1,3 +1,4 @@
+import React from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import offers from "../utils/offers";
@@ -34,8 +35,8 @@ const RestroCarausel = () => {
             >
                 {offers.map((item) => (
                     <div
-                        className="h-52 lg:h-[20rem] w-full cursor-pointer px-4 hover:scale-105 transition-transform duration-300"
                         key={item.id}
+                        className="h-52 lg:h-[20rem] w-full cursor-pointer px-4 hover:scale-105 transition-transform duration-300"
                     >
                         <img
                             className="h-full w-full rounded-3xl shadow-lg hover:shadow-2xl"

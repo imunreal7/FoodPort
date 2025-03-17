@@ -31,7 +31,7 @@ const Profile = () => {
             fetch(`${apiUrl}/api/auth/me`, {
                 headers: {
                     "Content-Type": "application/json",
-                    Authorization: token ? `Bearer ${token}` : "",
+                    Authorization: `Bearer ${token}`,
                 },
             })
                 .then((res) => res.json())
@@ -52,10 +52,7 @@ const Profile = () => {
 
     // Handle form input changes
     const handleInputChange = (e) => {
-        setFormData((prev) => ({
-            ...prev,
-            [e.target.name]: e.target.value,
-        }));
+        setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
     };
 
     // Handle avatar selection
@@ -65,7 +62,6 @@ const Profile = () => {
 
     // Handle updating the user profile
     const handleUpdate = () => {
-        // Basic validation
         if (!formData.name || !formData.email || !formData.phone) {
             toast.error("Please fill in all required fields.");
             return;
@@ -79,14 +75,12 @@ const Profile = () => {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
-                Authorization: token ? `Bearer ${token}` : "",
+                Authorization: `Bearer ${token}`,
             },
             body: JSON.stringify(formData),
         })
             .then((res) => {
-                if (!res.ok) {
-                    throw new Error("Failed to update profile");
-                }
+                if (!res.ok) throw new Error("Failed to update profile");
                 return res.json();
             })
             .then((data) => {
@@ -99,7 +93,6 @@ const Profile = () => {
             });
     };
 
-    // Render a loading state while fetching data
     if (!user) {
         return (
             <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-lime-50 via-lime-100 to-lime-50">

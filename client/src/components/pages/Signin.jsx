@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./css/custom.css";
 
@@ -15,25 +15,22 @@ const Signin = () => {
 
     // Update state on input change
     const handleChange = (e) => {
-        setFormData((prev) => ({
-            ...prev,
-            [e.target.name]: e.target.value,
-        }));
+        setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
     };
 
     // Client-side validation for sign-in
     const validate = () => {
-        let errors = {};
+        let validationErrors = {};
         if (!formData.email) {
-            errors.email = "Email is required";
+            validationErrors.email = "Email is required";
         } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-            errors.email = "Enter a valid email address";
+            validationErrors.email = "Enter a valid email address";
         }
         if (!formData.password) {
-            errors.password = "Password is required";
+            validationErrors.password = "Password is required";
         }
-        setErrors(errors);
-        return Object.keys(errors).length === 0;
+        setErrors(validationErrors);
+        return Object.keys(validationErrors).length === 0;
     };
 
     // Handle form submission
@@ -47,13 +44,10 @@ const Signin = () => {
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(formData),
             });
-
             const data = await response.json();
-
             if (!response.ok) {
                 throw new Error(data.msg || "Something went wrong");
             }
-
             localStorage.setItem("token", data.token);
             navigate("/");
         } catch (error) {
@@ -65,11 +59,9 @@ const Signin = () => {
     return (
         <div
             className="min-h-screen flex items-center justify-center bg-cover bg-center bg-no-repeat py-4 px-4"
-            style={{
-                backgroundImage: `url("/FoodPort-Background.jpg")`,
-            }}
+            style={{ backgroundImage: `url("/FoodPort-Background.jpg")` }}
         >
-            <div className="card w-full max-w-md p-8 bg-black/80 backdrop-blur-sm rounded shadow lg:shadow-lg border border-gray-200 ">
+            <div className="card w-full max-w-md p-8 bg-black/80 backdrop-blur-sm rounded shadow lg:shadow-lg border border-gray-200">
                 <h1 className="text-center text-4xl font-extrabold text-gray-800 mb-6">
                     Welcome Back!
                 </h1>
@@ -121,7 +113,7 @@ const Signin = () => {
                     </button>
                 </form>
                 <p className="pt-8 text-center">
-                    New to foodport?{" "}
+                    New to FoodPort?{" "}
                     <Link className="text-lime-600 font-medium" to="/sign-up">
                         Sign Up
                     </Link>

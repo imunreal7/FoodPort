@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCart, clearCart } from "../../redux/slices/cartSlice";
 import toast from "react-hot-toast";
@@ -7,9 +7,8 @@ import CartSummary from "../CartSummary";
 
 const Cart = () => {
     const dispatch = useDispatch();
-    const cartItems = useSelector((state) => state.cart.items);
+    const { items: cartItems } = useSelector((state) => state.cart);
 
-    // Fetch the latest cart data on component mount
     useEffect(() => {
         dispatch(fetchCart());
     }, [dispatch]);
@@ -32,18 +31,14 @@ const Cart = () => {
     };
 
     return (
-        // Full-width wrapper with gradient
         <div
             className="w-full min-h-screen"
-            style={{
-                background: "linear-gradient(to right, #ffffff, #efe5af)",
-            }}
+            style={{ background: "linear-gradient(to right, #ffffff, #efe5af)" }}
         >
-            {/* Inner container for the cart content */}
             <div className="container mx-auto max-w-screen-5xl py-16 px-6 lg:px-8 border-b">
                 <h2 className="text-3xl font-semibold capitalize pb-3">Your Shopping Cart</h2>
                 <p className="text-stone-400 capitalize">
-                    You have {cartItems.length} items in your cart
+                    You have {cartItems.length} item{cartItems.length !== 1 && "s"} in your cart
                 </p>
                 {cartItems.length === 0 ? (
                     <div className="flex justify-center items-center h-[30vh]">
@@ -53,8 +48,7 @@ const Cart = () => {
                     </div>
                 ) : (
                     <button
-                        className="py-2 mt-3 px-5 border border-emerald-600 text-emerald-600
-                       hover:bg-emerald-600 hover:text-white rounded-md"
+                        className="py-2 mt-3 px-5 border border-emerald-600 text-emerald-600 hover:bg-emerald-600 hover:text-white rounded-md"
                         onClick={handleClearCart}
                     >
                         Clear Cart

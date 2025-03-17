@@ -1,3 +1,4 @@
+import React from "react";
 import BenefitCard from "./BenefitCard";
 import FastfoodOutlinedIcon from "@mui/icons-material/FastfoodOutlined";
 import WatchLaterOutlinedIcon from "@mui/icons-material/WatchLaterOutlined";
@@ -6,7 +7,7 @@ import SoupKitchenOutlinedIcon from "@mui/icons-material/SoupKitchenOutlined";
 
 const Benefits = () => {
     return (
-        <div className="grid  lg:grid-cols-4 py-8 gap-8 lg:py-10 px-4">
+        <div className="grid lg:grid-cols-4 py-8 gap-8 lg:py-10 px-4">
             <BenefitCard
                 icon={<SoupKitchenOutlinedIcon sx={{ fontSize: 60 }} color="success" />}
                 title="Best quality"
@@ -30,5 +31,6 @@ const Benefits = () => {
         </div>
     );
 };
+
 export default Benefits;
 

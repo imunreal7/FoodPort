@@ -8,6 +8,7 @@ const apiUrl = process.env.REACT_APP_API_URL || "http://localhost:5000";
 const PersonalisedRecommendation = () => {
     const [recommendations, setRecommendations] = useState([]);
     const [user, setUser] = useState(null);
+    const [loadingRecommendations, setLoadingRecommendations] = useState(false);
     const dispatch = useDispatch();
     const token = localStorage.getItem("token");
 
@@ -17,28 +18,25 @@ const PersonalisedRecommendation = () => {
             fetch(`${apiUrl}/api/auth/me`, {
                 headers: {
                     "Content-Type": "application/json",
-                    Authorization: token ? `Bearer ${token}` : "",
+                    Authorization: `Bearer ${token}`,
                 },
             })
                 .then((res) => res.json())
-                .then((data) => {
-                    setUser(data);
-                })
+                .then((data) => setUser(data))
                 .catch((err) => console.error("Error fetching user data:", err));
         }
     }, [token]);
 
-    console.log("user", user);
-
     // Fetch personalized recommendations once user info is available
     useEffect(() => {
         const fetchRecommendations = async () => {
+            setLoadingRecommendations(true);
             try {
                 const res = await fetch(`${apiUrl}/api/recommendations`, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
-                        Authorization: token ? `Bearer ${token}` : "",
+                        Authorization: `Bearer ${token}`,
                     },
                     body: JSON.stringify({
                         user_id: user._id,
@@ -51,6 +49,8 @@ const PersonalisedRecommendation = () => {
                 setRecommendations(data.recommendations);
             } catch (err) {
                 toast.error(err.message);
+            } finally {
+                setLoadingRecommendations(false);
             }
         };
         if (user) {
@@ -61,20 +61,17 @@ const PersonalisedRecommendation = () => {
     // Add product to cart (creates product if not found)
     const handleAddToCart = async (product) => {
         try {
-            // Attempt to find the product by name
+            // Try to find the product by name
             const foundProducts = await dispatch(getProduct(product.name)).unwrap();
 
             let productId;
             if (foundProducts && foundProducts.length > 0) {
-                // Product exists: use the first matching product's _id
                 productId = foundProducts[0]._id;
             } else {
-                // Product not found: create it in the database
                 const createdProduct = await dispatch(addProduct(product)).unwrap();
                 productId = createdProduct[0]._id;
             }
 
-            // Now add the product to the cart using the determined productId
             await dispatch(
                 addToCart({
                     product: productId,
@@ -86,11 +83,7 @@ const PersonalisedRecommendation = () => {
             toast.success(`${product.name} added to cart`, {
                 duration: 2000,
                 position: "top-center",
-                style: {
-                    backgroundColor: "#7BFFC2",
-                    color: "green",
-                    fontWeight: 600,
-                },
+                style: { backgroundColor: "#7BFFC2", color: "green", fontWeight: 600 },
             });
         } catch (error) {
             toast.error(error.message);
@@ -103,7 +96,7 @@ const PersonalisedRecommendation = () => {
     };
 
     return (
-        <div className="to-green-100 bg-gradient-to-br from-gray-100 to-gray-200 py-8 px-4">
+        <div className="bg-gradient-to-br from-gray-100 to-gray-200 py-8 px-4">
             <div className="max-w-7xl mx-auto space-y-6">
                 {/* Header + Reload Button */}
                 <div className="flex items-center justify-between">
@@ -119,7 +112,9 @@ const PersonalisedRecommendation = () => {
                 </div>
 
                 {/* Recommendation List */}
-                {recommendations.length === 0 ? (
+                {loadingRecommendations ? (
+                    <p className="text-center text-gray-500">Loading recommendations...</p>
+                ) : recommendations.length === 0 ? (
                     <p className="text-center text-gray-500">
                         No recommendations available at the moment.
                     </p>
@@ -128,8 +123,7 @@ const PersonalisedRecommendation = () => {
                         {recommendations.map((product) => (
                             <div
                                 key={product._id}
-                                className="border border-lime-200 p-4 rounded-lg shadow hover:shadow-xl
-                           transition-shadow duration-300 bg-white"
+                                className="border border-lime-200 p-4 rounded-lg shadow hover:shadow-xl transition-shadow duration-300 bg-white"
                             >
                                 <img
                                     src={product.image}
@@ -146,9 +140,7 @@ const PersonalisedRecommendation = () => {
                                 </p>
                                 <button
                                     onClick={() => handleAddToCart(product)}
-                                    className="mt-4 w-full py-2 px-4 border border-lime-600
-                             text-lime-600 hover:bg-lime-600 hover:text-white
-                             rounded-md transition-colors duration-300 font-semibold"
+                                    className="mt-4 w-full py-2 px-4 border border-lime-600 text-lime-600 hover:bg-lime-600 hover:text-white rounded-md transition-colors duration-300 font-semibold"
                                 >
                                     Add to cart
                                 </button>

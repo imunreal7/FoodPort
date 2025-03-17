@@ -1,3 +1,4 @@
+import React from "react";
 import CloseIcon from "@mui/icons-material/Close";
 import { useDispatch } from "react-redux";
 import { removeFromCart } from "../redux/slices/cartSlice";
@@ -7,7 +8,6 @@ const CartItem = ({ item }) => {
     const dispatch = useDispatch();
 
     const handleRemoveItem = (cartItem) => {
-        // Use the product's _id to remove the item
         dispatch(removeFromCart({ productId: cartItem.product._id }))
             .unwrap()
             .then(() => {
@@ -23,9 +23,7 @@ const CartItem = ({ item }) => {
                     },
                 });
             })
-            .catch((err) => {
-                toast.error(err);
-            });
+            .catch((err) => toast.error(err));
     };
 
     return (
@@ -45,9 +43,8 @@ const CartItem = ({ item }) => {
                     <p className="text-sm text-gray-600 mt-1">{item?.product?.description}</p>
                 </div>
             </div>
-
             {/* RIGHT SECTION: Price, Quantity, Total, Remove */}
-            <div className="mt-4 lg:mt-0 w-full lg:w-2/5 flex flex-col sm:flex-row lg:flex-row items-center justify-around gap-4 text-center">
+            <div className="mt-4 lg:mt-0 w-full lg:w-2/5 flex flex-col sm:flex-row items-center justify-around gap-4 text-center">
                 <span className="text-lg font-semibold text-gray-700">₹{item?.product?.price}</span>
                 <span className="text-lg font-semibold text-gray-700">{item?.quantity}</span>
                 <span className="text-lg font-semibold text-gray-700">

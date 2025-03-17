@@ -45,7 +45,7 @@ const OrderDetail = () => {
 
     if (!order) {
         return (
-            <div className="min-h-screen bg-gradient-to-br from-lime-50 via-lime-100 to-lime-50 flex items-center justify-center">
+            <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-lime-50 via-lime-100 to-lime-50">
                 <p className="text-xl text-gray-600">Loading order details...</p>
             </div>
         );
@@ -54,15 +54,12 @@ const OrderDetail = () => {
     return (
         <div className="min-h-screen bg-gradient-to-br from-lime-50 via-lime-100 to-lime-50 py-10 px-4 sm:px-6 lg:px-8">
             <div className="max-w-screen-xl mx-auto">
-                {/* Back Button */}
                 <button
                     onClick={() => navigate(-1)}
                     className="mb-4 inline-flex items-center gap-1 text-lime-700 font-semibold hover:underline"
                 >
                     <span className="text-xl">&larr;</span> Back
                 </button>
-
-                {/* Order Card */}
                 <div className="bg-white/80 backdrop-blur-sm p-6 rounded-lg shadow-lg border-l-4 border-lime-300">
                     <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center">
                         <h2 className="text-2xl font-bold mb-2 sm:mb-0 text-lime-700">
@@ -89,10 +86,7 @@ const OrderDetail = () => {
                             {order.total + order.shippingFee}
                         </p>
                     </div>
-
                     <hr className="my-6 border-gray-300" />
-
-                    {/* Customer Details */}
                     <div className="mb-6">
                         <h3 className="text-xl font-semibold mb-2 text-gray-800">
                             Customer Details
@@ -113,8 +107,6 @@ const OrderDetail = () => {
                             </p>
                         )}
                     </div>
-
-                    {/* Delivery & Payment Details */}
                     <div className="mb-6">
                         <h3 className="text-xl font-semibold mb-2 text-gray-800">
                             Delivery & Payment
@@ -134,8 +126,6 @@ const OrderDetail = () => {
                             {order.paymentMethod.toUpperCase()}
                         </p>
                     </div>
-
-                    {/* Order Items */}
                     <div>
                         <h3 className="text-xl font-bold mb-2 text-gray-800">Items Ordered</h3>
                         <div className="space-y-4">
@@ -154,8 +144,6 @@ const OrderDetail = () => {
                         </div>
                     </div>
                 </div>
-
-                {/* View All Orders Button */}
                 <div className="mt-8 text-center">
                     <Link
                         to="/orders-history"

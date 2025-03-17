@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./css/custom.css";
 
@@ -25,27 +25,27 @@ const Signup = () => {
 
     // Client-side validation for sign-up
     const validate = () => {
-        let errors = {};
+        let validationErrors = {};
         if (!formData.name) {
-            errors.name = "Name is required";
+            validationErrors.name = "Name is required";
         }
         if (!formData.email) {
-            errors.email = "Email is required";
+            validationErrors.email = "Email is required";
         } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-            errors.email = "Enter a valid email address";
+            validationErrors.email = "Enter a valid email address";
         }
         if (!formData.phone) {
-            errors.phone = "Phone number is required";
+            validationErrors.phone = "Phone number is required";
         } else if (!/^\d{10}$/.test(formData.phone)) {
-            errors.phone = "Phone number must be 10 digits";
+            validationErrors.phone = "Phone number must be 10 digits";
         }
         if (!formData.password) {
-            errors.password = "Password is required";
+            validationErrors.password = "Password is required";
         } else if (formData.password.length < 6) {
-            errors.password = "Password must be at least 6 characters";
+            validationErrors.password = "Password must be at least 6 characters";
         }
-        setErrors(errors);
-        return Object.keys(errors).length === 0;
+        setErrors(validationErrors);
+        return Object.keys(validationErrors).length === 0;
     };
 
     // Handle form submission
@@ -59,13 +59,10 @@ const Signup = () => {
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(formData),
             });
-
             const data = await response.json();
-
             if (!response.ok) {
                 throw new Error(data.msg || "Something went wrong");
             }
-
             localStorage.setItem("token", data.token);
             navigate("/");
         } catch (error) {
@@ -77,11 +74,9 @@ const Signup = () => {
     return (
         <div
             className="min-h-screen flex items-center justify-center bg-cover bg-center bg-no-repeat py-12 px-4 shadow lg:shadow-lg border border-gray-200 sm:px-6 lg:px-8"
-            style={{
-                backgroundImage: `url("/FoodPort-Background2.jpg")`,
-            }}
+            style={{ backgroundImage: `url("/FoodPort-Background2.jpg")` }}
         >
-            <div className="card w-full max-w-md p-8">
+            <div className="card w-full max-w-md p-8 bg-white/90 rounded-md">
                 <h1 className="text-center text-4xl font-extrabold text-gray-800 mb-6">Sign Up</h1>
                 {serverError && <p className="text-red-600 text-center my-2">{serverError}</p>}
                 <form onSubmit={handleSubmit} className="flex flex-col gap-4">

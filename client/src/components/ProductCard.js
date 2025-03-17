@@ -1,3 +1,4 @@
+import React from "react";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../redux/slices/cartSlice";
 import StarIcon from "@mui/icons-material/Star";
@@ -33,7 +34,6 @@ const ProductCard = ({ item }) => {
 
     return (
         <div className="rounded-lg shadow-lg hover:shadow-xl cursor-pointer overflow-hidden group dark:bg-gray-800 dark:border-gray-700 transition duration-300">
-            {/* Use object-cover so images keep their aspect ratio */}
             <img
                 className="w-full h-64 object-cover rounded-t-lg transition-transform ease-in-out group-hover:scale-105 group-hover:-translate-y-1 duration-300"
                 src={item.image}
@@ -56,14 +56,13 @@ const ProductCard = ({ item }) => {
                         {item.isVeg ? "Veg" : "Non Veg"}
                     </span>
                 </div>
-
                 <div className="flex items-center justify-between">
                     <span className="text-3xl font-semibold text-gray-900 dark:text-white">
                         ₹{item.price}
                     </span>
                     <button
-                        className="py-2 px-4 border border-lime-600 text-lime-600 hover:bg-lime-600 hover:text-white rounded-md transition duration-300"
                         onClick={() => handleAddToCart(item)}
+                        className="py-2 px-4 border border-lime-600 text-lime-600 hover:bg-lime-600 hover:text-white rounded-md transition duration-300"
                     >
                         Add to cart
                     </button>

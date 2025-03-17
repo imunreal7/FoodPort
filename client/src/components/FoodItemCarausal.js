@@ -10,7 +10,6 @@ const FoodItemCarousel = ({ title }) => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    // Use environment variable for API URL; fallback to localhost
     const apiUrl = process.env.REACT_APP_API_URL || "http://localhost:5000";
 
     useEffect(() => {

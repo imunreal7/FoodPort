@@ -1,14 +1,15 @@
+import React from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
 const CartSummary = ({ cartItems }) => {
     const totalAmount = useSelector((store) => store.cart.total);
-    const deliveryFee = useSelector((store) => store.cart.shippingFee) || 0; // Default to 0 if not defined
+    const deliveryFee = useSelector((store) => store.cart.shippingFee) || 0;
     const totalItems = cartItems.reduce((acc, item) => acc + item.quantity, 0);
     const navigate = useNavigate();
 
-    if (cartItems.length === 0) return null; // Don't show summary if cart is empty
+    if (cartItems.length === 0) return null;
 
     const handleProceedToCheckout = () => {
         const token = localStorage.getItem("token");
