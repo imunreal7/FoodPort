@@ -17,7 +17,7 @@ router.post(
         const { user_id, dietary_preferences, preferred_cuisine } = req.body;
 
         try {
-            const response = await post(`${recommendation_url}/recommendations`, {
+            const response = await axios.post(`${recommendation_url}/recommendations`, {
                 user_id,
                 dietary_preferences,
                 preferred_cuisine,
