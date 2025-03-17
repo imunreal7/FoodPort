@@ -1,196 +1,214 @@
-# FoodPort
+# FoodPort - Next Generation Food Delivery Platform
 
-FoodPort is an online food delivery web application that allows users to explore a variety of restaurants, browse menus, and place orders conveniently. The project is built with the MERN stack (MongoDB, Express, React, and Node.js) and styled with Tailwind CSS.
+**FoodPort** is a state-of-the-art online food delivery platform designed using a robust microservices architecture and advanced AI techniques. This project demonstrates deep full‑stack engineering expertise—from scalable backend services and containerized microservices to a dynamic, responsive React frontend. It is built to deliver a seamless user experience while leveraging cutting‑edge AI recommendation systems to personalize food suggestions.
 
-## Project Structure
+---
 
-The project is divided into two main directories:
+## Table of Contents
 
--   **Backend**: Contains the server-side code, API routes, and database models.
--   **Frontend (Client)**: Contains the React frontend application that interacts with the backend.
+-   [Overview](#overview)
+-   [Key Features](#features)
+-   [Architecture & Technologies](#architecture--technologies)
+-   [AI Recommendation Service](#ai-recommendation-service)
+-   [Microservices & Scalability](#microservices--scalability)
+-   [Installation & Setup](#installation--setup)
+-   [Usage](#usage)
+-   [Demo](#demo)
+-   [Project Structure](#project-structure)
+-   [Future Enhancements](#future-enhancements)
+-   [Contributing](#contributing)
+-   [License](#license)
+-   [Author](#author)
 
-## Technologies Used
+---
+
+## Overview
+
+FoodPort is an innovative online food delivery application that allows users to explore diverse restaurants, browse curated menus, and place orders with ease. A key differentiator is our **AI Recommendation Service** that uses deep learning and similarity search to suggest personalized food items based on user dietary preferences and cuisine interests. This project is a comprehensive demonstration of full‑stack development, advanced AI, and scalable microservices design suitable for roles at top tech companies like FAANG, Meta, Amazon, and Google.
+
+---
+
+## Key Features
+
+-   **AI-Driven Personalized Recommendations**: Tailored food suggestions based on user preferences, dietary restrictions, and order history.
+-   **End-to-End Microservices Architecture**: Scalable services handling authentication, ordering, and AI recommendations.
+-   **Modern UI/UX**: A sleek, intuitive front-end built with React, Redux, and Tailwind CSS.
+-   **Secure & Optimized Backend**: Robust Express.js and MongoDB stack with authentication, rate limiting, and best security practices.
+-   **Cloud Deployment**: Hosted on Vercel (frontend), Render/Railway (backend & AI service), and MongoDB Atlas (database).
+
+---
+
+## Demo
+
+Watch our demo video to see FoodPort in action:
+
+[![Demo Video](client/public/demo-thumbnail.png)](https://youtu.be/your-demo-video-link)
+
+_Click the image above to watch the demo video._
+
+---
+
+## Architecture & Technologies
 
 ### Backend
 
--   **Node.js**: Server runtime
--   **Express.js**: Backend framework for building RESTful APIs
--   **MongoDB**: NoSQL database for storing data
--   **Mongoose**: ODM for MongoDB
--   **dotenv**: Environment variable management
--   **cors**: Middleware for handling Cross-Origin Resource Sharing
+-   **Node.js & Express.js**: Build a robust RESTful API for handling orders, user management, and more.
+-   **MongoDB & Mongoose**: A flexible NoSQL database that supports rapid prototyping and scalable data storage.
+-   **Redis & Express-Session**: Efficient session management and caching mechanisms.
+-   **FastAPI (Python)**: High-performance API for our AI Recommendation Service.
+-   **TensorFlow & FAISS**: Advanced machine learning and similarity search frameworks for real‑time personalized recommendations.
+-   **Microservices Architecture**: Deployed as independent, containerized microservices ensuring high scalability and maintainability.
 
 ### Frontend
 
--   **React**: JavaScript library for building user interfaces
--   **React Router**: For routing between different pages
--   **Redux Toolkit**: State management for handling global application state
--   **MUI (Material-UI)**: UI component library
--   **Axios**: For making HTTP requests
--   **Tailwind CSS**: Utility-first CSS framework for styling
+-   **React & Redux Toolkit**: Modern, component-based UI with centralized state management.
+-   **React Router**: Seamless navigation between various application views.
+-   **Tailwind CSS & MUI**: Utility‑first styling for a modern, responsive design.
+-   **Axios & React Hot Toast**: Efficient HTTP requests and user-friendly notifications.
 
-## Installation
+---
+
+## AI Recommendation Service
+
+The **AI Recommendation Service** is the heart of FoodPort’s personalization. It uses advanced deep learning models (TensorFlow) and FAISS for high‑performance similarity search, enabling the following:
+
+-   **Dynamic Embedding Generation**: Utilize a trained deep learning model to generate product embeddings.
+-   **Efficient Similarity Search**: Leverage FAISS to quickly retrieve relevant products from a vast dataset.
+-   **Personalized Filtering**: Filters recommendations based on user-specific dietary preferences and preferred cuisine.
+-   **Scalable Microservice**: Built with FastAPI, designed for low latency and high concurrency, making it perfect for deployment in cloud environments and Kubernetes clusters.
+
+---
+
+## Microservices & Scalability
+
+-   **Independent Deployment**: Each service (backend APIs, AI recommendation service) can be developed, deployed, and scaled independently.
+-   **Containerization**: Leverage Docker (and Kubernetes) to ensure consistent deployment across environments.
+-   **CI/CD Pipeline**: Automated testing, linting, and continuous deployment ensure rapid and reliable releases.
+-   **Monitoring & Logging**: Robust error handling, logging (PM2, centralized logging), and performance monitoring are integrated to maintain system resilience.
+
+---
+
+## Installation & Setup
+
+### Prerequisites
+
+-   Node.js (v14+)
+-   Python (3.8+)
+-   MongoDB
+-   Redis
+-   Docker (optional, for containerized deployment)
+
+### Backend Setup
 
 1. **Clone the repository:**
 
     ```bash
     git clone https://github.com/imunreal7/FoodPort.git
-    cd FoodPort
+    cd FoodPort/backend
     ```
 
-2. **Install backend dependencies:**
+2. **Install dependencies:**
 
     ```bash
-    cd backend
     npm install
     ```
 
-3. **Set up environment variables:**
+3. **Configure Environment Variables:**
 
-    - Create a `.env` file in the `backend` folder with the following variables:
-        ```
-        JWT_SECRET_KEY=your_jwt_secret
-        MONGODB_URI=your_mongodb_connection_string
-        ```
+    Create a `.env` file with variables such as:
 
-4. **Install frontend dependencies:**
+    ```
+    JWT_SECRET_KEY=your_jwt_secret
+    MONGODB_URI=your_mongodb_connection_string
+    FRONTEND_URL=your_frontend_url
+    DB_URI=your_database_uri
+    ```
+
+4. **Start the Backend Server:**
+
+    ```bash
+    npm start
+    ```
+
+### AI Recommendation Service Setup
+
+1. **Navigate to the recommendation service folder:**
+
+    ```bash
+    cd ../recommendation_service
+    ```
+
+2. **Install Python dependencies:**
+
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+3. **Ensure model and index files are in place, then run:**
+
+    ```bash
+    uvicorn main:app --host 0.0.0.0 --port 8000
+    ```
+
+### Frontend Setup
+
+1. **Navigate to the client directory:**
+
     ```bash
     cd ../client
+    ```
+
+2. **Install dependencies:**
+
+    ```bash
     npm install
     ```
+
+3. **Start the Frontend Application:**
+
+    ```bash
+    npm start
+    ```
+
+---
 
 ## Usage
 
-### Running the Backend
-
-1. Start the backend server:
-    ```bash
-    cd backend
-    npm start
-    ```
-2. The server will run on `http://localhost:5000`.
-
-### Running the Frontend
-
-1. Start the frontend application:
-    ```bash
-    cd client
-    npm start
-    ```
-2. The application will run on `http://localhost:3000`.
-
-## Accessing Data and Postman Collection
-
-### 1. **Accessing and Using the MongoDB Data Locally**
-
-To set up the database on your local machine, follow these steps:
-
-#### Prerequisites:
-
--   **MongoDB** should be installed locally. You can download and install MongoDB from [here](https://www.mongodb.com/try/download/community).
--   **Node.js** and **npm** should be installed. You can download them from [here](https://nodejs.org/).
-
-#### Steps:
-
-1. **Clone the repository**:
-   Clone the repository to your local machine using the following command:
-    ```bash
-    git clone <repository-url>
-    ```
-2. **Navigate to the `DB` folder**:
-   Inside the project directory, go to the `backend/DB` folder. You will find two `.json` files:
-
-    - `restaurant.json`
-    - `product.json`
-
-3. **Import JSON files into MongoDB**:
-   To import these `.json` files into your local MongoDB database, use the following commands:
-
-    - First, start your MongoDB server if it's not already running:
-        ```bash
-        mongod
-        ```
-    - Next, open a terminal and use the `mongoimport` command to import the data:
-        ```bash
-        mongoimport --db <your-db-name> --collection restaurant --file <path-to-your-repository>/FoodPort/backend/DB/My\ DB/restaurant.json --jsonArray
-        mongoimport --db <your-db-name> --collection product --file <path-to-your-repository>/FoodPort/backend/DB/My\ DB/product.json --jsonArray
-        ```
-    - Replace `<your-db-name>` with the name of your database (e.g., `foodport`).
-
-4. **Verify data import**:
-
-    - Open the MongoDB shell by typing `mongo` in the terminal.
-    - Switch to the database:
-        ```bash
-        use <your-db-name>
-        ```
-    - Verify the collections:
-        ```bash
-        db.restaurant.find().pretty()
-        db.product.find().pretty()
-        ```
-
-5. **Start the backend server**:
-    - Install required dependencies by running:
-        ```bash
-        npm install
-        ```
-    - Start your backend server:
-        ```bash
-        npm start
-        ```
-    - Your MongoDB data should now be accessible via the backend routes.
+-   **Restaurant & Menu Exploration:** Browse highly rated restaurants and detailed menus.
+-   **Personalized Recommendations:** Leverage the AI-powered recommendation engine for curated food suggestions.
+-   **Easy Order Placement:** Add items to your cart, proceed to checkout, and track orders seamlessly.
+-   **User Profile Management:** Update personal information, dietary preferences, and more.
 
 ---
-
-### 2. **Using Postman Collection**
-
-The Postman collection is included in the project to test the API routes easily. Here's how to use it:
-
-1. **Install Postman**:
-   If you don't have Postman installed, download and install it from [here](https://www.postman.com/downloads/).
-
-2. **Import the Postman Collection**:
-
-    - Open Postman.
-    - Click on the **Import** button in the top left corner.
-    - Choose the **File** tab and select the `FoodPort.postman_collection.json` file from the `backend/Postman Collection` folder.
-    - The collection will be added to your Postman.
-
-3. **Test the API**:
-    - Once the collection is imported, you can start testing the API endpoints defined in the collection.
-    - Make sure your backend server is running (`npm start`), and then execute the requests from Postman.
-    - The collection contains predefined requests for different routes of the API, such as getting all restaurants, adding products, etc.
-
----
-
-## Features
-
--   **Restaurant and Product Listings**: Explore various restaurants and their menu items.
--   **Responsive Design**: Optimized for both mobile and desktop views.
--   **State Management with Redux**: Manage application state efficiently.
--   **Styled with Tailwind CSS**: Clean and modern UI.
 
 ## Future Enhancements
 
--   **User Authentication**: Implement user signup and login functionality.
--   **Order Management**: Allow users to place and track orders.
--   **Payment Integration**: Integrate secure payment options for easy transactions.
--   **Reviews and Ratings**: Enable users to rate and review restaurants.
+-   **Advanced Analytics:** Incorporate user behavior tracking and advanced analytics to further refine AI recommendations.
+-   **Enhanced Security:** Integrate multi-factor authentication and secure payment gateways.
+-   **Global Support:** Implement internationalization (i18n) and multi-language support.
+-   **Progressive Web App (PWA):** Enable offline support and improved mobile performance with PWA features.
 
-## Project Screenshot
+---
 
-### Home Page
+## Contributing
 
-Here is a screenshot of the **Home Page** of the FoodPort application:
+Contributions, improvements, and bug fixes are welcome! Please fork the repository and open a pull request with your proposed changes.
 
-![Home Page](client/src/images/Screenshots/HomePage.png)
+---
 
 ## License
 
 This project is licensed under the ISC License.
 
+---
+
 ## Author
 
-Developed by Aman Dubey.
+**Aman Dubey**
+Senior Software Engineer | Full-Stack Developer | AI Enthusiast
+[GitHub](https://github.com/imunreal7) | [LinkedIn](https://www.linkedin.com/in/amandubey7/)
+
+---
+
+_Thank you for checking out FoodPort – a showcase of cutting-edge microservices, AI, and full-stack development expertise._
 
