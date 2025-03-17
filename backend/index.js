@@ -13,6 +13,7 @@ import mongoSanitize from "express-mongo-sanitize";
 import xss from "xss-clean";
 import morgan from "morgan";
 import session from "express-session";
+import mongoose from "mongoose";
 
 // Use createRequire to import the CommonJS module connect-redis
 const require = createRequire(import.meta.url);
