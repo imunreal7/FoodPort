@@ -7,7 +7,7 @@
 ## Table of Contents
 
 -   [Overview](#overview)
--   [Key Features](#key--features)
+-   [Key Features](#key-features)
 -   [Architecture & Technologies](#architecture--technologies)
 -   [AI Recommendation Service](#ai-recommendation-service)
 -   [Microservices & Scalability](#microservices--scalability)
