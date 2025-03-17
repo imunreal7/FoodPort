@@ -1,6 +1,6 @@
 # FoodPort - Next Generation Food Delivery Platform
 
-**FoodPort** is a state-of-the-art online food delivery platform designed using a robust microservices architecture and advanced AI techniques. This project demonstrates deep full‑stack engineering expertise—from scalable backend services and containerized microservices to a dynamic, responsive React frontend. It is built to deliver a seamless user experience while leveraging cutting‑edge AI recommendation systems to personalize food suggestions.
+**FoodPort** is a state-of-the-art online food delivery platform designed using a robust microservices architecture and advanced AI techniques. This project demonstrates deep full‑stack engineering expertise—from scalable backend services and microservices to a dynamic, responsive React frontend. It is built to deliver a seamless user experience while leveraging cutting‑edge AI recommendation systems to personalize food suggestions.
 
 ---
 
