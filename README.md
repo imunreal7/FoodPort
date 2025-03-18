@@ -195,8 +195,9 @@ Cart
 
 ## Future Enhancements
 
--   **Advanced Analytics:** Incorporate user behavior tracking and advanced analytics to further refine AI recommendations.
+-   **Advanced Analytics:** Incorporate user behavior tracking and advanced analytics to refine AI recommendations further.
 -   **Enhanced Security:** Integrate multi-factor authentication and secure payment gateways.
+-   **Jest Unit Test Cases:** Implement Jest unit tests with 80%+ code coverage, which helps us reduce bug occurrence.
 -   **Global Support:** Implement internationalization (i18n) and multi-language support.
 -   **Progressive Web App (PWA):** Enable offline support and improved mobile performance with PWA features.
 
