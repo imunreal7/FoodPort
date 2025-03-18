@@ -130,10 +130,30 @@ Cart
     Create a `.env` file with variables such as:
 
     ```
-    JWT_SECRET_KEY=your_jwt_secret
-    MONGODB_URI=your_mongodb_connection_string
-    FRONTEND_URL=your_frontend_url
+    # Database Configuration
     DB_URI=your_database_uri
+
+    # JWT Authentication
+    JWT_SECRET=your_jwt_secret
+    JWT_EXPIRES_IN=7d  # Token expiry duration
+
+    # Server Configuration
+    PORT=5000
+    # NODE_ENV=production  # Uncomment for production mode
+
+    # API Rate Limiting
+    RATE_LIMIT_MAX=100  # Maximum requests allowed per 15 minutes
+    RATE_LIMIT_WINDOW=15m
+
+    # External API URLs
+    RECOMMENDATION_SERVICE_URL=your_recommendation_service_url
+
+    # Redis Configuration
+    REDIS_HOST=127.0.0.1
+    REDIS_PORT=6379
+    REDIS_TTL=3600  # Cache expiration time in seconds (1 hour)
+    SESSION_SECRET=your_session_secret
+
     ```
 
 4. **Start the Backend Server:**
