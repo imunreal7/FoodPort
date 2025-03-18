@@ -161,6 +161,10 @@ Cart
     ```bash
     npm start
     ```
+    for dev:
+   ```bash
+    npm run dev
+    ```
 
 ### AI Recommendation Service Setup
 
