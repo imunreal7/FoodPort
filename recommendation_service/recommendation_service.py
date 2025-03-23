@@ -122,7 +122,7 @@ def get_recommendations_for_user(req: RecommendationRequest, k: int = 3):
 
     return recommendations[:k]
 
-# --- Endpoint ---
+# --- FastAPI Endpoint ---
 @app.post("/recommendations", response_model=RecommendationResponse)
 async def recommendations_endpoint(req: RecommendationRequest):
     if index is None or not product_metadata:
